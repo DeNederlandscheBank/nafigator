@@ -55,13 +55,7 @@ class TestNafDocument(unittest.TestCase):
         scenarios: check element input and ignore list
         #WARNING Does not override existing subelements
         """
-        tmp = NafDocument()
-        tmp.generate({"naf_version": NAF_VERSION,
-            "language": LANGUAGE,
-            "fileDesc": FILEDESC,
-            "public": PUBLIC,
-            }
-            )
+        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
         tmp.subelement(element=tmp.find("nafHeader"),tag="testtag",data={"testkey" : "testvalue"})
         tmp.subelement(element=tmp.find("nafHeader"),tag="testtag2",data={"testkey" : "testvalue",
                                                                         "testkey2" : "testvalue2"},
@@ -90,13 +84,7 @@ class TestNafDocument(unittest.TestCase):
         scenarios: check xml string
         # TODO refactor nafigator code to support universal naf format
         """
-        tmp = NafDocument()
-        tmp.generate({"naf_version": "v3",
-                    "language": LANGUAGE,
-                    "fileDesc": FILEDESC,
-                    "public": PUBLIC,
-                    }
-                    )
+        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
         assert tmp.validate() == False
 
 
