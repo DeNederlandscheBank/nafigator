@@ -577,7 +577,7 @@ class NafDocument(etree._ElementTree):
 
     def validate(self):
         """Validate xml string of the NAF document"""
-        dtd = load_dtd(NAF_VERSION_TO_DTD[self.get_version()])
+        dtd = load_dtd(NAF_VERSION_TO_DTD[self.version])
         success = dtd.validate(self.getroot())
         if not success:
             logging.error("DTD error log:")

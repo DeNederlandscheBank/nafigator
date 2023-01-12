@@ -2,8 +2,25 @@ import unittest
 import pandas as pd
 import numpy as np
 
+from nafigator.nafdocument import NafDocument
+
 
 unittest.TestLoader.sortTestMethodsUsing = None
+
+# Constants
+NAF_VERSION = "testversion"
+LANGUAGE = "testlanguage"
+FILEDESC = {"title": "testtitle",
+            "author": "testauthor",
+            "creationtime": "testcreationtime",
+            "filename": "testfilename",
+            "filetype": "testfiletype",
+            "pages": "testpages",
+            }
+PUBLIC = {"publicId": "testpublicId",
+          "uri": "testuri",
+          }
+
 
 
 class TestNafDocument(unittest.TestCase):
@@ -18,7 +35,19 @@ class TestNafDocument(unittest.TestCase):
         level: 2
         scenarios: check added features vs input
         """
-        pass
+        tmp = NafDocument()
+        tmp.generate({"naf_version": NAF_VERSION,
+                    "language": LANGUAGE,
+                    "fileDesc": FILEDESC,
+                    "public": PUBLIC,
+                    }
+                    )
+
+        assert tmp.version == NAF_VERSION
+        assert tmp.language == LANGUAGE
+        assert tmp.header['fileDesc'] == FILEDESC
+        assert tmp.header['public'] == PUBLIC
+
 
     def test_subelement(self):
         """
@@ -38,76 +67,6 @@ class TestNafDocument(unittest.TestCase):
         """
         pass
 
-    def test_header(self):
-        """
-        test header output
-        input: etree._ElementTree
-        level: 0
-        scenarios: test generated header
-        """
-        pass
-
-    def test_terms(self):
-        """
-        test terms output
-        input: etree._ElementTree
-        level: 0
-        scenarios: test generated terms
-        """
-        pass
-
-    def test_multiwords(self):
-        """
-        test multiwords output
-        input: etree._ElementTree
-        level: 0
-        scenaris: test generated multiwords
-        """
-        pass
-
-    def test_entities(self):
-        """
-        test entities output
-        input: etree._ElementTree
-        level: 0
-        """
-        pass
-
-    def test_sentences(self):
-        """
-        test sentences output
-        input: etree._ElementTree
-        level: 0
-        scenarios: test sentences vs input
-        """
-        pass
-
-    def test_paragraphs(self):
-        """
-        test paragraphs output
-        input: etree._ElementTree
-        level: 0
-        scenarios: test paragraphs vs input
-        """
-        pass
-
-    def test_formats_copy(self):
-        """
-        test formats_copy output
-        input: etree._ElementTree
-        level: 0
-        scenarios: copy vs input
-        """
-        pass
-
-    def test_formats(self):
-        """
-        test formats output
-        input: etree._ElementTree
-        level: 0
-        scenarios: test formats vs input
-        """
-        pass
 
     def test_validate(self):
         """
