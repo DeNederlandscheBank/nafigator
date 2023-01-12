@@ -2,8 +2,25 @@ import unittest
 import pandas as pd
 import numpy as np
 
+from nafigator.nafdocument import NafDocument
+
 
 unittest.TestLoader.sortTestMethodsUsing = None
+
+# Constants
+NAF_VERSION = "testversion"
+LANGUAGE = "testlanguage"
+FILEDESC = {"title": "testtitle",
+            "author": "testauthor",
+            "creationtime": "testcreationtime",
+            "filename": "testfilename",
+            "filetype": "testfiletype",
+            "pages": "testpages",
+            }
+PUBLIC = {"publicId": "testpublicId",
+          "uri": "testuri",
+          }
+
 
 
 class TestNafDocument(unittest.TestCase):
@@ -18,7 +35,19 @@ class TestNafDocument(unittest.TestCase):
         level: 2
         scenarios: check added features vs input
         """
-        pass
+        tmp = NafDocument()
+        tmp.generate({"naf_version": NAF_VERSION,
+                    "language": LANGUAGE,
+                    "fileDesc": FILEDESC,
+                    "public": PUBLIC,
+                    }
+                    )
+
+        assert tmp.version == NAF_VERSION
+        assert tmp.language == LANGUAGE
+        assert tmp.header['fileDesc'] == FILEDESC
+        assert tmp.header['public'] == PUBLIC
+
 
     def test_subelement(self):
         """
