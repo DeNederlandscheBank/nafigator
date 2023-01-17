@@ -105,7 +105,12 @@ class TestNafDocument(unittest.TestCase):
         level: 0
         scenarios: check layer output
         """
-        pass
+        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
+        tmp.layer("testtag")
+        tmp.layer("testtag2")
+        elements = list(tmp.iter())
+        assert elements[-2].tag == 'testtag'
+        assert elements[-1].tag == 'testtag2'
 
     def test_add_filedesc_element(self):
         """
