@@ -21,6 +21,19 @@ PUBLIC = {"publicId": "testpublicId",
           "uri": "testuri",
           }
 
+<<<<<<< Updated upstream
+=======
+WF_ELEMENT = {
+        "text" : "test_text",
+        "id" : "test_id",
+        "sent" : "test_sent",
+        "para" : "test_para",
+        "page" : "test_page",
+        "offset" : "test_offset",
+        "length" : "test_length",
+        "xpath" : "test_xpath",
+}
+>>>>>>> Stashed changes
 
 class TestNafDocument(unittest.TestCase):
     """
@@ -124,6 +137,7 @@ class TestNafDocument(unittest.TestCase):
         scenarios: test elements vs input
         """
         pass
+        
 
     def test_add_wf_element(self):
         """
@@ -132,7 +146,17 @@ class TestNafDocument(unittest.TestCase):
         level: 1
         scenarios: test elements vs input
         """
-        pass
+        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
+        wf = tmp.subelement(
+            element=tmp.layer("text"),
+            tag="wf",
+            data=WF_ELEMENT,
+            attributes_to_ignore=["text"],
+        ) 
+        
+        # fails on dict and on element input
+        tmp.add_wf_element(wf,True)
+
 
 
     def test_add_raw_text_element(self):

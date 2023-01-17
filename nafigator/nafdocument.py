@@ -786,6 +786,7 @@ class NafDocument(etree._ElementTree):
             attributes_to_ignore=["text"],
         )
 
+
         wf.text = (
             etree.CDATA(
                 data.text if "]]>" not in data.text else " " * len(data.text))
