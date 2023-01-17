@@ -21,8 +21,6 @@ PUBLIC = {"publicId": "testpublicId",
           "uri": "testuri",
           }
 
-<<<<<<< Updated upstream
-=======
 WF_ELEMENT = {
         "text" : "test_text",
         "id" : "test_id",
@@ -33,7 +31,6 @@ WF_ELEMENT = {
         "length" : "test_length",
         "xpath" : "test_xpath",
 }
->>>>>>> Stashed changes
 
 class TestNafDocument(unittest.TestCase):
     """
@@ -136,7 +133,10 @@ class TestNafDocument(unittest.TestCase):
         level: 1
         scenarios: test elements vs input
         """
-        pass
+        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
+        tmp.add_public_element(PUBLIC)
+        assert tmp.header['public'] == PUBLIC
+
         
 
     def test_add_wf_element(self):
