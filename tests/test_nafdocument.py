@@ -50,28 +50,35 @@ def wf_element_var():
 
 class TestNafDocument():
 
-
-    def test_generate(self, version_var:str, language_var:str, filedesc_var:dict, public_var:dict):
+    @pytest.mark.parametrize('language', ['language_var', None])
+    def test_generate(self, version_var: str, filedesc_var: dict, public_var: dict, request: pytest.FixtureRequest, language: str):
         """
         This function tests whether the naf document initalization is done correctly
         input: etree._ElementTree + dict
         level: 2
         scenarios: check added features vs input
         """
+        if language is not None:
+            language = request.getfixturevalue(language)
+
         doc = NafDocument()
-        doc.generate({"naf_version": version_var,
-                      "language": language_var,
-                      "fileDesc": filedesc_var,
-                      "public": public_var,
-                      }
-                     )
+        doc.generate({
+            "naf_version": version_var,
+            "language": language,
+            "fileDesc": filedesc_var,
+            "public": public_var,
+        })
 
         assert doc.version == version_var
-        assert doc.language == language_var
+        assert doc.language == language
         assert doc.header['fileDesc'] == filedesc_var
         assert doc.header['public'] == public_var
 
-    def test_subelement(self):
+    @pytest.mark.parametrize('data,attributes_to_ignore', [
+        ({"testkey": "testvalue"}, []),
+        ({"testkey2": "testvalue2", "testkeyignore": "testvalueignore"}, ["testkeyignore"])
+    ])
+    def test_subelement(self, data: dict, attributes_to_ignore: list):
         """
         This function tests whether subelement is added correctly
         input: etree._ElementTree OPTIONAL: [etree._Element, tag-string, data-dict, ignore-list]
@@ -80,14 +87,19 @@ class TestNafDocument():
         #WARNING Does not override existing subelements
         """
         doc = NafDocument().open(r"tests/tests/example.naf.xml")
-        doc.subelement(element=doc.find("nafHeader"), tag="testtag", data={"testkey": "testvalue"})
-        doc.subelement(element=doc.find("nafHeader"), tag="testtag2", data={
-            "testkey": "testvalue",
-            "testkey2": "testvalue2"},
-                               attributes_to_ignore=['testkey'])
-        assert doc.find("nafHeader").find("testtag").tag == "testtag"
-        assert doc.find("nafHeader").find("testtag").attrib == {"testkey": "testvalue"}
-        assert doc.find("nafHeader").find("testtag2").attrib == {"testkey2": "testvalue2"}
+        naf_header = "nafHeader"
+        test_tag = "testtag"
+        doc.subelement(
+            element=doc.find(naf_header), 
+            tag=test_tag, 
+            data=data,
+            attributes_to_ignore=attributes_to_ignore
+        )
+
+        data_without_ignore = {key: data[key] for key in data.keys() if key not in attributes_to_ignore}
+
+        assert doc.find(naf_header).find(test_tag).tag == test_tag
+        assert doc.find(naf_header).find(test_tag).attrib == data_without_ignore
 
 
     def test_add_processor_Element(self):
@@ -151,9 +163,7 @@ class TestNafDocument():
         """
         doc = NafDocument().open(r"tests/tests/example.naf.xml")
         doc.add_public_element(public_var)
-        assert doc.header['public'] == public_var
-
-        
+        assert doc.header['public'] == public_var        
 
     def test_add_wf_element(self):
         """
@@ -173,8 +183,6 @@ class TestNafDocument():
         # # fails on dict and on element input
         # doc.add_wf_element(wf,True)
         pass
-
-
 
     def test_add_raw_text_element(self):
         """
