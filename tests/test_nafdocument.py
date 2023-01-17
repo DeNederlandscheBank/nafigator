@@ -21,6 +21,7 @@ PUBLIC = {"publicId": "testpublicId",
           "uri": "testuri",
           }
 
+
 class TestNafDocument(unittest.TestCase):
     """
     The basic class that inherits unittest.TestCase
@@ -35,17 +36,16 @@ class TestNafDocument(unittest.TestCase):
         """
         tmp = NafDocument()
         tmp.generate({"naf_version": NAF_VERSION,
-                    "language": LANGUAGE,
-                    "fileDesc": FILEDESC,
-                    "public": PUBLIC,
-                    }
-                    )
+                      "language": LANGUAGE,
+                      "fileDesc": FILEDESC,
+                      "public": PUBLIC,
+                      }
+                     )
 
         assert tmp.version == NAF_VERSION
         assert tmp.language == LANGUAGE
         assert tmp.header['fileDesc'] == FILEDESC
         assert tmp.header['public'] == PUBLIC
-
 
     def test_subelement(self):
         """
@@ -56,15 +56,13 @@ class TestNafDocument(unittest.TestCase):
         #WARNING Does not override existing subelements
         """
         tmp = NafDocument().open(r"tests/tests/example.naf.xml")
-        tmp.subelement(element=tmp.find("nafHeader"),tag="testtag",data={"testkey" : "testvalue"})
-        tmp.subelement(element=tmp.find("nafHeader"),tag="testtag2",data={"testkey" : "testvalue",
-                                                                        "testkey2" : "testvalue2"},
-                                                                    attributes_to_ignore=['testkey'])
+        tmp.subelement(element=tmp.find("nafHeader"), tag="testtag", data={"testkey": "testvalue"})
+        tmp.subelement(element=tmp.find("nafHeader"), tag="testtag2", data={"testkey": "testvalue",
+                                                                            "testkey2": "testvalue2"},
+                       attributes_to_ignore=['testkey'])
         assert tmp.find("nafHeader").find("testtag").tag == "testtag"
-        assert tmp.find("nafHeader").find("testtag").attrib == {"testkey" : "testvalue"}
-        assert tmp.find("nafHeader").find("testtag2").attrib == {"testkey2" : "testvalue2"}
-
-
+        assert tmp.find("nafHeader").find("testtag").attrib == {"testkey": "testvalue"}
+        assert tmp.find("nafHeader").find("testtag2").attrib == {"testkey2": "testvalue2"}
 
     def test_add_processor_Element(self):
         """
@@ -75,19 +73,16 @@ class TestNafDocument(unittest.TestCase):
         """
         pass
 
-
     def test_validate(self):
         """
         test validate output
         input:etree._ElementTree
         level: 1 (uses utilsfunction load_dtd)
         scenarios: check xml string
-        # TODO refactor nafigator code to support universal naf format
+        # TODO refactor nafigator code to support universal naf format. Also consider moving to integratin test
         """
         tmp = NafDocument().open(r"tests/tests/example.naf.xml")
         assert tmp.validate() == False
-
-
 
     def test_get_attributes(self):
         """
