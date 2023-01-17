@@ -19,55 +19,57 @@ def language_var():
 
 @pytest.fixture
 def filedesc_var():
-    return {"title": "testtitle",
-            "author": "testauthor",
-            "creationtime": "testcreationtime",
-            "filename": "testfilename",
-            "filetype": "testfiletype",
-            "pages": "testpages",
-            }
+    return {
+        "title": "testtitle",
+        "author": "testauthor",
+        "creationtime": "testcreationtime",
+        "filename": "testfilename",
+        "filetype": "testfiletype",
+        "pages": "testpages",
+    }
 
 @pytest.fixture
 def public_var():
-    return {"publicId": "testpublicId",
-          "uri": "testuri",
-          }
+    return {
+        "publicId": "testpublicId",
+        "uri": "testuri",
+    }
 
 @pytest.fixture
 def wf_element_var():
     return {
-            "text" : "test_text",
-            "id" : "test_id",
-            "sent" : "test_sent",
-            "para" : "test_para",
-            "page" : "test_page",
-            "offset" : "test_offset",
-            "length" : "test_length",
-            "xpath" : "test_xpath",
+        "text" : "test_text",
+        "id" : "test_id",
+        "sent" : "test_sent",
+        "para" : "test_para",
+        "page" : "test_page",
+        "offset" : "test_offset",
+        "length" : "test_length",
+        "xpath" : "test_xpath",
     }
 
 class TestNafDocument():
 
 
-    def test_generate(self, version_var, language_var, filedesc_var, public_var):
+    def test_generate(self, version_var:str, language_var:str, filedesc_var:dict, public_var:dict):
         """
         This function tests whether the naf document initalization is done correctly
         input: etree._ElementTree + dict
         level: 2
         scenarios: check added features vs input
         """
-        tmp = NafDocument()
-        tmp.generate({"naf_version": version_var,
+        doc = NafDocument()
+        doc.generate({"naf_version": version_var,
                       "language": language_var,
                       "fileDesc": filedesc_var,
                       "public": public_var,
                       }
                      )
 
-        assert tmp.version == version_var
-        assert tmp.language == language_var
-        assert tmp.header['fileDesc'] == filedesc_var
-        assert tmp.header['public'] == public_var
+        assert doc.version == version_var
+        assert doc.language == language_var
+        assert doc.header['fileDesc'] == filedesc_var
+        assert doc.header['public'] == public_var
 
     def test_subelement(self):
         """
@@ -77,15 +79,15 @@ class TestNafDocument():
         scenarios: check element input and ignore list
         #WARNING Does not override existing subelements
         """
-        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
-        tmp.subelement(element=tmp.find("nafHeader"), tag="testtag", data={"testkey": "testvalue"})
-        tmp.subelement(element=tmp.find("nafHeader"), tag="testtag2", data={
+        doc = NafDocument().open(r"tests/tests/example.naf.xml")
+        doc.subelement(element=doc.find("nafHeader"), tag="testtag", data={"testkey": "testvalue"})
+        doc.subelement(element=doc.find("nafHeader"), tag="testtag2", data={
             "testkey": "testvalue",
             "testkey2": "testvalue2"},
                                attributes_to_ignore=['testkey'])
-        assert tmp.find("nafHeader").find("testtag").tag == "testtag"
-        assert tmp.find("nafHeader").find("testtag").attrib == {"testkey": "testvalue"}
-        assert tmp.find("nafHeader").find("testtag2").attrib == {"testkey2": "testvalue2"}
+        assert doc.find("nafHeader").find("testtag").tag == "testtag"
+        assert doc.find("nafHeader").find("testtag").attrib == {"testkey": "testvalue"}
+        assert doc.find("nafHeader").find("testtag2").attrib == {"testkey2": "testvalue2"}
 
 
     def test_add_processor_Element(self):
@@ -105,8 +107,8 @@ class TestNafDocument():
         scenarios: check xml string
         # TODO refactor nafigator code to support universal naf format. Also consider moving to integratin test
         """
-        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
-        assert tmp.validate() == False
+        doc = NafDocument().open(r"tests/tests/example.naf.xml")
+        assert doc.validate() == False
 
     def test_get_attributes(self):
         """
@@ -124,10 +126,10 @@ class TestNafDocument():
         level: 0
         scenarios: check layer output
         """
-        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
-        tmp.layer("testtag")
-        tmp.layer("testtag2")
-        elements = list(tmp.iter())
+        doc = NafDocument().open(r"tests/tests/example.naf.xml")
+        doc.layer("testtag")
+        doc.layer("testtag2")
+        elements = list(doc.iter())
         assert elements[-2].tag == 'testtag'
         assert elements[-1].tag == 'testtag2'
 
@@ -140,16 +142,16 @@ class TestNafDocument():
         """
         pass
 
-    def test_add_public_element(self,public_var):
+    def test_add_public_element(self, public_var):
         """
         test added public element
         input: etree._ElementTree + dict
         level: 1
         scenarios: test elements vs input
         """
-        tmp = NafDocument().open(r"tests/tests/example.naf.xml")
-        tmp.add_public_element(public_var)
-        assert tmp.header['public'] == public_var
+        doc = NafDocument().open(r"tests/tests/example.naf.xml")
+        doc.add_public_element(public_var)
+        assert doc.header['public'] == public_var
 
         
 
@@ -160,16 +162,16 @@ class TestNafDocument():
         level: 1
         scenarios: test elements vs input
         """
-        # tmp = NafDocument().open(r"tests/tests/example.naf.xml")
-        # wf = tmp.subelement(
-        #     element=tmp.layer("text"),
+        # doc = NafDocument().open(r"tests/tests/example.naf.xml")
+        # wf = doc.subelement(
+        #     element=doc.layer("text"),
         #     tag="wf",
         #     data=WF_ELEMENT,
         #     attributes_to_ignore=["text"],
         # ) 
         
         # # fails on dict and on element input
-        # tmp.add_wf_element(wf,True)
+        # doc.add_wf_element(wf,True)
         pass
 
 
