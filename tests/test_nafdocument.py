@@ -130,14 +130,6 @@ class TestNafDocument(unittest.TestCase):
         """
         pass
 
-    def test_add_raw_text_element(self):
-        """
-        test added raw text element
-        input: etree._ElementTree + RawElement
-        level: 1
-        """
-        pass
-
     def test_add_wf_element(self):
         """
         test added wf element
@@ -146,6 +138,7 @@ class TestNafDocument(unittest.TestCase):
         scenarios: test elements vs input
         """
         pass
+
 
     def test_add_raw_text_element(self):
         """
