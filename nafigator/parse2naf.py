@@ -384,7 +384,7 @@ def derive_text_from_formats_layer(params):
         if len(text) > 0:
             text_spaces_added.append(text[-1][0])
 
-        text = "".join(text_spaces_added).rstrip()
+        text = "".join(text_spaces_added)
         if params["replace_hidden_characters"]:
             text = norm_spaces(text.translate(hidden_table))
         else:

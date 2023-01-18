@@ -129,10 +129,10 @@ def convert_docx(
         stream = params.get("stream", None)
         if stream is not None:
             document = zipfile.ZipFile(stream)
-        else:        
+        else:
             with open(path, "rb") as f:
                 document = zipfile.ZipFile(f)
-        text = document.read("word/document.xml")
+                text = document.read("word/document.xml")
         tree = XML(text)
         paragraphs = []
         for paragraph in tree.iter(PARA):
@@ -145,11 +145,11 @@ def convert_docx(
         stream = params.get("stream", None)
         if stream is not None:
             document = zipfile.ZipFile(stream)
-        else:        
+        else:
             with open(path, "rb") as f:
                 document = zipfile.ZipFile(f)
-        text = document.read("word/document.xml")
-        styles = document.read("word/styles.xml")  # not used yet
+                text = document.read("word/document.xml")
+                styles = document.read("word/styles.xml")  # not used yet
 
     params["docxto" + format] = text
 
