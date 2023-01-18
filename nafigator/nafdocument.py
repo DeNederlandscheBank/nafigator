@@ -22,6 +22,7 @@ import camelot
 from copy import deepcopy
 import io
 
+
 NAF_VERSION_TO_DTD = {
     "v3": "data/naf_v3.dtd",
     "v3.1": "data/naf_v3_1.dtd",
@@ -1077,7 +1078,7 @@ class NafDocument(etree._ElementTree):
         adds a formats_copy layer containing a deep copy of the pdfminer.
         Args:
         source: document type (e.g. pdf or docx)
-        formats: raw output of pdfminer        
+        formats: raw output of pdfminer
         """
         # @TODO: extend to other types of documents. Currently only for pdf documents available
         if source == "pdf":
@@ -1138,7 +1139,7 @@ class NafDocument(etree._ElementTree):
 
             def add_text_element(element, tag, text, attrib, offset):
                 # add text and attributes to element
-                if (text is not None) and (text.strip() != ""):
+                if (text is not None) and (text != ""):
                     text_element = etree.SubElement(element, tag)
                     for item in attrib.keys():
                         text_element.attrib[item] = attrib[item]
@@ -1454,7 +1455,7 @@ class NafDocument(etree._ElementTree):
                 return subelement
 
             def add_text_element(element, tag, text, attrib, offset):
-                if (text is not None) and (text.strip() != ""):
+                if (text is not None) and (text != ""):
                     text_element = etree.SubElement(element, tag)
                     for item in attrib.keys():
                         text_element.attrib[item] = attrib[item]

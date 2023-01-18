@@ -1191,9 +1191,9 @@ class TestNafigator_pdf(unittest.TestCase):
         doc.write(
             "tests" + os.sep + "tests" + os.sep + "example_tables.naf.xml"
         ) == None
-        assert doc.raw[109: 109 + 44] == "2020/08/20 | Lorem ipsum test text | HM | Q2"
+        assert doc.raw[110: 110 + 44] == "2020/08/20 | Lorem ipsum test text | HM | Q2"
         assert (
-            doc.raw[154: 154 + 49]
+            doc.raw[155: 155 + 49]
             == "2020/05/27 | Test text lorem ipsum | JR | Ongoing"
         )
         assert doc.formats[0]["tables"] == [
@@ -1309,8 +1309,16 @@ class TestNafigator_pdf(unittest.TestCase):
 
     def test_13_formats_copy(self):
         # @TODO: naf wordt nu meerdere keren de testen opgeroepen. Deze kan vooraf gedefinieerd worden.
-        # naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
-        actual = self.pdf_naf.formats_copy
+        pdf_naf_copy_formats = parse2naf.generate_naf(
+            input="tests" + os.sep + "tests" + os.sep + "example.pdf",
+            engine="stanza",
+            language="en",
+            naf_version="v3.1",
+            dtd_validation=False,
+            params={'include pdf xml': True},
+            nlp=None,
+        )
+        actual = pdf_naf_copy_formats.formats_copy
 
         # check formatting info stored in formats_copy
         assert list(actual[0].keys()) == ['id', 'bbox', 'rotate', 'textboxes', 'layout']
