@@ -6,6 +6,7 @@ import numpy as np
 
 from nafigator.nafdocument import NafDocument
 from nafigator import nafdocument
+from collections import namedtuple
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
@@ -39,16 +40,9 @@ def public_var():
 
 @pytest.fixture
 def wf_element_var():
-    return {
-        "text" : "test_text",
-        "id" : "test_id",
-        "sent" : "test_sent",
-        "para" : "test_para",
-        "page" : "test_page",
-        "offset" : "test_offset",
-        "length" : "test_length",
-        "xpath" : "test_xpath",
-    }
+    wf_element = namedtuple("WfElemenwt","text id sent para page offset length xpath")
+    return wf_element("testtext","testid","testsent","testpara","testpage","testoffset","testlength","testxpath")
+
 
 class TestNafDocument():
 
@@ -145,7 +139,7 @@ class TestNafDocument():
         assert doc.find(naf_header).find(test_tag).attrib == data_without_ignore
 
 
-    def test_add_processor_Element(self):
+    def test_add_processor_Element(processor_element_var):
         """
         This function tests whether processor element is added correctly
         input: etree._ElementTree + str + ProcessorElement
@@ -208,24 +202,20 @@ class TestNafDocument():
         doc.add_public_element(public_var)
         assert doc.header['public'] == public_var        
 
-    def test_add_wf_element(self):
+    def test_add_wf_element(self, wf_element_var):
         """
         test added wf element
         input: etree._ElementTree + wordform element + boolean
         level: 1
         scenarios: test elements vs input
         """
-        # doc = NafDocument().open(r"tests/tests/example.naf.xml")
-        # wf = doc.subelement(
-        #     element=doc.layer("text"),
-        #     tag="wf",
-        #     data=WF_ELEMENT,
-        #     attributes_to_ignore=["text"],
-        # ) 
-        
-        # # fails on dict and on element input
-        # doc.add_wf_element(wf,True)
-        pass
+        doc = NafDocument().open(r"tests/tests/example.naf.xml")
+        doc.add_wf_element(wf_element_var,True)
+
+        attributes_to_ignore = "text"
+        data = wf_element_var._asdict()
+        data_without_ignore = {key: data[key] for key in data.keys() if key not in attributes_to_ignore}
+        assert list(doc.layer("text").iter())[-1].attrib == data_without_ignore
 
     def test_add_raw_text_element(self):
         """
