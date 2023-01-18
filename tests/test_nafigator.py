@@ -1309,8 +1309,6 @@ class TestNafigator_pdf(unittest.TestCase):
 
     def test_13_formats_copy(self):
         # @TODO: naf wordt nu meerdere keren de testen opgeroepen. Deze kan vooraf gedefinieerd worden.
-        # naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
-        # actual = self.pdf_naf.formats_copy
         pdf_naf_copy_formats = parse2naf.generate_naf(
             input="tests" + os.sep + "tests" + os.sep + "example.pdf",
             engine="stanza",
