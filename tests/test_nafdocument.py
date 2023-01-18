@@ -3,6 +3,8 @@ from unittest.mock import patch, MagicMock, mock_open
 import pytest
 import pandas as pd
 import numpy as np
+import datetime
+from collections import namedtuple
 
 from nafigator.nafdocument import NafDocument
 from nafigator import nafdocument
@@ -171,8 +173,23 @@ class TestNafDocument():
         input: etree._ElementTree + dictlike OPTIONAL = [namespace-str, exclude-list]
         level: 0
         scenarios: check attributes vs input
+        # TODO namespace not included yet in test. Add once namespaces are 
         """
-        pass
+        doc = NafDocument()
+        data = {"testkey": "testvalue", 
+                "listkey": [], 
+                "intkey": 1, 
+                "floatkey": 1.0, 
+                "excludekey": "excludevalue", 
+                "datetimekey": datetime.datetime(2000, 1, 1, 9, 0)
+                }       
+        exp_output = {"testkey": "testvalue", 
+                      "intkey": str(1), 
+                      "floatkey": str(1.0), 
+                      "datetimekey": '2000-01-01T09:00:00UTC'
+                      }
+        actual_output = doc.get_attributes(data, exclude = ["excludekey"])
+        assert actual_output == exp_output
 
     def test_layer(self):
         """
@@ -195,7 +212,20 @@ class TestNafDocument():
         level: 1
         scenarios: test elements vs input
         """
-        pass
+
+        doc = NafDocument().open(r"tests/tests/example.naf.xml")
+        
+        data = {"title": "test",
+                "author": "DreamWorks",
+                "creationtime": "2000-01-01T09:00:00",
+                "filename": "testfile",
+                "filetype": "PDF",
+                "page": "1"
+        }
+
+        doc.add_filedesc_element(data)
+        
+        assert doc.header.get("fileDesc") == data
 
     def test_add_public_element(self, public_var):
         """
@@ -234,7 +264,15 @@ class TestNafDocument():
         level: 1
         scenarios: test elements vs input
         """
-        pass
+
+        doc = NafDocument().open(r"tests/tests/example.naf.xml")
+        
+        RawElement = namedtuple("RawElement","text")
+        data = RawElement("This is raw text") 
+
+        doc.add_raw_text_element(data)
+
+        assert list(doc.iter())[-1].text == data.text
 
     def test_add_entity_element(self):
         """
