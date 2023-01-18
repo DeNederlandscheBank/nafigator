@@ -3,7 +3,7 @@ from unittest.mock import patch, MagicMock, mock_open
 import pytest
 
 from nafigator.nafdocument import NafDocument
-from nafigator import nafdocument
+from nafigator import nafdocument, EntityElement
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
@@ -240,14 +240,42 @@ class TestNafDocument():
         """
         pass
 
-    def test_add_entity_element(self):
+    @pytest.mark.parametrize('span,ext_refs', [
+        ([], []),
+        (["test_span"], ["test_ref"]),
+    ])
+    def test_add_entity_element(self, doc: NafDocument, span: list, ext_refs: list):
         """
         test added entity element
         input: etree._ElementTree + EntityElement + str + boolean
         level: 1
         scenarios: test elements vs input
         """
-        pass
+        test_id = "test_id"
+        test_type = "test_type"
+        data = EntityElement(
+            id=test_id, 
+            type=test_type,
+            status=None,
+            source=None,
+            span=span,
+            ext_refs=ext_refs,
+            comment=None
+        )
+
+        naf_version = "test_version"
+        comments = False
+        doc.add_span_element = MagicMock()
+        doc.add_external_reference_element = MagicMock()
+        doc.add_entity_element(data, naf_version, comments)
+
+        find_entities = doc.find(nafdocument.ENTITIES_LAYER_TAG).find(f"./{nafdocument.ENTITY_OCCURRENCE_TAG}[@id='test_id']")
+        assert find_entities.attrib == {"id": test_id, "type": test_type}
+
+        if span != []:
+            doc.add_span_element.assert_called_once()
+        if ext_refs != []:
+            doc.add_external_reference_element.assert_called_once()
 
     def test_add_term_element(self):
         """
