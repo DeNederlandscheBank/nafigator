@@ -5,12 +5,7 @@ import datetime
 from collections import namedtuple
 
 from nafigator.nafdocument import NafDocument
-<<<<<<< HEAD
-from nafigator import nafdocument
-from collections import namedtuple
-=======
 from nafigator import nafdocument, EntityElement
->>>>>>> 186b96783c294d1d69fb361a65c5c41afc2add97
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
@@ -146,12 +141,7 @@ class TestNafDocument():
         assert find_tag.tag == test_tag
         assert find_tag.attrib == data_without_ignore
 
-<<<<<<< HEAD
-
-    def test_add_processor_Element(processor_element_var):
-=======
     def test_add_processor_Element(self, doc: NafDocument):
->>>>>>> 186b96783c294d1d69fb361a65c5c41afc2add97
         """
         This function tests whether processor element is added correctly
         input: etree._ElementTree + str + ProcessorElement
@@ -257,18 +247,13 @@ class TestNafDocument():
         doc.add_public_element(public_var)
         assert doc.header['public'] == public_var        
 
-<<<<<<< HEAD
-    def test_add_wf_element(self, wf_element_var):
-=======
     def test_add_wf_element(self, doc: NafDocument):
->>>>>>> 186b96783c294d1d69fb361a65c5c41afc2add97
         """
         test added wf element
         input: etree._ElementTree + wordform element + boolean
         level: 1
         scenarios: test elements vs input
         """
-<<<<<<< HEAD
         doc = NafDocument().open(r"tests/tests/example.naf.xml")
         doc.add_wf_element(wf_element_var,True)
 
@@ -276,18 +261,6 @@ class TestNafDocument():
         data = wf_element_var._asdict()
         data_without_ignore = {key: data[key] for key in data.keys() if key not in attributes_to_ignore}
         assert list(doc.layer("text").iter())[-1].attrib == data_without_ignore
-=======
-        # wf = doc.subelement(
-        #     element=doc.layer("text"),
-        #     tag="wf",
-        #     data=WF_ELEMENT,
-        #     attributes_to_ignore=["text"],
-        # ) 
-        
-        # # fails on dict and on element input
-        # doc.add_wf_element(wf,True)
-        pass
->>>>>>> 186b96783c294d1d69fb361a65c5c41afc2add97
 
     def test_add_raw_text_element(self, doc: NafDocument):
         """
