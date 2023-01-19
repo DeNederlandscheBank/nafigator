@@ -5,7 +5,7 @@ import datetime
 from collections import namedtuple
 
 from nafigator.nafdocument import NafDocument
-from nafigator import nafdocument, EntityElement, TermElement, MultiwordElement
+from nafigator import nafdocument, EntityElement, TermElement, MultiwordElement, WordformElement
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
@@ -36,12 +36,6 @@ def public_var():
         "publicId": "testpublicId",
         "uri": "testuri",
     }
-
-@pytest.fixture
-def wf_element_var():
-    wf_element = namedtuple("WfElemenwt","text id sent para page offset length xpath")
-    return wf_element("testtext","testid","testsent","testpara","testpage","testoffset","testlength","testxpath")
-
 
 @pytest.fixture
 def doc():
@@ -247,18 +241,30 @@ class TestNafDocument():
         doc.add_public_element(public_var)
         assert doc.header['public'] == public_var        
 
-    def test_add_wf_element(self, doc: NafDocument, wf_element_var):
+    def test_add_wf_element(self, doc: NafDocument):
         """
         test added wf element
         input: etree._ElementTree + wordform element + boolean
         level: 1
         scenarios: test elements vs input
         """
-        doc.add_wf_element(wf_element_var,True)
-
-        attributes_to_ignore = "text"
-        data = wf_element_var._asdict()
-        data_without_ignore = {key: data[key] for key in data.keys() if key not in attributes_to_ignore}
+        test_id = "test_id"
+        test_para = "test_para"
+        test_text = "test_text"
+        data = WordformElement(
+            id=test_id, 
+            sent = None,
+            para=test_para,
+            page=None,
+            offset=None,
+            length=None,
+            xpath=None,
+            text=test_text,
+        )
+        doc.add_wf_element(data,True)
+        attributes_to_ignore = ["text","sent","page","offset","length","xpath"]
+        d = data._asdict()
+        data_without_ignore = {key: d[key] for key in d.keys() if key not in attributes_to_ignore}
         assert list(doc.layer("text").iter())[-1].attrib == data_without_ignore
 
     def test_add_raw_text_element(self, doc: NafDocument):
