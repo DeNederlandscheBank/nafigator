@@ -183,19 +183,21 @@ class TestNafDocument():
         """
         doc = NafDocument()
 
-        data = {"testkey": "testvalue", 
-                "listkey": [], 
-                "intkey": 1, 
-                "floatkey": 1.0, 
-                "excludekey": "excludevalue", 
-                "datetimekey": datetime.datetime(2000, 1, 1, 9, 0),
-                "nonekey": None,
-                }       
-        exp_output = {"testkey": "testvalue", 
-                      "intkey": str(1), 
-                      "floatkey": str(1.0), 
-                      "datetimekey": '2000-01-01T09:00:00UTC'
-                      }
+        data = {
+            "testkey": "testvalue", 
+            "listkey": [], 
+            "intkey": 1, 
+            "floatkey": 1.0, 
+            "excludekey": "excludevalue", 
+            "datetimekey": datetime.datetime(2000, 1, 1, 9, 0),
+            "nonekey": None,
+        }       
+        exp_output = {
+            "testkey": "testvalue", 
+            "intkey": str(1), 
+            "floatkey": str(1.0), 
+            "datetimekey": '2000-01-01T09:00:00UTC'
+        }
         actual_output = doc.get_attributes(data, exclude = ["excludekey"])
 
         namedtuple_as_dict = namedtuple("namedtuple_as_dict", "testkey")
@@ -213,29 +215,29 @@ class TestNafDocument():
         level: 0
         scenarios: check layer output
         """
-        doc.layer("testtag")
-        doc.layer("testtag2")
+        test_tag = "testtag"
+        test_tag2 = "testtag2"
+        doc.layer(test_tag)
+        doc.layer(test_tag2)
         elements = list(doc.iter())
 
-        assert elements[-2].tag == 'testtag'
-        assert elements[-1].tag == 'testtag2'
+        assert elements[-2].tag == test_tag
+        assert elements[-1].tag == test_tag2
 
-    def test_add_filedesc_element(self):
+    def test_add_filedesc_element(self, doc: NafDocument):
         """
         test added filedescription element
         input: etree._ElementTree + dict
         level: 1
         scenarios: test elements vs input
         """
-
-        doc = NafDocument().open(r"tests/tests/example.naf.xml")
-        
-        data = {"title": "test",
-                "author": "DreamWorks",
-                "creationtime": "2000-01-01T09:00:00",
-                "filename": "testfile",
-                "filetype": "PDF",
-                "page": "1"
+        data = {
+            "title": "test",
+            "author": "DreamWorks",
+            "creationtime": "2000-01-01T09:00:00",
+            "filename": "testfile",
+            "filetype": "PDF",
+            "page": "1"
         }
 
         doc.add_filedesc_element(data)
@@ -270,16 +272,13 @@ class TestNafDocument():
         # doc.add_wf_element(wf,True)
         pass
 
-    def test_add_raw_text_element(self):
+    def test_add_raw_text_element(self, doc: NafDocument):
         """
         test added wf element
         input: etree._ElementTree + DependencyRelation + boolean
         level: 1
         scenarios: test elements vs input
-        """
-
-        doc = NafDocument().open(r"tests/tests/example.naf.xml")
-        
+        """        
         RawElement = namedtuple("RawElement","text")
         data = RawElement("This is raw text") 
 
