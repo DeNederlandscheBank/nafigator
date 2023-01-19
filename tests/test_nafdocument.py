@@ -350,14 +350,23 @@ class TestNafDocument():
         """
         pass
 
-    def test_add_external_reference_element(self):
+    @pytest.mark.parametrize('ext_refs', [[], [{"reference": "ref1"}, {"reference": "ref2", "resource": "test"}]])
+    def test_add_external_reference_element(self, doc: NafDocument, ext_refs: list):
         """
         test added external reference element
         input: etree._ElementTree + tree._ElementTree(2) + list
         level: 1
         scenarios: test elements vs input
         """
-        pass
+        element = doc.find(nafdocument.NAF_HEADER)
+        doc.add_external_reference_element(element, ext_refs)
+
+        find_refs = doc.find(nafdocument.NAF_HEADER).find(nafdocument.EXT_REFS_OCCURRENCE_TAG)
+        assert find_refs is not None
+
+        for ext_ref in ext_refs:
+            ref = ext_ref["reference"]
+            assert find_refs.find(f"./{nafdocument.EXT_REF_OCCURRENCE_TAG}[@reference='{ref}']").attrib == ext_ref
 
     def test_add_multiword_element(self):
         """
