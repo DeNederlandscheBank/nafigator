@@ -241,7 +241,11 @@ class TestNafDocument():
         doc.add_public_element(public_var)
         assert doc.header['public'] == public_var        
 
-    def test_add_wf_element(self, doc: NafDocument):
+    @pytest.mark.parametrize('text,', [
+        'plain text',
+        'text with ]]> more text',
+    ])
+    def test_add_wf_element(self, doc: NafDocument, text: str):
         """
         test added wf element
         input: etree._ElementTree + wordform element + boolean
@@ -250,7 +254,6 @@ class TestNafDocument():
         """
         test_id = "test_id"
         test_para = "test_para"
-        test_text = "test_text"
         data = WordformElement(
             id=test_id, 
             sent = None,
@@ -259,13 +262,18 @@ class TestNafDocument():
             offset=None,
             length=None,
             xpath=None,
-            text=test_text,
+            text=text,
         )
+        
+        doc.add_wf_element(data,False)
         doc.add_wf_element(data,True)
+
         attributes_to_ignore = ["text","sent","page","offset","length","xpath"]
         d = data._asdict()
         data_without_ignore = {key: d[key] for key in d.keys() if key not in attributes_to_ignore}
+        
         assert list(doc.layer("text").iter())[-1].attrib == data_without_ignore
+        assert list(doc.layer("text").iter())[-2].text == text
 
     def test_add_raw_text_element(self, doc: NafDocument):
         """
