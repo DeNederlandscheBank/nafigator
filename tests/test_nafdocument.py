@@ -6,7 +6,6 @@ from collections import namedtuple
 
 from nafigator.nafdocument import NafDocument
 from nafigator import nafdocument, EntityElement, TermElement, MultiwordElement
-from collections import namedtuple
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
