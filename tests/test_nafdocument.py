@@ -176,12 +176,14 @@ class TestNafDocument():
         # TODO namespace not included yet in test. Add once namespaces are 
         """
         doc = NafDocument()
+
         data = {"testkey": "testvalue", 
                 "listkey": [], 
                 "intkey": 1, 
                 "floatkey": 1.0, 
                 "excludekey": "excludevalue", 
-                "datetimekey": datetime.datetime(2000, 1, 1, 9, 0)
+                "datetimekey": datetime.datetime(2000, 1, 1, 9, 0),
+                "nonekey": None,
                 }       
         exp_output = {"testkey": "testvalue", 
                       "intkey": str(1), 
@@ -189,7 +191,14 @@ class TestNafDocument():
                       "datetimekey": '2000-01-01T09:00:00UTC'
                       }
         actual_output = doc.get_attributes(data, exclude = ["excludekey"])
+
+        namedtuple_as_dict = namedtuple("namedtuple_as_dict", "testkey")
+        data_not_dict = namedtuple_as_dict("testvalue")
+        exp_output_not_dict =  {"testkey": "testvalue"}
+        actual_output_not_dict = doc.get_attributes(data_not_dict)
+
         assert actual_output == exp_output
+        assert actual_output_not_dict == exp_output_not_dict 
 
     def test_layer(self):
         """
