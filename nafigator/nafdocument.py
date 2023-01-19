@@ -834,7 +834,7 @@ class NafDocument(etree._ElementTree):
             attributes_to_ignore=["comment"],
         )
 
-    def add_entity_element(self, data: EntityElement, naf_version: str, comments: str):
+    def add_entity_element(self, data: EntityElement, naf_version: str, comments: bool):
         """
         ENTITY ELEMENT
             A named entity element has the following attributes:
