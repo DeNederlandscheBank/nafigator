@@ -254,7 +254,6 @@ class TestNafDocument():
         level: 1
         scenarios: test elements vs input
         """
-        doc = NafDocument().open(r"tests/tests/example.naf.xml")
         doc.add_wf_element(wf_element_var,True)
 
         attributes_to_ignore = "text"
