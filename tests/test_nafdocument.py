@@ -5,7 +5,8 @@ import datetime
 from collections import namedtuple
 
 from nafigator.nafdocument import NafDocument
-from nafigator import nafdocument, EntityElement
+from nafigator import nafdocument, EntityElement, TermElement
+from collections import namedtuple
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
@@ -247,7 +248,7 @@ class TestNafDocument():
         doc.add_public_element(public_var)
         assert doc.header['public'] == public_var        
 
-    def test_add_wf_element(self, doc: NafDocument):
+    def test_add_wf_element(self, doc: NafDocument, wf_element_var):
         """
         test added wf element
         input: etree._ElementTree + wordform element + boolean
@@ -313,14 +314,47 @@ class TestNafDocument():
         if ext_refs != []:
             doc.add_external_reference_element.assert_called_once()
 
-    def test_add_term_element(self):
+    @pytest.mark.parametrize('span,ext_refs', [
+        ([], []),
+        (["test_span"], ["test_ref"]),
+        ])
+    def test_add_term_element(self, doc: NafDocument, span: list, ext_refs: list):
         """
         test added term element
         input: etree._ElementTree + TermElement + str + boolean
         level: 2
         scenarios: test elements vs input
-        """
-        pass
+        """ 
+        test_id = "test_id"
+        test_type = "test_type"
+        data = TermElement(
+            id=test_id, 
+            type=test_type,
+            lemma = None,
+            pos = None,
+            morphofeat= None,
+            netype = None,
+            case = None,
+            head = None,
+            component_of=None,
+            compound_type=None,
+            span = span,
+            ext_refs=ext_refs,
+            comment=None
+        )
+
+        doc.add_span_element = MagicMock()
+        doc.add_external_reference_element = MagicMock()
+        doc.add_term_element(data, layer_to_attributes_to_ignore={},comments=False)
+
+        find_terms = doc.find(nafdocument.TERMS_LAYER_TAG).find(f"./{nafdocument.TERM_OCCURRENCE_TAG}[@id='test_id']")
+        assert find_terms.attrib == {"id": test_id, "type": test_type}
+
+        if span != []:
+            doc.add_span_element.assert_called_once()
+        if ext_refs != []:
+            doc.add_external_reference_element.assert_called_once()
+
 
     def test_add_chunk_element(self):
         """
@@ -349,6 +383,10 @@ class TestNafDocument():
         """
         pass
 
+    @pytest.mark.parametrize('span,ext_refs', [
+        ([], []),
+        (["test_span"], ["test_ref"]),
+        ])
     def test_add_multiword_element(self):
         """
         test added multiword element
@@ -356,6 +394,32 @@ class TestNafDocument():
         level: 1
         scenarios: test elements vs input
         """
+        test_id = "test_id"
+        test_type = "test_type"
+        data = EntityElement(
+            id=test_id, 
+            type=test_type,
+            status=None,
+            source=None,
+            span=span,
+            ext_refs=ext_refs,
+            comment=None
+        )
+
+        naf_version = "test_version"
+        comments = False
+        doc.add_span_element = MagicMock()
+        doc.add_external_reference_element = MagicMock()
+        doc.add_entity_element(data, naf_version, comments)
+
+        find_entities = doc.find(nafdocument.ENTITIES_LAYER_TAG).find(f"./{nafdocument.ENTITY_OCCURRENCE_TAG}[@id='test_id']")
+        assert find_entities.attrib == {"id": test_id, "type": test_type}
+
+        if span != []:
+            doc.add_span_element.assert_called_once()
+        if ext_refs != []:
+            doc.add_external_reference_element.assert_called_once()
+
         pass
 
     def test_add_formats_copy_element(self):
