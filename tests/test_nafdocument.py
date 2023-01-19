@@ -5,7 +5,7 @@ import datetime
 from collections import namedtuple
 
 from nafigator.nafdocument import NafDocument
-from nafigator import nafdocument, EntityElement, TermElement
+from nafigator import nafdocument, EntityElement, TermElement, MultiwordElement
 from collections import namedtuple
 
 unittest.TestLoader.sortTestMethodsUsing = None
@@ -383,11 +383,11 @@ class TestNafDocument():
         """
         pass
 
-    @pytest.mark.parametrize('span,ext_refs', [
-        ([], []),
-        (["test_span"], ["test_ref"]),
+    @pytest.mark.parametrize('span,components,lemma', [
+        ([], [], []),
+        (["test_span"],[{"test_id_component":"test_id_component", "test_type_component":"test_type_component"}], ["test_lemma"]),
         ])
-    def test_add_multiword_element(self):
+    def test_add_multiword_element(self, doc: NafDocument, span: list, components: list, lemma: list):
         """
         test added multiword element
         input: etree._ElementTree + MultiwordElement
@@ -396,31 +396,30 @@ class TestNafDocument():
         """
         test_id = "test_id"
         test_type = "test_type"
-        data = EntityElement(
+
+        data = MultiwordElement(
             id=test_id, 
             type=test_type,
-            status=None,
-            source=None,
-            span=span,
-            ext_refs=ext_refs,
-            comment=None
+            lemma=lemma,
+            pos=None,
+            morphofeat=None,
+            case=None,
+            status = None,
+            components= components,
         )
 
-        naf_version = "test_version"
-        comments = False
+
         doc.add_span_element = MagicMock()
-        doc.add_external_reference_element = MagicMock()
-        doc.add_entity_element(data, naf_version, comments)
+        doc.add_multiword_element(data)
 
-        find_entities = doc.find(nafdocument.ENTITIES_LAYER_TAG).find(f"./{nafdocument.ENTITY_OCCURRENCE_TAG}[@id='test_id']")
+        find_entities = doc.find(nafdocument.MULTIWORDS_LAYER_TAG).find(f"./{nafdocument.MULTIWORD_OCCURRENCE_TAG}[@id='test_id']")
         assert find_entities.attrib == {"id": test_id, "type": test_type}
-
+        
         if span != []:
             doc.add_span_element.assert_called_once()
-        if ext_refs != []:
-            doc.add_external_reference_element.assert_called_once()
 
-        pass
+        
+
 
     def test_add_formats_copy_element(self):
         """
