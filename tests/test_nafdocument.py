@@ -271,7 +271,7 @@ class TestNafDocument():
         attributes_to_ignore = ["text","sent","page","offset","length","xpath"]
         d = data._asdict()
         data_without_ignore = {key: d[key] for key in d.keys() if key not in attributes_to_ignore}
-        
+
         assert list(doc.layer("text").iter())[-1].attrib == data_without_ignore
         assert list(doc.layer("text").iter())[-2].text == text
 
@@ -359,7 +359,7 @@ class TestNafDocument():
         doc.add_external_reference_element = MagicMock()
         doc.add_term_element(data, layer_to_attributes_to_ignore={},comments=False)
 
-        find_terms = doc.find(nafdocument.TERMS_LAYER_TAG).find(f"./{nafdocument.TERM_OCCURRENCE_TAG}[@id='test_id']")
+        find_terms = doc.find(nafdocument.TERMS_LAYER_TAG).find(f"./{nafdocument.TERM_OCCURRENCE_TAG} [@id='{test_id}']")
         assert find_terms.attrib == {"id": test_id, "type": test_type}
 
         if span != []:
@@ -424,14 +424,11 @@ class TestNafDocument():
         doc.add_span_element = MagicMock()
         doc.add_multiword_element(data)
 
-        find_entities = doc.find(nafdocument.MULTIWORDS_LAYER_TAG).find(f"./{nafdocument.MULTIWORD_OCCURRENCE_TAG}[@id='test_id']")
-        assert find_entities.attrib == {"id": test_id, "type": test_type}
+        find_mw = doc.find(nafdocument.MULTIWORDS_LAYER_TAG).find(f"./{nafdocument.MULTIWORD_OCCURRENCE_TAG} [@id='{test_id}']")
+        assert find_mw.attrib == {"id": test_id, "type": test_type}
         
         if span != []:
             doc.add_span_element.assert_called_once()
-
-        
-
 
     def test_add_formats_copy_element(self):
         """
