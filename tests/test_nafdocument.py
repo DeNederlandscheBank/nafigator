@@ -365,7 +365,7 @@ class TestNafDocument():
         doc.add_chunk_element(data, comment)
 
         find_chunks = doc.find(nafdocument.CHUNKS_LAYER_TAG).find(
-            f"./{nafdocument.CHUNK_OCCURRENCE_TAG}[@id='test_id']")
+            f"./{nafdocument.CHUNK_OCCURRENCE_TAG}[@id='{test_id}']")
 
         print(find_chunks.attrib)
         assert find_chunks.attrib == {"id": test_id, "head": test_head, "phrase": test_phrase}
