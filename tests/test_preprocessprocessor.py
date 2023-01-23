@@ -2,8 +2,9 @@
 
 import unittest
 from nafigator.preprocessprocessor import convert_pdf, convert_docx
-import json
 import pytest
+import json
+import camelot
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
@@ -11,7 +12,16 @@ with open('tests/tests/docx_convertor_output.json') as data_file:
     docx_exp_output = json.load(data_file)
 
 
-def test_convert_pdf():
+with open('tests/tests/pdf_convertor_output.json') as data_file:
+    pdf_exp_output = json.load(data_file)
+
+
+@pytest.mark.parametrize("format, params",
+                         [('text', {'fileDesc': {'author': 'anonymous'},
+                                    'parse_tables_with_camelot': True}),
+                          ('xml', {'fileDesc': {'author': 'anonymous'}}),
+                          ('html', {'fileDesc': {'author': 'anonymous'}})])
+def test_convert_pdf(format: str, params: dict):
     """
     This function converts a pdf file into text, html or xml.
     Input:
@@ -26,7 +36,12 @@ def test_convert_pdf():
         conversion to html
         conversion to xml
     """
-    pass
+    path = 'tests/tests/example.pdf'
+    convert_pdf(path=path, format=format, params=params)
+    if params.get('parse_tables_with_camelot', False):
+        assert type(params["pdftotables"]) == camelot.core.TableList
+    output_key = "pdfto" + format
+    assert params[output_key] == pdf_exp_output[output_key]
 
 
 @pytest.mark.parametrize("format", ["text", "xml"])
