@@ -834,7 +834,7 @@ class NafDocument(etree._ElementTree):
             attributes_to_ignore=["comment"],
         )
 
-    def add_entity_element(self, data: EntityElement, naf_version: str, comments: str):
+    def add_entity_element(self, data: EntityElement, naf_version: str, comments: bool):
         """
         ENTITY ELEMENT
             A named entity element has the following attributes:
@@ -1024,11 +1024,11 @@ class NafDocument(etree._ElementTree):
                 "ext_refs should be a list of dictionaries (can be empty)")
 
         ext_refs_el = self.subelement(
-            element=element, tag="externalReferences")
+            element=element, tag=EXT_REFS_OCCURRENCE_TAG)
         for ext_ref in ext_refs:
             ext_ref_el = self.subelement(
                 element=ext_refs_el,
-                tag="externalRef",
+                tag=EXT_REF_OCCURRENCE_TAG,
                 data={"reference": ext_ref["reference"]},
             )
             for optional_attr in ["resource", "source", "timestamp"]:
