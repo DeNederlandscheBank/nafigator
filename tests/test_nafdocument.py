@@ -21,8 +21,6 @@ PUBLIC = {"publicId": "testpublicId",
           "uri": "testuri",
           }
 
-
-
 class TestNafDocument(unittest.TestCase):
     """
     The basic class that inherits unittest.TestCase
@@ -55,8 +53,24 @@ class TestNafDocument(unittest.TestCase):
         input: etree._ElementTree OPTIONAL: [etree._Element, tag-string, data-dict, ignore-list]
         level: 0
         scenarios: check element input and ignore list
+        #WARNING Does not override existing subelements
         """
-        pass
+        tmp = NafDocument()
+        tmp.generate({"naf_version": NAF_VERSION,
+            "language": LANGUAGE,
+            "fileDesc": FILEDESC,
+            "public": PUBLIC,
+            }
+            )
+        tmp.subelement(element=tmp.find("nafHeader"),tag="testtag",data={"testkey" : "testvalue"})
+        tmp.subelement(element=tmp.find("nafHeader"),tag="testtag2",data={"testkey" : "testvalue",
+                                                                        "testkey2" : "testvalue2"},
+                                                                    attributes_to_ignore=['testkey'])
+        assert tmp.find("nafHeader").find("testtag").tag == "testtag"
+        assert tmp.find("nafHeader").find("testtag").attrib == {"testkey" : "testvalue"}
+        assert tmp.find("nafHeader").find("testtag2").attrib == {"testkey2" : "testvalue2"}
+
+
 
     def test_add_processor_Element(self):
         """
@@ -74,8 +88,18 @@ class TestNafDocument(unittest.TestCase):
         input:etree._ElementTree
         level: 1 (uses utilsfunction load_dtd)
         scenarios: check xml string
+        # TODO refactor nafigator code to support universal naf format
         """
-        pass
+        tmp = NafDocument()
+        tmp.generate({"naf_version": "v3",
+                    "language": LANGUAGE,
+                    "fileDesc": FILEDESC,
+                    "public": PUBLIC,
+                    }
+                    )
+        assert tmp.validate() == False
+
+
 
     def test_get_attributes(self):
         """
