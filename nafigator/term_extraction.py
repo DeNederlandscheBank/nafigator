@@ -87,7 +87,7 @@ def extract_terms(doc=None, patterns: list() = None, termNotes: dict() = None):
                 ["NOUN", "NOUN", "ADJ"],
                 ["NOUN", "PUNCT", "NOUN"],
         ]
-        else: #if doc.language in ["en", "de", "nl", "da", "sv"]:
+        else: #doc.language in ["en", "de", "nl", "da", "sv"]:
             patterns = [
                 ["NOUN"],
                 ["ADJ", "NOUN"],
@@ -126,9 +126,9 @@ def extract_terms(doc=None, patterns: list() = None, termNotes: dict() = None):
                     concept_text = concept_text.replace("\xad ", "")
                     concept_text = concept_text.replace(" \xad", "")
                     concept_text = concept_text.replace("\xad", "")
-                    # check is the length of the term corresponds to the length of the pattern
-                    # (sometimes the nlp engine produces wordforms with two words)
-                    if len(concept_text.split(" ")) == len(pattern): 
+                    # TODO check is the length of the term corresponds to the length of the pattern
+                    # TODO (sometimes the nlp engine produces wordforms with two words)
+                    if len(concept_text.split(" ")) == len(pattern):
                         concept_text = concept_text.replace(" - ", "-")
                         if concept_text in d.keys():
                             d[concept_text]["frequency"][0] += 1

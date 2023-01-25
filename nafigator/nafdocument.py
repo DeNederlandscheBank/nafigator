@@ -74,9 +74,11 @@ namespaces = {
 
 
 def QName(prefix: str = None, name: str = None):
-    """ """
-    # currently no namespaces used
-    # qname = etree.QName('{'+namespaces[prefix]+'}'+name, name)
+    """ 
+    Currently no namespaces used
+    Example: qname = etree.QName('{'+namespaces[prefix]+'}'+name, name)
+    """
+
     return name
 
 

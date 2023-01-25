@@ -149,7 +149,7 @@ def convert_docx(
             with open(path, "rb") as f:
                 document = zipfile.ZipFile(f)
                 text = document.read("word/document.xml")
-                styles = document.read("word/styles.xml")  # not used yet
+                styles = document.read("word/styles.xml")
 
     params["docxto" + format] = text
 

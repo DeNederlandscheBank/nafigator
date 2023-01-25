@@ -80,7 +80,6 @@ def dataframe2naf(
 
             if os.path.exists(output) and not overwrite_existing_naf:
                 # the NAF file exists and we should not overwrite existing naf
-                # files -> skip
                 df_meta.loc[row, "naf:status"] = "OK"
                 df_meta.loc[row, "naf:source"] = output
                 continue
@@ -89,7 +88,6 @@ def dataframe2naf(
                 and not rerun_files_with_naf_errors
             ):
                 # the status is ERROR and we should not rerun files with errors
-                # -> skip
                 continue
             else:
                 # put columns in params
@@ -191,16 +189,6 @@ def prepare_comment_text(text: str) -> str:
     return text
 
 
-# def remove_illegal_chars(text):
-#     return re.sub(illegal_pattern, "", text)
-
-# Only allow legal strings in XML:
-# http://stackoverflow.com/a/25920392/2899924
-# illegal_pattern = re.compile(
-#     "[^\u0020-\uD7FF\u0009\u000A\u000D\uE000-\uFFFD\u10000-\u10FFFF]+"
-# )
-# improved version:
-
 # A regex matching the "invalid XML character range"
 ILLEGAL_XML_CHARS_RE = re.compile(
     r"[\x00-\x08\x0b\x0c\x0e-\x1F\uD800-\uDFFF\uFFFE\uFFFF]"
@@ -263,8 +251,7 @@ def remove_control_characters(html: str) -> str:
         return default
 
     # We encode all non-ascii characters to XML char-refs, so for example "💖" becomes: "&#x1F496;"
-    # Otherwise we'd remove emojis by mistake on narrow-unicode builds of
-    # Python
+    # Otherwise we'd remove emojis by mistake on narrow-unicode builds of Python
     html = html.encode("ascii", "xmlcharrefreplace").decode("utf-8")
     html = re.sub(
         r"&#(\d+);?",
@@ -657,6 +644,7 @@ def glue_sentences_separated_by_colons(doc, language: str, nlp: dict):
             print(doc.sentences[idx + 1]["text"])
             print("--")
 
+    #     TODO: create function for colon seperated documents  # pylint: disable=fixme
     #     term_text = "".join([doc_words[s["id"]]["text"] for s in term["span"]])
     #     term_lemma = term["lemma"]
     #     term_pos = term["pos"]
