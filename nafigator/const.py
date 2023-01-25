@@ -65,33 +65,3 @@ udpos2nafpos_info = {
     "X": {"class": "open", "naf_pos": "O"},
     "SPACE": {"class": "open", "naf_pos": "O"},
 }
-
-udpos2olia = {
-    "ADJ": {"class": "open", "olia": "http://purl.org/olia/olia.owl#Adjective"},
-    "ADP": {"class": "open", "olia": "http://purl.org/olia/olia.owl#Adposition"},
-    "ADV": {"class": "open", "olia": "http://purl.org/olia/olia.owl#Adverb"},
-    "AUX": {"class": "close", "olia": "http://purl.org/olia/olia.owl#AuxiliaryVerb"},
-    "CONJ": {
-        "class": "close",
-        "olia": "http://purl.org/olia/olia.owl#CoordinatingConjunction",
-    },
-    "CCONJ": {
-        "class": "close",
-        "olia": "http://purl.org/olia/olia.owl#CoordinatingConjunction",
-    },
-    "DET": {"class": "close", "olia": "http://purl.org/olia/olia.owl#Determiner"},
-    "INTJ": {"class": "open", "olia": "http://purl.org/olia/olia.owl#Interjection"},
-    "NOUN": {"class": "open", "olia": "http://purl.org/olia/olia.owl#CommonNoun"},
-    "NUM": {"class": "close", "olia": "http://purl.org/olia/olia.owl#Quantifier"},
-    "PART": {"class": "close", "olia": "http://purl.org/olia/olia.owl#Particle"},
-    "PRON": {"class": "close", "olia": "http://purl.org/olia/olia.owl#Pronoun"},
-    "PROPN": {"class": "open", "olia": "http://purl.org/olia/olia.owl#ProperNoun"},
-    "PUNCT": {"class": "close", "olia": "http://purl.org/olia/olia.owl#Punctuation"},
-    "SCONJ": {
-        "class": "close",
-        "olia": "http://purl.org/olia/olia.owl#SubordinatingConjunction",
-    },
-    "SYM": {"class": "open", "olia": "http://purl.org/olia/olia.owl#Symbol"},
-    "VERB": {"class": "open", "olia": "http://purl.org/olia/olia.owl#Verb"},
-    "X": {"class": "open", "olia": "&olia-top;Word"},
-}
