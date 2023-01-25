@@ -3,7 +3,7 @@ from collections import defaultdict
 import pandas as pd
 from numpy import allclose
 import ast
-from PyPDF2 import PdfFileReader
+from pypdf import PdfFileReader
 
 
 class TableFormatter():
@@ -131,10 +131,10 @@ class TableFormatter():
                     table2_cols_width = [col[1]-col[0] for col in ast.literal_eval(table2[1]['cols'])]
 
                 # Evaluate if the column widths of the two tables are similar
-                    return(allclose(table1_cols_width,
-                                    table2_cols_width,
-                                    atol=3,
-                                    rtol=0))
+                    return (allclose(table1_cols_width,
+                                     table2_cols_width,
+                                     atol=3,
+                                     rtol=0))
                 else:
                     return False
             else:

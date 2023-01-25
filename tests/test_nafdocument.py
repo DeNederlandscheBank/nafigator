@@ -1,11 +1,10 @@
+from nafigator import nafdocument, EntityElement, TermElement, MultiwordElement, WordformElement, ChunkElement
+from nafigator.nafdocument import NafDocument
 import unittest
 from unittest.mock import patch, MagicMock, mock_open
 import pytest
 import datetime
 from collections import namedtuple
-
-from nafigator.nafdocument import NafDocument
-from nafigator import nafdocument, EntityElement, TermElement, MultiwordElement, WordformElement
 
 unittest.TestLoader.sortTestMethodsUsing = None
 
@@ -19,6 +18,7 @@ def version_var():
 def language_var():
     return "testlanguage"
 
+
 @pytest.fixture
 def filedesc_var():
     return {
@@ -30,6 +30,7 @@ def filedesc_var():
         "pages": "testpages",
     }
 
+
 @pytest.fixture
 def public_var():
     return {
@@ -37,14 +38,20 @@ def public_var():
         "uri": "testuri",
     }
 
+
 @pytest.fixture
 def doc():
     return NafDocument().open("tests/tests/example.naf.xml")
 
+
 class TestNafDocument():
 
     @pytest.mark.parametrize('language', ['language_var', None])
-    def test_generate(self, version_var: str, filedesc_var: dict, public_var: dict, request: pytest.FixtureRequest, language: str):
+    def test_generate(self, version_var: str,
+                      filedesc_var: dict,
+                      public_var: dict,
+                      request: pytest.FixtureRequest,
+                      language: str):
         """
         This function tests whether the naf document initalization is done correctly
         input: etree._ElementTree + dict
@@ -123,8 +130,8 @@ class TestNafDocument():
         find_header = doc.find(nafdocument.NAF_HEADER)
         test_tag = "testtag"
         doc.subelement(
-            element=find_header, 
-            tag=test_tag, 
+            element=find_header,
+            tag=test_tag,
             data=data,
             attributes_to_ignore=attributes_to_ignore
         )
@@ -146,7 +153,8 @@ class TestNafDocument():
         data = MagicMock()
         doc.add_processor_element(layer=test_layer, data=data)
 
-        find_layer = doc.find(nafdocument.NAF_HEADER).find(f"./{nafdocument.LINGUISTIC_LAYER_TAG}[@layer='{test_layer}']")
+        find_layer = doc.find(nafdocument.NAF_HEADER).find(
+            f"./{nafdocument.LINGUISTIC_LAYER_TAG}[@layer='{test_layer}']")
         assert find_layer is not None
         assert find_layer.find(nafdocument.LINGUISTIC_OCCURRENCE_TAG).attrib == data
 
@@ -166,34 +174,34 @@ class TestNafDocument():
         input: etree._ElementTree + dictlike OPTIONAL = [namespace-str, exclude-list]
         level: 0
         scenarios: check attributes vs input
-        # TODO namespace not included yet in test. Add once namespaces are 
+        # TODO namespace not included yet in test. Add once namespaces are
         """
         doc = NafDocument()
 
         data = {
-            "testkey": "testvalue", 
-            "listkey": [], 
-            "intkey": 1, 
-            "floatkey": 1.0, 
-            "excludekey": "excludevalue", 
+            "testkey": "testvalue",
+            "listkey": [],
+            "intkey": 1,
+            "floatkey": 1.0,
+            "excludekey": "excludevalue",
             "datetimekey": datetime.datetime(2000, 1, 1, 9, 0),
             "nonekey": None,
-        }       
+        }
         exp_output = {
-            "testkey": "testvalue", 
-            "intkey": str(1), 
-            "floatkey": str(1.0), 
+            "testkey": "testvalue",
+            "intkey": str(1),
+            "floatkey": str(1.0),
             "datetimekey": '2000-01-01T09:00:00UTC'
         }
-        actual_output = doc.get_attributes(data, exclude = ["excludekey"])
+        actual_output = doc.get_attributes(data, exclude=["excludekey"])
 
         namedtuple_as_dict = namedtuple("namedtuple_as_dict", "testkey")
         data_not_dict = namedtuple_as_dict("testvalue")
-        exp_output_not_dict =  {"testkey": "testvalue"}
+        exp_output_not_dict = {"testkey": "testvalue"}
         actual_output_not_dict = doc.get_attributes(data_not_dict)
 
         assert actual_output == exp_output
-        assert actual_output_not_dict == exp_output_not_dict 
+        assert actual_output_not_dict == exp_output_not_dict
 
     def test_layer(self, doc: NafDocument):
         """
@@ -228,7 +236,7 @@ class TestNafDocument():
         }
 
         doc.add_filedesc_element(data)
-        
+
         assert doc.header.get("fileDesc") == data
 
     def test_add_public_element(self, doc: NafDocument, public_var: str):
@@ -239,7 +247,7 @@ class TestNafDocument():
         scenarios: test elements vs input
         """
         doc.add_public_element(public_var)
-        assert doc.header['public'] == public_var        
+        assert doc.header['public'] == public_var
 
     @pytest.mark.parametrize('text,', [
         'plain text',
@@ -255,8 +263,8 @@ class TestNafDocument():
         test_id = "test_id"
         test_para = "test_para"
         data = WordformElement(
-            id=test_id, 
-            sent = None,
+            id=test_id,
+            sent=None,
             para=test_para,
             page=None,
             offset=None,
@@ -264,11 +272,11 @@ class TestNafDocument():
             xpath=None,
             text=text,
         )
-        
-        doc.add_wf_element(data,False)
-        doc.add_wf_element(data,True)
 
-        attributes_to_ignore = ["text","sent","page","offset","length","xpath"]
+        doc.add_wf_element(data, False)
+        doc.add_wf_element(data, True)
+
+        attributes_to_ignore = ["text", "sent", "page", "offset", "length", "xpath"]
         d = data._asdict()
         data_without_ignore = {key: d[key] for key in d.keys() if key not in attributes_to_ignore}
 
@@ -281,9 +289,9 @@ class TestNafDocument():
         input: etree._ElementTree + DependencyRelation + boolean
         level: 1
         scenarios: test elements vs input
-        """        
-        RawElement = namedtuple("RawElement","text")
-        data = RawElement("This is raw text") 
+        """
+        RawElement = namedtuple("RawElement", "text")
+        data = RawElement("This is raw text")
 
         doc.add_raw_text_element(data)
 
@@ -303,7 +311,7 @@ class TestNafDocument():
         test_id = "test_id"
         test_type = "test_type"
         data = EntityElement(
-            id=test_id, 
+            id=test_id,
             type=test_type,
             status=None,
             source=None,
@@ -318,7 +326,8 @@ class TestNafDocument():
         doc.add_external_reference_element = MagicMock()
         doc.add_entity_element(data, naf_version, comments)
 
-        find_entities = doc.find(nafdocument.ENTITIES_LAYER_TAG).find(f"./{nafdocument.ENTITY_OCCURRENCE_TAG}[@id='test_id']")
+        find_entities = doc.find(nafdocument.ENTITIES_LAYER_TAG).find(
+            f"./{nafdocument.ENTITY_OCCURRENCE_TAG}[@id='test_id']")
         assert find_entities.attrib == {"id": test_id, "type": test_type}
 
         if span != []:
@@ -329,35 +338,35 @@ class TestNafDocument():
     @pytest.mark.parametrize('span,ext_refs', [
         ([], []),
         (["test_span"], ["test_ref"]),
-        ])
+    ])
     def test_add_term_element(self, doc: NafDocument, span: list, ext_refs: list):
         """
         test added term element
         input: etree._ElementTree + TermElement + str + boolean
         level: 2
         scenarios: test elements vs input
-        """ 
+        """
         test_id = "test_id"
         test_type = "test_type"
         data = TermElement(
-            id=test_id, 
+            id=test_id,
             type=test_type,
-            lemma = None,
-            pos = None,
-            morphofeat= None,
-            netype = None,
-            case = None,
-            head = None,
+            lemma=None,
+            pos=None,
+            morphofeat=None,
+            netype=None,
+            case=None,
+            head=None,
             component_of=None,
             compound_type=None,
-            span = span,
+            span=span,
             ext_refs=ext_refs,
             comment=None
         )
 
         doc.add_span_element = MagicMock()
         doc.add_external_reference_element = MagicMock()
-        doc.add_term_element(data, layer_to_attributes_to_ignore={},comments=False)
+        doc.add_term_element(data, layer_to_attributes_to_ignore={}, comments=False)
 
         find_terms = doc.find(nafdocument.TERMS_LAYER_TAG).find(f"./{nafdocument.TERM_OCCURRENCE_TAG} [@id='{test_id}']")
         assert find_terms.attrib == {"id": test_id, "type": test_type}
@@ -367,15 +376,38 @@ class TestNafDocument():
         if ext_refs != []:
             doc.add_external_reference_element.assert_called_once()
 
-
-    def test_add_chunk_element(self):
+    @pytest.mark.parametrize('span', [
+        ([]),
+        (["test_span"]),
+    ])
+    def test_add_chunk_element(self, doc: NafDocument, span: list):
         """
         test added chunk element
         input: etree._ElementTree + ChunkElement + boolean
         level: 2
         scenarios: test elements vs input
         """
-        pass
+        test_id = "test_id"
+        test_head = "chunk_head"
+        test_phrase = "phrase"
+        data = ChunkElement(id=test_id,
+                            head=test_head,
+                            phrase=test_phrase,
+                            case=None,
+                            span=span,
+                            comment=None)
+
+        comment = False
+        doc.add_span_element = MagicMock()
+        doc.add_chunk_element(data, comment)
+
+        find_chunks = doc.find(nafdocument.CHUNKS_LAYER_TAG).find(
+            f"./{nafdocument.CHUNK_OCCURRENCE_TAG}[@id='{test_id}']")
+
+        print(find_chunks.attrib)
+        assert find_chunks.attrib == {"id": test_id, "head": test_head, "phrase": test_phrase}
+        if span != []:
+            doc.add_span_element.assert_called_once()
 
     def test_add_span_element(self):
         """
@@ -386,19 +418,29 @@ class TestNafDocument():
         """
         pass
 
-    def test_add_external_reference_element(self):
+    @pytest.mark.parametrize('ext_refs', [[], [{"reference": "ref1"}, {"reference": "ref2", "resource": "test"}]])
+    def test_add_external_reference_element(self, doc: NafDocument, ext_refs: list):
         """
         test added external reference element
         input: etree._ElementTree + tree._ElementTree(2) + list
         level: 1
         scenarios: test elements vs input
         """
-        pass
+        element = doc.find(nafdocument.NAF_HEADER)
+        doc.add_external_reference_element(element, ext_refs)
+
+        find_refs = doc.find(nafdocument.NAF_HEADER).find(nafdocument.EXT_REFS_OCCURRENCE_TAG)
+        assert find_refs is not None
+
+        for ext_ref in ext_refs:
+            ref = ext_ref["reference"]
+            assert find_refs.find(f"./{nafdocument.EXT_REF_OCCURRENCE_TAG}[@reference='{ref}']").attrib == ext_ref
 
     @pytest.mark.parametrize('span,components,lemma', [
         ([], [], []),
-        (["test_span"],[{"test_id_component":"test_id_component", "test_type_component":"test_type_component"}], ["test_lemma"]),
-        ])
+        (["test_span"], [{"test_id_component": "test_id_component",
+         "test_type_component": "test_type_component"}], ["test_lemma"]),
+    ])
     def test_add_multiword_element(self, doc: NafDocument, span: list, components: list, lemma: list):
         """
         test added multiword element
@@ -410,16 +452,15 @@ class TestNafDocument():
         test_type = "test_type"
 
         data = MultiwordElement(
-            id=test_id, 
+            id=test_id,
             type=test_type,
             lemma=lemma,
             pos=None,
             morphofeat=None,
             case=None,
-            status = None,
-            components= components,
+            status=None,
+            components=components,
         )
-
 
         doc.add_span_element = MagicMock()
         doc.add_multiword_element(data)
