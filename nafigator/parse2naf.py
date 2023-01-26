@@ -31,7 +31,6 @@ from .const import RawElement
 from .const import MultiwordElement
 from .const import ComponentElement
 from .const import udpos2nafpos_info
-from .const import udpos2olia
 from .const import hidden_table
 from .utils import normalize_token_orth
 from .utils import remove_illegal_chars
