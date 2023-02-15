@@ -20,6 +20,7 @@ import docx
 from docx.enum.dml import MSO_THEME_COLOR_INDEX
 import datetime
 from typing import Union
+import numpy
 
 
 def get_terms(pattern, doc):
