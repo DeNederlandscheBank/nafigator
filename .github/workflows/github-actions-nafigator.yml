@@ -44,17 +44,15 @@ jobs:
           pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 
 jobs:
-  build:
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.8", "3.9"]
-
-    steps:
-      if: github.ref == 'refs/heads/main'
-      - name: Release PyPi
-        run: |
-          python setup.py bdist_wheel --universal
-          twine upload -r pypihosted --verbose --config-file $(PYPIRC_PATH) dist/*.whl
+  if: github.ref == 'refs/heads/main'
+  runs-on: ${{ matrix.os }}
+  strategy:
+    matrix:
+      os: [ubuntu-latest, macos-latest, windows-latest]
+      python-version: ["3.8", "3.9"]
+    
+  steps:
+    - name: Release PyPi
+      run: |
+        python setup.py bdist_wheel --universal
+        twine upload -r pypihosted --verbose --config-file $(PYPIRC_PATH) dist/*.whl
