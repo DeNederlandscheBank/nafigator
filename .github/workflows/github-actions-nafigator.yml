@@ -4,7 +4,7 @@ on:
   push:
     branches: [setup/flow]
   pull_request:
-    branches: [dev, master]
+    branches: [dev, main]
 
 jobs:
   build:
@@ -43,11 +43,8 @@ jobs:
           pip install pytest-cov
           pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 
-on:
-  pull_request:
-    branches: [master]
-
 jobs:
+  if: github.ref == 'refs/heads/main'
   build:
 
     runs-on: ${{ matrix.os }}
