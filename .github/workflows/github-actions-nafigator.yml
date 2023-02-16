@@ -24,14 +24,10 @@ jobs:
           pip install -r requirement-dev.txt
           pip install -e .
 
-      - name: Test with unittest
-        run: |
-          python -m unittest tests/
-
       - name: Test with pytest
         run: |
           pip install pytest
           pip install pytest-cov
-          python -m pytest --import-mode=append tests/
-
-#          pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+          pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+#          python -m pytest --import-mode=append tests/
+           
