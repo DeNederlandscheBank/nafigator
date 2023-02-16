@@ -43,6 +43,16 @@ jobs:
           pip install pytest-cov
           pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.8", "3.9"]
+
+    steps:
       if: github.ref == 'refs/heads/main'
       - name: Release PyPi
         run: |
