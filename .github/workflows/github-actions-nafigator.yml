@@ -1,6 +1,10 @@
 name: Python package
 
-on: [push]
+on:
+  push:
+    branches: [setup/flow]
+  pull_request:
+    branches: [dev, master]
 
 jobs:
   build:
@@ -28,6 +32,6 @@ jobs:
         run: |
           pip install pytest
           pip install pytest-cov
-          pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-#          python -m pytest --import-mode=append tests/
+#          pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+          python -m pytest --import-mode=append tests/
            
