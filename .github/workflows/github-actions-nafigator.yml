@@ -25,4 +25,11 @@ jobs:
 
       - name: Test with unittest
         run: |
+          cd 
           python -m unittest tests/test_nafdocument.py
+
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pip install pytest-cov
+          pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
