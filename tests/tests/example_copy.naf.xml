@@ -1,0 +1,1011 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<NAF xmlns:dc="http://purl.org/dc/elements/1.1/" version="v3.1" xml:lang="nl">
+  <nafHeader>
+    <fileDesc creationtime="2022-11-10T14:21:45UTC" filename="tests/tests/example.pdf" filetype="application/pdf"/>
+    <public dc:uri="tests/tests/example.pdf" dc:format="application/pdf"/>
+    <linguisticProcessors layer="formats">
+      <lp name="formats" version="nafigator" beginTimestamp="2022-11-10T14:21:45UTC" endTimestamp="2022-11-10T14:21:45UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="formats_copy">
+      <lp name="formats" version="nafigator" beginTimestamp="2022-11-10T14:21:45UTC" endTimestamp="2022-11-10T14:21:45UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="entities">
+      <lp name="entities" version="stanza_version-1.4.0" beginTimestamp="2022-11-10T14:21:49UTC" endTimestamp="2022-11-10T14:21:49UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="text">
+      <lp name="text" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/nl/tokenize/alpino.pt" beginTimestamp="2022-11-10T14:21:49UTC" endTimestamp="2022-11-10T14:21:49UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="terms">
+      <lp name="terms" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/nl/pos/alpino.pt" beginTimestamp="2022-11-10T14:21:49UTC" endTimestamp="2022-11-10T14:21:49UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="deps">
+      <lp name="deps" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/nl/depparse/alpino.pt" beginTimestamp="2022-11-10T14:21:49UTC" endTimestamp="2022-11-10T14:21:49UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="multiwords">
+      <lp name="multiwords" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/nl/tokenize/alpino.pt" beginTimestamp="2022-11-10T14:21:49UTC" endTimestamp="2022-11-10T14:21:49UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="raw">
+      <lp name="raw" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/nl/tokenize/alpino.pt" beginTimestamp="2022-11-10T14:21:49UTC" endTimestamp="2022-11-10T14:21:49UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+  </nafHeader>
+  <formats>
+    <page length="268" offset="0" bbox="0.000,0.000,595.320,841.920">
+      <textbox>
+        <textline>
+          <text font="CIDFont+F1" bbox="56.760,771.408,64.080,783.408" size="12.000" length="1" offset="0">T</text>
+          <text font="CIDFont+F1" bbox="64.090,771.408,70.091,783.408" size="12.000" length="1" offset="1">h</text>
+          <text font="CIDFont+F1" bbox="70.091,771.408,75.407,783.408" size="12.000" length="1" offset="2">e</text>
+          <text font="CIDFont+F1" bbox="78.417,771.408,87.081,783.408" size="12.000" length="1" offset="4">N</text>
+          <text font="CIDFont+F1" bbox="87.177,771.408,92.494,783.408" size="12.000" length="1" offset="5">a</text>
+          <text font="CIDFont+F1" bbox="92.504,771.408,96.500,783.408" size="12.000" length="1" offset="6">f</text>
+          <text font="CIDFont+F1" bbox="96.344,771.408,99.668,783.408" size="12.000" length="1" offset="7">i</text>
+          <text font="CIDFont+F1" bbox="99.678,771.408,105.678,783.408" size="12.000" length="1" offset="8">g</text>
+          <text font="CIDFont+F1" bbox="105.678,771.408,110.994,783.408" size="12.000" length="1" offset="9">a</text>
+          <text font="CIDFont+F1" bbox="111.005,771.408,114.329,783.408" size="12.000" length="1" offset="10">t</text>
+          <text font="CIDFont+F1" bbox="114.339,771.408,120.339,783.408" size="12.000" length="1" offset="11">o</text>
+          <text font="CIDFont+F1" bbox="120.339,771.408,124.335,783.408" size="12.000" length="1" offset="12">r</text>
+          <text font="CIDFont+F1" bbox="127.419,771.408,133.419,783.408" size="12.000" length="1" offset="14">p</text>
+          <text font="CIDFont+F1" bbox="133.419,771.408,138.736,783.408" size="12.000" length="1" offset="15">a</text>
+          <text font="CIDFont+F1" bbox="138.746,771.408,144.062,783.408" size="12.000" length="1" offset="16">c</text>
+          <text font="CIDFont+F1" bbox="144.072,771.408,150.072,783.408" size="12.000" length="1" offset="17">k</text>
+          <text font="CIDFont+F1" bbox="149.952,771.408,155.269,783.408" size="12.000" length="1" offset="18">a</text>
+          <text font="CIDFont+F1" bbox="155.279,771.408,161.279,783.408" size="12.000" length="1" offset="19">g</text>
+          <text font="CIDFont+F1" bbox="161.399,771.408,166.715,783.408" size="12.000" length="1" offset="20">e</text>
+          <text font="CIDFont+F1" bbox="169.725,771.408,175.042,783.408" size="12.000" length="1" offset="22">a</text>
+          <text font="CIDFont+F1" bbox="175.052,771.408,178.376,783.408" size="12.000" length="1" offset="23">l</text>
+          <text font="CIDFont+F1" bbox="178.292,771.408,181.616,783.408" size="12.000" length="1" offset="24">l</text>
+          <text font="CIDFont+F1" bbox="181.626,771.408,187.626,783.408" size="12.000" length="1" offset="25">o</text>
+          <text font="CIDFont+F1" bbox="187.626,771.408,196.291,783.408" size="12.000" length="1" offset="26">w</text>
+          <text font="CIDFont+F1" bbox="196.293,771.408,200.961,783.408" size="12.000" length="1" offset="27">s</text>
+          <text font="CIDFont+F1" bbox="203.963,771.408,209.963,783.408" size="12.000" length="1" offset="29">y</text>
+          <text font="CIDFont+F1" bbox="209.963,771.408,215.963,783.408" size="12.000" length="1" offset="30">o</text>
+          <text font="CIDFont+F1" bbox="215.963,771.408,221.964,783.408" size="12.000" length="1" offset="31">u</text>
+          <text font="CIDFont+F1" bbox="224.964,771.408,228.288,783.408" size="12.000" length="1" offset="33">t</text>
+          <text font="CIDFont+F1" bbox="228.298,771.408,234.298,783.408" size="12.000" length="1" offset="34">o</text>
+          <text font="CIDFont+F1" bbox="237.418,771.408,242.086,783.408" size="12.000" length="1" offset="36">s</text>
+          <text font="CIDFont+F1" bbox="241.978,771.408,245.302,783.408" size="12.000" length="1" offset="37">t</text>
+          <text font="CIDFont+F1" bbox="245.458,771.408,251.459,783.408" size="12.000" length="1" offset="38">o</text>
+          <text font="CIDFont+F1" bbox="251.459,771.408,255.455,783.408" size="12.000" length="1" offset="39">r</text>
+          <text font="CIDFont+F1" bbox="255.455,771.408,260.771,783.408" size="12.000" length="1" offset="40">e</text>
+          <text font="CIDFont+F1" bbox="263.615,771.408,272.280,783.408" size="12.000" length="1" offset="42">N</text>
+          <text font="CIDFont+F1" bbox="272.376,771.408,279.696,783.408" size="12.000" length="1" offset="43">L</text>
+          <text font="CIDFont+F1" bbox="279.706,771.408,286.378,783.408" size="12.000" length="1" offset="44">P</text>
+          <text font="CIDFont+F1" bbox="288.826,771.408,294.826,783.408" size="12.000" length="1" offset="46">o</text>
+          <text font="CIDFont+F1" bbox="294.826,771.408,300.827,783.408" size="12.000" length="1" offset="47">u</text>
+          <text font="CIDFont+F1" bbox="300.827,771.408,304.151,783.408" size="12.000" length="1" offset="48">t</text>
+          <text font="CIDFont+F1" bbox="304.161,771.408,310.161,783.408" size="12.000" length="1" offset="49">p</text>
+          <text font="CIDFont+F1" bbox="310.161,771.408,316.161,783.408" size="12.000" length="1" offset="50">u</text>
+          <text font="CIDFont+F1" bbox="316.161,771.408,319.485,783.408" size="12.000" length="1" offset="51">t</text>
+          <text font="CIDFont+F1" bbox="322.615,771.408,326.612,783.408" size="12.000" length="1" offset="53">f</text>
+          <text font="CIDFont+F1" bbox="326.612,771.408,330.608,783.408" size="12.000" length="1" offset="54">r</text>
+          <text font="CIDFont+F1" bbox="330.452,771.408,336.452,783.408" size="12.000" length="1" offset="55">o</text>
+          <text font="CIDFont+F1" bbox="336.452,771.408,345.776,783.408" size="12.000" length="1" offset="56">m</text>
+          <text font="CIDFont+F1" bbox="348.907,771.408,354.223,783.408" size="12.000" length="1" offset="58">c</text>
+          <text font="CIDFont+F1" bbox="354.307,771.408,360.307,783.408" size="12.000" length="1" offset="59">u</text>
+          <text font="CIDFont+F1" bbox="360.307,771.408,364.975,783.408" size="12.000" length="1" offset="60">s</text>
+          <text font="CIDFont+F1" bbox="364.977,771.408,368.301,783.408" size="12.000" length="1" offset="61">t</text>
+          <text font="CIDFont+F1" bbox="368.311,771.408,374.311,783.408" size="12.000" length="1" offset="62">o</text>
+          <text font="CIDFont+F1" bbox="374.191,771.408,383.516,783.408" size="12.000" length="1" offset="63">m</text>
+          <text font="CIDFont+F1" bbox="386.526,771.408,395.850,783.408" size="12.000" length="1" offset="65">m</text>
+          <text font="CIDFont+F1" bbox="395.860,771.408,401.176,783.408" size="12.000" length="1" offset="66">a</text>
+          <text font="CIDFont+F1" bbox="401.187,771.408,407.187,783.408" size="12.000" length="1" offset="67">d</text>
+          <text font="CIDFont+F1" bbox="407.307,771.408,412.623,783.408" size="12.000" length="1" offset="68">e</text>
+          <text font="CIDFont+F1" bbox="415.513,771.408,420.181,783.408" size="12.000" length="1" offset="70">s</text>
+          <text font="CIDFont+F1" bbox="420.183,771.408,426.184,783.408" size="12.000" length="1" offset="71">p</text>
+          <text font="CIDFont+F1" bbox="426.304,771.408,431.620,783.408" size="12.000" length="1" offset="72">a</text>
+          <text font="CIDFont+F1" bbox="431.630,771.408,439.622,783.408" size="12.000" length="1" offset="73">C</text>
+          <text font="CIDFont+F1" bbox="439.430,771.408,445.430,783.408" size="12.000" length="1" offset="74">y</text>
+          <text font="CIDFont+F1" bbox="448.551,771.408,453.867,783.408" size="12.000" length="1" offset="76">a</text>
+          <text font="CIDFont+F1" bbox="453.877,771.408,459.877,783.408" size="12.000" length="1" offset="77">n</text>
+          <text font="CIDFont+F1" bbox="459.877,771.408,465.877,783.408" size="12.000" length="1" offset="78">d</text>
+          <text font="CIDFont+F1" bbox="468.878,771.408,473.546,783.408" size="12.000" length="1" offset="80">s</text>
+          <text font="CIDFont+F1" bbox="473.548,771.408,476.872,783.408" size="12.000" length="1" offset="81">t</text>
+          <text font="CIDFont+F1" bbox="476.882,771.408,482.198,783.408" size="12.000" length="1" offset="82">a</text>
+          <text font="CIDFont+F1" bbox="482.208,771.408,488.208,783.408" size="12.000" length="1" offset="83">n</text>
+          <text font="CIDFont+F1" bbox="488.208,771.408,493.525,783.408" size="12.000" length="1" offset="84">z</text>
+          <text font="CIDFont+F1" bbox="493.535,771.408,498.851,783.408" size="12.000" length="1" offset="85">a</text>
+        </textline>
+        <textline>
+          <text font="CIDFont+F1" bbox="56.760,757.608,62.760,769.608" size="12.000" length="1" offset="88">p</text>
+          <text font="CIDFont+F1" bbox="62.760,757.608,66.084,769.608" size="12.000" length="1" offset="89">i</text>
+          <text font="CIDFont+F1" bbox="66.094,757.608,72.095,769.608" size="12.000" length="1" offset="90">p</text>
+          <text font="CIDFont+F1" bbox="72.095,757.608,77.411,769.608" size="12.000" length="1" offset="91">e</text>
+          <text font="CIDFont+F1" bbox="77.421,757.608,80.745,769.608" size="12.000" length="1" offset="92">l</text>
+          <text font="CIDFont+F1" bbox="80.755,757.608,84.079,769.608" size="12.000" length="1" offset="93">i</text>
+          <text font="CIDFont+F1" bbox="84.089,757.608,90.089,769.608" size="12.000" length="1" offset="94">n</text>
+          <text font="CIDFont+F1" bbox="90.089,757.608,95.406,769.608" size="12.000" length="1" offset="95">e</text>
+          <text font="CIDFont+F1" bbox="95.416,757.608,100.084,769.608" size="12.000" length="1" offset="96">s</text>
+          <text font="CIDFont+F1" bbox="103.086,757.608,111.750,769.608" size="12.000" length="1" offset="98">w</text>
+          <text font="CIDFont+F1" bbox="111.752,757.608,115.076,769.608" size="12.000" length="1" offset="99">i</text>
+          <text font="CIDFont+F1" bbox="114.992,757.608,118.317,769.608" size="12.000" length="1" offset="100">t</text>
+          <text font="CIDFont+F1" bbox="118.473,757.608,124.473,769.608" size="12.000" length="1" offset="101">h</text>
+          <text font="CIDFont+F1" bbox="127.473,757.608,131.469,769.608" size="12.000" length="1" offset="103">(</text>
+          <text font="CIDFont+F1" bbox="131.469,757.608,134.793,769.608" size="12.000" length="1" offset="104">i</text>
+          <text font="CIDFont+F1" bbox="134.589,757.608,140.589,769.608" size="12.000" length="1" offset="105">n</text>
+          <text font="CIDFont+F1" bbox="140.589,757.608,143.914,769.608" size="12.000" length="1" offset="106">t</text>
+          <text font="CIDFont+F1" bbox="143.924,757.608,149.240,769.608" size="12.000" length="1" offset="107">e</text>
+          <text font="CIDFont+F1" bbox="149.444,757.608,153.440,769.608" size="12.000" length="1" offset="108">r</text>
+          <text font="CIDFont+F1" bbox="153.440,757.608,162.764,769.608" size="12.000" length="1" offset="109">m</text>
+          <text font="CIDFont+F1" bbox="162.680,757.608,167.997,769.608" size="12.000" length="1" offset="110">e</text>
+          <text font="CIDFont+F1" bbox="168.007,757.608,174.007,769.608" size="12.000" length="1" offset="111">d</text>
+          <text font="CIDFont+F1" bbox="174.007,757.608,177.331,769.608" size="12.000" length="1" offset="112">i</text>
+          <text font="CIDFont+F1" bbox="177.341,757.608,182.657,769.608" size="12.000" length="1" offset="113">a</text>
+          <text font="CIDFont+F1" bbox="182.667,757.608,185.992,769.608" size="12.000" length="1" offset="114">t</text>
+          <text font="CIDFont+F1" bbox="186.002,757.608,191.318,769.608" size="12.000" length="1" offset="115">e</text>
+          <text font="CIDFont+F1" bbox="191.328,757.608,195.324,769.608" size="12.000" length="1" offset="116">)</text>
+          <text font="CIDFont+F1" bbox="198.408,757.608,202.404,769.608" size="12.000" length="1" offset="118">r</text>
+          <text font="CIDFont+F1" bbox="202.404,757.608,207.721,769.608" size="12.000" length="1" offset="119">e</text>
+          <text font="CIDFont+F1" bbox="207.565,757.608,212.233,769.608" size="12.000" length="1" offset="120">s</text>
+          <text font="CIDFont+F1" bbox="212.235,757.608,218.235,769.608" size="12.000" length="1" offset="121">u</text>
+          <text font="CIDFont+F1" bbox="218.235,757.608,221.559,769.608" size="12.000" length="1" offset="122">l</text>
+          <text font="CIDFont+F1" bbox="221.569,757.608,224.893,769.608" size="12.000" length="1" offset="123">t</text>
+          <text font="CIDFont+F1" bbox="225.049,757.608,229.717,769.608" size="12.000" length="1" offset="124">s</text>
+          <text font="CIDFont+F1" bbox="232.719,757.608,238.036,769.608" size="12.000" length="1" offset="126">a</text>
+          <text font="CIDFont+F1" bbox="238.046,757.608,244.046,769.608" size="12.000" length="1" offset="127">n</text>
+          <text font="CIDFont+F1" bbox="243.926,757.608,249.926,769.608" size="12.000" length="1" offset="128">d</text>
+          <text font="CIDFont+F1" bbox="252.926,757.608,258.243,769.608" size="12.000" length="1" offset="130">a</text>
+          <text font="CIDFont+F1" bbox="258.253,757.608,261.577,769.608" size="12.000" length="1" offset="131">l</text>
+          <text font="CIDFont+F1" bbox="261.587,757.608,264.911,769.608" size="12.000" length="1" offset="132">l</text>
+          <text font="CIDFont+F1" bbox="267.921,757.608,273.921,769.608" size="12.000" length="1" offset="134">p</text>
+          <text font="CIDFont+F1" bbox="273.921,757.608,277.917,769.608" size="12.000" length="1" offset="135">r</text>
+          <text font="CIDFont+F1" bbox="277.918,757.608,283.918,769.608" size="12.000" length="1" offset="136">o</text>
+          <text font="CIDFont+F1" bbox="284.038,757.608,289.354,769.608" size="12.000" length="1" offset="137">c</text>
+          <text font="CIDFont+F1" bbox="289.364,757.608,294.680,769.608" size="12.000" length="1" offset="138">e</text>
+          <text font="CIDFont+F1" bbox="294.690,757.608,299.359,769.608" size="12.000" length="1" offset="139">s</text>
+          <text font="CIDFont+F1" bbox="299.251,757.608,303.919,769.608" size="12.000" length="1" offset="140">s</text>
+          <text font="CIDFont+F1" bbox="303.921,757.608,307.245,769.608" size="12.000" length="1" offset="141">i</text>
+          <text font="CIDFont+F1" bbox="307.255,757.608,313.255,769.608" size="12.000" length="1" offset="142">n</text>
+          <text font="CIDFont+F1" bbox="313.375,757.608,319.375,769.608" size="12.000" length="1" offset="143">g</text>
+          <text font="CIDFont+F1" bbox="322.375,757.608,327.044,769.608" size="12.000" length="1" offset="145">s</text>
+          <text font="CIDFont+F1" bbox="327.046,757.608,330.370,769.608" size="12.000" length="1" offset="146">t</text>
+          <text font="CIDFont+F1" bbox="330.380,757.608,335.696,769.608" size="12.000" length="1" offset="147">e</text>
+          <text font="CIDFont+F1" bbox="335.706,757.608,341.706,769.608" size="12.000" length="1" offset="148">p</text>
+          <text font="CIDFont+F1" bbox="341.706,757.608,346.374,769.608" size="12.000" length="1" offset="149">s</text>
+          <text font="CIDFont+F1" bbox="349.376,757.608,352.701,769.608" size="12.000" length="1" offset="151">i</text>
+          <text font="CIDFont+F1" bbox="352.711,757.608,358.711,769.608" size="12.000" length="1" offset="152">n</text>
+          <text font="CIDFont+F1" bbox="361.711,757.608,367.711,769.608" size="12.000" length="1" offset="154">o</text>
+          <text font="CIDFont+F1" bbox="367.711,757.608,373.711,769.608" size="12.000" length="1" offset="155">n</text>
+          <text font="CIDFont+F1" bbox="373.711,757.608,379.028,769.608" size="12.000" length="1" offset="156">e</text>
+          <text font="CIDFont+F1" bbox="381.918,757.608,385.914,769.608" size="12.000" length="1" offset="158">f</text>
+          <text font="CIDFont+F1" bbox="385.914,757.608,391.914,769.608" size="12.000" length="1" offset="159">o</text>
+          <text font="CIDFont+F1" bbox="391.914,757.608,395.910,769.608" size="12.000" length="1" offset="160">r</text>
+          <text font="CIDFont+F1" bbox="395.994,757.608,405.319,769.608" size="12.000" length="1" offset="161">m</text>
+          <text font="CIDFont+F1" bbox="405.329,757.608,410.645,769.608" size="12.000" length="1" offset="162">a</text>
+          <text font="CIDFont+F1" bbox="410.489,757.608,413.813,769.608" size="12.000" length="1" offset="163">t</text>
+          <text font="CIDFont+F1" bbox="413.969,757.608,416.969,769.608" size="12.000" length="1" offset="164">.</text>
+        </textline>
+      </textbox>
+      <textbox>
+        <textline>
+          <text font="CIDFont+F1" bbox="56.760,730.008,67.428,742.008" size="12.000" length="1" offset="167">M</text>
+          <text font="CIDFont+F1" bbox="67.430,730.008,73.431,742.008" size="12.000" length="1" offset="168">u</text>
+          <text font="CIDFont+F1" bbox="73.431,730.008,76.755,742.008" size="12.000" length="1" offset="169">l</text>
+          <text font="CIDFont+F1" bbox="76.765,730.008,80.089,742.008" size="12.000" length="1" offset="170">t</text>
+          <text font="CIDFont+F1" bbox="80.005,730.008,83.329,742.008" size="12.000" length="1" offset="171">i</text>
+          <text font="CIDFont+F1" bbox="83.339,730.008,92.003,742.008" size="12.000" length="1" offset="172">w</text>
+          <text font="CIDFont+F1" bbox="92.099,730.008,98.099,742.008" size="12.000" length="1" offset="173">o</text>
+          <text font="CIDFont+F1" bbox="98.099,730.008,102.096,742.008" size="12.000" length="1" offset="174">r</text>
+          <text font="CIDFont+F1" bbox="102.096,730.008,108.096,742.008" size="12.000" length="1" offset="175">d</text>
+          <text font="CIDFont+F1" bbox="107.976,730.008,112.644,742.008" size="12.000" length="1" offset="176">s</text>
+          <text font="CIDFont+F1" bbox="115.776,730.008,119.100,742.008" size="12.000" length="1" offset="178">l</text>
+          <text font="CIDFont+F1" bbox="119.016,730.008,122.340,742.008" size="12.000" length="1" offset="179">i</text>
+          <text font="CIDFont+F1" bbox="122.350,730.008,128.351,742.008" size="12.000" length="1" offset="180">k</text>
+          <text font="CIDFont+F1" bbox="128.351,730.008,133.667,742.008" size="12.000" length="1" offset="181">e</text>
+          <text font="CIDFont+F1" bbox="136.751,730.008,140.075,742.008" size="12.000" length="1" offset="183">i</text>
+          <text font="CIDFont+F1" bbox="139.991,730.008,145.991,742.008" size="12.000" length="1" offset="184">n</text>
+          <text font="CIDFont+F1" bbox="148.991,730.008,154.308,742.008" size="12.000" length="1" offset="186">“</text>
+          <text font="CIDFont+F1" bbox="154.392,730.008,163.056,742.008" size="12.000" length="1" offset="187">w</text>
+          <text font="CIDFont+F1" bbox="163.058,730.008,168.374,742.008" size="12.000" length="1" offset="188">e</text>
+          <text font="CIDFont+F1" bbox="171.384,730.008,177.385,742.008" size="12.000" length="1" offset="190">h</text>
+          <text font="CIDFont+F1" bbox="177.385,730.008,182.701,742.008" size="12.000" length="1" offset="191">a</text>
+          <text font="CIDFont+F1" bbox="182.711,730.008,188.711,742.008" size="12.000" length="1" offset="192">v</text>
+          <text font="CIDFont+F1" bbox="188.711,730.008,194.027,742.008" size="12.000" length="1" offset="193">e</text>
+          <text font="CIDFont+F1" bbox="197.038,730.008,201.706,742.008" size="12.000" length="1" offset="195">s</text>
+          <text font="CIDFont+F1" bbox="201.708,730.008,207.024,742.008" size="12.000" length="1" offset="196">e</text>
+          <text font="CIDFont+F1" bbox="207.034,730.008,210.358,742.008" size="12.000" length="1" offset="197">t</text>
+          <text font="CIDFont+F1" bbox="213.368,730.008,216.693,742.008" size="12.000" length="1" offset="199">t</text>
+          <text font="CIDFont+F1" bbox="216.703,730.008,222.703,742.008" size="12.000" length="1" offset="200">h</text>
+          <text font="CIDFont+F1" bbox="222.703,730.008,228.019,742.008" size="12.000" length="1" offset="201">a</text>
+          <text font="CIDFont+F1" bbox="228.029,730.008,231.353,742.008" size="12.000" length="1" offset="202">t</text>
+          <text font="CIDFont+F1" bbox="234.363,730.008,240.364,742.008" size="12.000" length="1" offset="204">o</text>
+          <text font="CIDFont+F1" bbox="240.364,730.008,246.364,742.008" size="12.000" length="1" offset="205">u</text>
+          <text font="CIDFont+F1" bbox="246.364,730.008,249.688,742.008" size="12.000" length="1" offset="206">t</text>
+          <text font="CIDFont+F1" bbox="252.698,730.008,258.698,742.008" size="12.000" length="1" offset="208">b</text>
+          <text font="CIDFont+F1" bbox="258.698,730.008,264.014,742.008" size="12.000" length="1" offset="209">e</text>
+          <text font="CIDFont+F1" bbox="264.025,730.008,267.349,742.008" size="12.000" length="1" offset="210">l</text>
+          <text font="CIDFont+F1" bbox="267.359,730.008,273.359,742.008" size="12.000" length="1" offset="211">o</text>
+          <text font="CIDFont+F1" bbox="273.359,730.008,282.023,742.008" size="12.000" length="1" offset="212">w</text>
+          <text font="CIDFont+F1" bbox="282.025,730.008,287.342,742.008" size="12.000" length="1" offset="213">”</text>
+          <text font="CIDFont+F1" bbox="290.426,730.008,295.742,742.008" size="12.000" length="1" offset="215">a</text>
+          <text font="CIDFont+F1" bbox="295.752,730.008,299.748,742.008" size="12.000" length="1" offset="216">r</text>
+          <text font="CIDFont+F1" bbox="299.592,730.008,304.908,742.008" size="12.000" length="1" offset="217">e</text>
+          <text font="CIDFont+F1" bbox="307.992,730.008,311.989,742.008" size="12.000" length="1" offset="219">r</text>
+          <text font="CIDFont+F1" bbox="311.989,730.008,317.305,742.008" size="12.000" length="1" offset="220">e</text>
+          <text font="CIDFont+F1" bbox="317.315,730.008,322.631,742.008" size="12.000" length="1" offset="221">c</text>
+          <text font="CIDFont+F1" bbox="322.641,730.008,328.642,742.008" size="12.000" length="1" offset="222">o</text>
+          <text font="CIDFont+F1" bbox="328.522,730.008,334.522,742.008" size="12.000" length="1" offset="223">g</text>
+          <text font="CIDFont+F1" bbox="334.522,730.008,340.522,742.008" size="12.000" length="1" offset="224">n</text>
+          <text font="CIDFont+F1" bbox="340.522,730.008,343.846,742.008" size="12.000" length="1" offset="225">i</text>
+          <text font="CIDFont+F1" bbox="343.856,730.008,349.172,742.008" size="12.000" length="1" offset="226">z</text>
+          <text font="CIDFont+F1" bbox="349.376,730.008,354.693,742.008" size="12.000" length="1" offset="227">e</text>
+          <text font="CIDFont+F1" bbox="354.703,730.008,360.703,742.008" size="12.000" length="1" offset="228">d</text>
+          <text font="CIDFont+F1" bbox="363.583,730.008,367.579,742.008" size="12.000" length="1" offset="230">(</text>
+          <text font="CIDFont+F1" bbox="367.579,730.008,373.580,742.008" size="12.000" length="1" offset="231">d</text>
+          <text font="CIDFont+F1" bbox="373.580,730.008,378.896,742.008" size="12.000" length="1" offset="232">e</text>
+          <text font="CIDFont+F1" bbox="378.906,730.008,384.906,742.008" size="12.000" length="1" offset="233">p</text>
+          <text font="CIDFont+F1" bbox="385.026,730.008,390.342,742.008" size="12.000" length="1" offset="234">e</text>
+          <text font="CIDFont+F1" bbox="390.353,730.008,396.353,742.008" size="12.000" length="1" offset="235">n</text>
+          <text font="CIDFont+F1" bbox="396.233,730.008,402.233,742.008" size="12.000" length="1" offset="236">d</text>
+          <text font="CIDFont+F1" bbox="402.233,730.008,405.557,742.008" size="12.000" length="1" offset="237">i</text>
+          <text font="CIDFont+F1" bbox="405.567,730.008,411.567,742.008" size="12.000" length="1" offset="238">n</text>
+          <text font="CIDFont+F1" bbox="411.567,730.008,417.568,742.008" size="12.000" length="1" offset="239">g</text>
+          <text font="CIDFont+F1" bbox="420.568,730.008,426.568,742.008" size="12.000" length="1" offset="241">o</text>
+          <text font="CIDFont+F1" bbox="426.568,730.008,432.568,742.008" size="12.000" length="1" offset="242">n</text>
+          <text font="CIDFont+F1" bbox="435.568,730.008,441.569,742.008" size="12.000" length="1" offset="244">y</text>
+          <text font="CIDFont+F1" bbox="441.569,730.008,447.569,742.008" size="12.000" length="1" offset="245">o</text>
+          <text font="CIDFont+F1" bbox="447.569,730.008,453.569,742.008" size="12.000" length="1" offset="246">u</text>
+          <text font="CIDFont+F1" bbox="453.569,730.008,457.565,742.008" size="12.000" length="1" offset="247">r</text>
+          <text font="CIDFont+F1" bbox="460.565,730.008,469.230,742.008" size="12.000" length="1" offset="249">N</text>
+          <text font="CIDFont+F1" bbox="469.232,730.008,476.552,742.008" size="12.000" length="1" offset="250">L</text>
+          <text font="CIDFont+F1" bbox="476.562,730.008,483.234,742.008" size="12.000" length="1" offset="251">P</text>
+        </textline>
+        <textline>
+          <text font="CIDFont+F1" bbox="56.760,716.208,62.760,728.208" size="12.000" length="1" offset="254">p</text>
+          <text font="CIDFont+F1" bbox="62.760,716.208,66.756,728.208" size="12.000" length="1" offset="255">r</text>
+          <text font="CIDFont+F1" bbox="66.756,716.208,72.757,728.208" size="12.000" length="1" offset="256">o</text>
+          <text font="CIDFont+F1" bbox="72.757,716.208,78.073,728.208" size="12.000" length="1" offset="257">c</text>
+          <text font="CIDFont+F1" bbox="78.157,716.208,83.473,728.208" size="12.000" length="1" offset="258">e</text>
+          <text font="CIDFont+F1" bbox="83.483,716.208,88.151,728.208" size="12.000" length="1" offset="259">s</text>
+          <text font="CIDFont+F1" bbox="88.043,716.208,92.712,728.208" size="12.000" length="1" offset="260">s</text>
+          <text font="CIDFont+F1" bbox="92.714,716.208,98.714,728.208" size="12.000" length="1" offset="261">o</text>
+          <text font="CIDFont+F1" bbox="98.714,716.208,102.710,728.208" size="12.000" length="1" offset="262">r</text>
+          <text font="CIDFont+F1" bbox="102.710,716.208,106.706,728.208" size="12.000" length="1" offset="263">)</text>
+          <text font="CIDFont+F1" bbox="106.706,716.208,109.706,728.208" size="12.000" length="1" offset="264">.</text>
+        </textline>
+      </textbox>
+    </page>
+  </formats>
+  <formats_copy><page id="1" bbox="0.000,0.000,595.320,841.920" rotate="0">
+<textbox id="0" bbox="56.760,757.608,501.861,783.408">
+<textline bbox="56.760,771.408,501.861,783.408">
+<text font="CIDFont+F1" bbox="56.760,771.408,64.080,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">T</text>
+<text font="CIDFont+F1" bbox="64.090,771.408,70.091,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">h</text>
+<text font="CIDFont+F1" bbox="70.091,771.408,75.407,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="75.417,771.408,78.417,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="78.417,771.408,87.081,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">N</text>
+<text font="CIDFont+F1" bbox="87.177,771.408,92.494,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="92.504,771.408,96.500,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">f</text>
+<text font="CIDFont+F1" bbox="96.344,771.408,99.668,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="99.678,771.408,105.678,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">g</text>
+<text font="CIDFont+F1" bbox="105.678,771.408,110.994,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="111.005,771.408,114.329,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="114.339,771.408,120.339,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="120.339,771.408,124.335,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="124.419,771.408,127.419,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="127.419,771.408,133.419,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="133.419,771.408,138.736,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="138.746,771.408,144.062,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">c</text>
+<text font="CIDFont+F1" bbox="144.072,771.408,150.072,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">k</text>
+<text font="CIDFont+F1" bbox="149.952,771.408,155.269,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="155.279,771.408,161.279,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">g</text>
+<text font="CIDFont+F1" bbox="161.399,771.408,166.715,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="166.725,771.408,169.725,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="169.725,771.408,175.042,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="175.052,771.408,178.376,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="178.292,771.408,181.616,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="181.626,771.408,187.626,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="187.626,771.408,196.291,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">w</text>
+<text font="CIDFont+F1" bbox="196.293,771.408,200.961,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="200.963,771.408,203.963,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="203.963,771.408,209.963,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">y</text>
+<text font="CIDFont+F1" bbox="209.963,771.408,215.963,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="215.963,771.408,221.964,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">u</text>
+<text font="CIDFont+F1" bbox="221.964,771.408,224.964,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="224.964,771.408,228.288,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="228.298,771.408,234.298,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="234.418,771.408,237.418,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="237.418,771.408,242.086,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="241.978,771.408,245.302,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="245.458,771.408,251.459,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="251.459,771.408,255.455,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="255.455,771.408,260.771,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="260.615,771.408,263.615,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="263.615,771.408,272.280,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">N</text>
+<text font="CIDFont+F1" bbox="272.376,771.408,279.696,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">L</text>
+<text font="CIDFont+F1" bbox="279.706,771.408,286.378,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">P</text>
+<text font="CIDFont+F1" bbox="285.826,771.408,288.826,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="288.826,771.408,294.826,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="294.826,771.408,300.827,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">u</text>
+<text font="CIDFont+F1" bbox="300.827,771.408,304.151,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="304.161,771.408,310.161,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="310.161,771.408,316.161,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">u</text>
+<text font="CIDFont+F1" bbox="316.161,771.408,319.485,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="319.495,771.408,322.495,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="322.615,771.408,326.612,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">f</text>
+<text font="CIDFont+F1" bbox="326.612,771.408,330.608,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="330.452,771.408,336.452,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="336.452,771.408,345.776,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">m</text>
+<text font="CIDFont+F1" bbox="345.786,771.408,348.787,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="348.907,771.408,354.223,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">c</text>
+<text font="CIDFont+F1" bbox="354.307,771.408,360.307,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">u</text>
+<text font="CIDFont+F1" bbox="360.307,771.408,364.975,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="364.977,771.408,368.301,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="368.311,771.408,374.311,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="374.191,771.408,383.516,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">m</text>
+<text font="CIDFont+F1" bbox="383.526,771.408,386.526,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="386.526,771.408,395.850,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">m</text>
+<text font="CIDFont+F1" bbox="395.860,771.408,401.176,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="401.187,771.408,407.187,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">d</text>
+<text font="CIDFont+F1" bbox="407.307,771.408,412.623,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="412.633,771.408,415.633,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="415.513,771.408,420.181,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="420.183,771.408,426.184,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="426.304,771.408,431.620,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="431.630,771.408,439.622,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">C</text>
+<text font="CIDFont+F1" bbox="439.430,771.408,445.430,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">y</text>
+<text font="CIDFont+F1" bbox="445.550,771.408,448.551,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="448.551,771.408,453.867,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="453.877,771.408,459.877,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="459.877,771.408,465.877,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">d</text>
+<text font="CIDFont+F1" bbox="465.877,771.408,468.878,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="468.878,771.408,473.546,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="473.548,771.408,476.872,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="476.882,771.408,482.198,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="482.208,771.408,488.208,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="488.208,771.408,493.525,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">z</text>
+<text font="CIDFont+F1" bbox="493.535,771.408,498.851,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="498.861,771.408,501.861,783.408" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text>
+</text>
+</textline>
+<textline bbox="56.760,757.608,416.969,769.608">
+<text font="CIDFont+F1" bbox="56.760,757.608,62.760,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="62.760,757.608,66.084,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="66.094,757.608,72.095,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="72.095,757.608,77.411,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="77.421,757.608,80.745,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="80.755,757.608,84.079,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="84.089,757.608,90.089,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="90.089,757.608,95.406,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="95.416,757.608,100.084,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="100.086,757.608,103.086,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="103.086,757.608,111.750,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">w</text>
+<text font="CIDFont+F1" bbox="111.752,757.608,115.076,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="114.992,757.608,118.317,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="118.473,757.608,124.473,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">h</text>
+<text font="CIDFont+F1" bbox="124.473,757.608,127.473,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="127.473,757.608,131.469,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">(</text>
+<text font="CIDFont+F1" bbox="131.469,757.608,134.793,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="134.589,757.608,140.589,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="140.589,757.608,143.914,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="143.924,757.608,149.240,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="149.444,757.608,153.440,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="153.440,757.608,162.764,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">m</text>
+<text font="CIDFont+F1" bbox="162.680,757.608,167.997,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="168.007,757.608,174.007,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">d</text>
+<text font="CIDFont+F1" bbox="174.007,757.608,177.331,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="177.341,757.608,182.657,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="182.667,757.608,185.992,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="186.002,757.608,191.318,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="191.328,757.608,195.324,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">)</text>
+<text font="CIDFont+F1" bbox="195.408,757.608,198.408,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="198.408,757.608,202.404,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="202.404,757.608,207.721,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="207.565,757.608,212.233,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="212.235,757.608,218.235,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">u</text>
+<text font="CIDFont+F1" bbox="218.235,757.608,221.559,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="221.569,757.608,224.893,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="225.049,757.608,229.717,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="229.719,757.608,232.719,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="232.719,757.608,238.036,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="238.046,757.608,244.046,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="243.926,757.608,249.926,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">d</text>
+<text font="CIDFont+F1" bbox="249.926,757.608,252.926,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="252.926,757.608,258.243,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="258.253,757.608,261.577,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="261.587,757.608,264.911,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="264.921,757.608,267.921,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="267.921,757.608,273.921,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="273.921,757.608,277.917,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="277.918,757.608,283.918,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="284.038,757.608,289.354,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">c</text>
+<text font="CIDFont+F1" bbox="289.364,757.608,294.680,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="294.690,757.608,299.359,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="299.251,757.608,303.919,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="303.921,757.608,307.245,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="307.255,757.608,313.255,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="313.375,757.608,319.375,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">g</text>
+<text font="CIDFont+F1" bbox="319.375,757.608,322.375,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="322.375,757.608,327.044,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="327.046,757.608,330.370,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="330.380,757.608,335.696,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="335.706,757.608,341.706,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="341.706,757.608,346.374,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="346.376,757.608,349.376,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="349.376,757.608,352.701,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="352.711,757.608,358.711,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="358.711,757.608,361.711,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="361.711,757.608,367.711,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="367.711,757.608,373.711,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="373.711,757.608,379.028,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="379.038,757.608,382.038,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="381.918,757.608,385.914,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">f</text>
+<text font="CIDFont+F1" bbox="385.914,757.608,391.914,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="391.914,757.608,395.910,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="395.994,757.608,405.319,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">m</text>
+<text font="CIDFont+F1" bbox="405.329,757.608,410.645,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="410.489,757.608,413.813,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="413.969,757.608,416.969,769.608" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">.</text>
+<text>
+</text>
+</textline>
+</textbox>
+<textbox id="1" bbox="56.760,716.208,485.922,742.008">
+<textline bbox="56.760,730.008,485.922,742.008">
+<text font="CIDFont+F1" bbox="56.760,730.008,67.428,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">M</text>
+<text font="CIDFont+F1" bbox="67.430,730.008,73.431,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">u</text>
+<text font="CIDFont+F1" bbox="73.431,730.008,76.755,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="76.765,730.008,80.089,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="80.005,730.008,83.329,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="83.339,730.008,92.003,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">w</text>
+<text font="CIDFont+F1" bbox="92.099,730.008,98.099,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="98.099,730.008,102.096,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="102.096,730.008,108.096,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">d</text>
+<text font="CIDFont+F1" bbox="107.976,730.008,112.644,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="112.776,730.008,115.776,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="115.776,730.008,119.100,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="119.016,730.008,122.340,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="122.350,730.008,128.351,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">k</text>
+<text font="CIDFont+F1" bbox="128.351,730.008,133.667,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="133.751,730.008,136.751,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="136.751,730.008,140.075,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="139.991,730.008,145.991,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="145.991,730.008,148.991,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="148.991,730.008,154.308,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">“</text>
+<text font="CIDFont+F1" bbox="154.392,730.008,163.056,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">w</text>
+<text font="CIDFont+F1" bbox="163.058,730.008,168.374,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="168.384,730.008,171.384,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="171.384,730.008,177.385,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">h</text>
+<text font="CIDFont+F1" bbox="177.385,730.008,182.701,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="182.711,730.008,188.711,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">v</text>
+<text font="CIDFont+F1" bbox="188.711,730.008,194.027,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="194.038,730.008,197.038,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="197.038,730.008,201.706,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="201.708,730.008,207.024,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="207.034,730.008,210.358,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="210.368,730.008,213.368,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="213.368,730.008,216.693,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="216.703,730.008,222.703,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">h</text>
+<text font="CIDFont+F1" bbox="222.703,730.008,228.019,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="228.029,730.008,231.353,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="231.363,730.008,234.363,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="234.363,730.008,240.364,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="240.364,730.008,246.364,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">u</text>
+<text font="CIDFont+F1" bbox="246.364,730.008,249.688,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">t</text>
+<text font="CIDFont+F1" bbox="249.698,730.008,252.698,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="252.698,730.008,258.698,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">b</text>
+<text font="CIDFont+F1" bbox="258.698,730.008,264.014,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="264.025,730.008,267.349,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">l</text>
+<text font="CIDFont+F1" bbox="267.359,730.008,273.359,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="273.359,730.008,282.023,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">w</text>
+<text font="CIDFont+F1" bbox="282.025,730.008,287.342,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">”</text>
+<text font="CIDFont+F1" bbox="287.426,730.008,290.426,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="290.426,730.008,295.742,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">a</text>
+<text font="CIDFont+F1" bbox="295.752,730.008,299.748,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="299.592,730.008,304.908,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="304.992,730.008,307.992,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="307.992,730.008,311.989,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="311.989,730.008,317.305,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="317.315,730.008,322.631,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">c</text>
+<text font="CIDFont+F1" bbox="322.641,730.008,328.642,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="328.522,730.008,334.522,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">g</text>
+<text font="CIDFont+F1" bbox="334.522,730.008,340.522,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="340.522,730.008,343.846,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="343.856,730.008,349.172,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">z</text>
+<text font="CIDFont+F1" bbox="349.376,730.008,354.693,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="354.703,730.008,360.703,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">d</text>
+<text font="CIDFont+F1" bbox="360.583,730.008,363.583,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="363.583,730.008,367.579,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">(</text>
+<text font="CIDFont+F1" bbox="367.579,730.008,373.580,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">d</text>
+<text font="CIDFont+F1" bbox="373.580,730.008,378.896,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="378.906,730.008,384.906,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="385.026,730.008,390.342,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="390.353,730.008,396.353,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="396.233,730.008,402.233,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">d</text>
+<text font="CIDFont+F1" bbox="402.233,730.008,405.557,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">i</text>
+<text font="CIDFont+F1" bbox="405.567,730.008,411.567,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="411.567,730.008,417.568,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">g</text>
+<text font="CIDFont+F1" bbox="417.568,730.008,420.568,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="420.568,730.008,426.568,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="426.568,730.008,432.568,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">n</text>
+<text font="CIDFont+F1" bbox="432.568,730.008,435.568,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="435.568,730.008,441.569,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">y</text>
+<text font="CIDFont+F1" bbox="441.569,730.008,447.569,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="447.569,730.008,453.569,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">u</text>
+<text font="CIDFont+F1" bbox="453.569,730.008,457.565,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="457.565,730.008,460.565,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text font="CIDFont+F1" bbox="460.565,730.008,469.230,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">N</text>
+<text font="CIDFont+F1" bbox="469.232,730.008,476.552,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">L</text>
+<text font="CIDFont+F1" bbox="476.562,730.008,483.234,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">P</text>
+<text font="CIDFont+F1" bbox="482.922,730.008,485.922,742.008" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000"> </text>
+<text>
+</text>
+</textline>
+<textline bbox="56.760,716.208,109.706,728.208">
+<text font="CIDFont+F1" bbox="56.760,716.208,62.760,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">p</text>
+<text font="CIDFont+F1" bbox="62.760,716.208,66.756,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="66.756,716.208,72.757,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="72.757,716.208,78.073,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">c</text>
+<text font="CIDFont+F1" bbox="78.157,716.208,83.473,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">e</text>
+<text font="CIDFont+F1" bbox="83.483,716.208,88.151,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="88.043,716.208,92.712,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">s</text>
+<text font="CIDFont+F1" bbox="92.714,716.208,98.714,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">o</text>
+<text font="CIDFont+F1" bbox="98.714,716.208,102.710,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">r</text>
+<text font="CIDFont+F1" bbox="102.710,716.208,106.706,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">)</text>
+<text font="CIDFont+F1" bbox="106.706,716.208,109.706,728.208" colourspace="DeviceGray" ncolour="(0.0, 0.0, 0.0)" size="12.000">.</text>
+<text>
+</text>
+</textline>
+</textbox>
+<layout>
+<textgroup bbox="56.760,716.208,501.861,783.408">
+<textbox id="0" bbox="56.760,757.608,501.861,783.408"/>
+<textbox id="1" bbox="56.760,716.208,485.922,742.008"/>
+</textgroup>
+</layout>
+</page>
+</formats_copy>
+  <text>
+    <wf id="w1" sent="1" para="1" page="1" offset="0" length="3"><![CDATA[The]]></wf>
+    <wf id="w2" sent="1" para="1" page="1" offset="4" length="9"><![CDATA[Nafigator]]></wf>
+    <wf id="w3" sent="1" para="1" page="1" offset="14" length="7"><![CDATA[package]]></wf>
+    <wf id="w4" sent="1" para="1" page="1" offset="22" length="6"><![CDATA[allows]]></wf>
+    <wf id="w5" sent="1" para="1" page="1" offset="29" length="3"><![CDATA[you]]></wf>
+    <wf id="w6" sent="1" para="1" page="1" offset="33" length="2"><![CDATA[to]]></wf>
+    <wf id="w7" sent="1" para="1" page="1" offset="36" length="5"><![CDATA[store]]></wf>
+    <wf id="w8" sent="1" para="1" page="1" offset="42" length="3"><![CDATA[NLP]]></wf>
+    <wf id="w9" sent="1" para="1" page="1" offset="46" length="6"><![CDATA[output]]></wf>
+    <wf id="w10" sent="1" para="1" page="1" offset="53" length="4"><![CDATA[from]]></wf>
+    <wf id="w11" sent="1" para="1" page="1" offset="58" length="6"><![CDATA[custom]]></wf>
+    <wf id="w12" sent="1" para="1" page="1" offset="65" length="4"><![CDATA[made]]></wf>
+    <wf id="w13" sent="1" para="1" page="1" offset="70" length="5"><![CDATA[spaCy]]></wf>
+    <wf id="w14" sent="1" para="1" page="1" offset="76" length="3"><![CDATA[and]]></wf>
+    <wf id="w15" sent="1" para="1" page="1" offset="80" length="6"><![CDATA[stanza]]></wf>
+    <wf id="w16" sent="1" para="1" page="1" offset="88" length="9"><![CDATA[pipelines]]></wf>
+    <wf id="w17" sent="1" para="1" page="1" offset="98" length="4"><![CDATA[with]]></wf>
+    <wf id="w18" sent="1" para="1" page="1" offset="103" length="1"><![CDATA[(]]></wf>
+    <wf id="w19" sent="1" para="1" page="1" offset="104" length="12"><![CDATA[intermediate]]></wf>
+    <wf id="w20" sent="1" para="1" page="1" offset="116" length="1"><![CDATA[)]]></wf>
+    <wf id="w21" sent="1" para="1" page="1" offset="118" length="7"><![CDATA[results]]></wf>
+    <wf id="w22" sent="1" para="1" page="1" offset="126" length="3"><![CDATA[and]]></wf>
+    <wf id="w23" sent="1" para="1" page="1" offset="130" length="3"><![CDATA[all]]></wf>
+    <wf id="w24" sent="1" para="1" page="1" offset="134" length="10"><![CDATA[processing]]></wf>
+    <wf id="w25" sent="1" para="1" page="1" offset="145" length="5"><![CDATA[steps]]></wf>
+    <wf id="w26" sent="1" para="1" page="1" offset="151" length="2"><![CDATA[in]]></wf>
+    <wf id="w27" sent="1" para="1" page="1" offset="154" length="3"><![CDATA[one]]></wf>
+    <wf id="w28" sent="1" para="1" page="1" offset="158" length="6"><![CDATA[format]]></wf>
+    <wf id="w29" sent="1" para="1" page="1" offset="164" length="1"><![CDATA[.]]></wf>
+    <wf id="w30" sent="2" para="2" page="1" offset="167" length="10"><![CDATA[Multiwords]]></wf>
+    <wf id="w31" sent="2" para="2" page="1" offset="178" length="4"><![CDATA[like]]></wf>
+    <wf id="w32" sent="2" para="2" page="1" offset="183" length="2"><![CDATA[in]]></wf>
+    <wf id="w33" sent="2" para="2" page="1" offset="186" length="1"><![CDATA[“]]></wf>
+    <wf id="w34" sent="2" para="2" page="1" offset="187" length="2"><![CDATA[we]]></wf>
+    <wf id="w35" sent="2" para="2" page="1" offset="190" length="4"><![CDATA[have]]></wf>
+    <wf id="w36" sent="2" para="2" page="1" offset="195" length="3"><![CDATA[set]]></wf>
+    <wf id="w37" sent="2" para="2" page="1" offset="199" length="4"><![CDATA[that]]></wf>
+    <wf id="w38" sent="2" para="2" page="1" offset="204" length="3"><![CDATA[out]]></wf>
+    <wf id="w39" sent="2" para="2" page="1" offset="208" length="5"><![CDATA[below]]></wf>
+    <wf id="w40" sent="2" para="2" page="1" offset="213" length="1"><![CDATA[”]]></wf>
+    <wf id="w41" sent="2" para="2" page="1" offset="215" length="3"><![CDATA[are]]></wf>
+    <wf id="w42" sent="2" para="2" page="1" offset="219" length="10"><![CDATA[recognized]]></wf>
+    <wf id="w43" sent="2" para="2" page="1" offset="230" length="1"><![CDATA[(]]></wf>
+    <wf id="w44" sent="2" para="2" page="1" offset="231" length="9"><![CDATA[depending]]></wf>
+    <wf id="w45" sent="2" para="2" page="1" offset="241" length="2"><![CDATA[on]]></wf>
+    <wf id="w46" sent="2" para="2" page="1" offset="244" length="4"><![CDATA[your]]></wf>
+    <wf id="w47" sent="2" para="2" page="1" offset="249" length="3"><![CDATA[NLP]]></wf>
+    <wf id="w48" sent="2" para="2" page="1" offset="254" length="9"><![CDATA[processor]]></wf>
+    <wf id="w49" sent="2" para="2" page="1" offset="263" length="1"><![CDATA[)]]></wf>
+    <wf id="w50" sent="2" para="2" page="1" offset="264" length="1"><![CDATA[.]]></wf>
+  </text>
+  <terms>
+    <term id="t1" type="open" lemma="The" pos="SYM">
+      <span>
+        <!--The-->
+        <target id="w1"/>
+      </span>
+    </term>
+    <term id="t2" type="open" lemma="Nafigator" pos="SYM">
+      <span>
+        <!--Nafigator-->
+        <target id="w2"/>
+      </span>
+    </term>
+    <term id="t3" type="open" lemma="package" pos="SYM">
+      <span>
+        <!--package-->
+        <target id="w3"/>
+      </span>
+    </term>
+    <term id="t4" type="open" lemma="allows" pos="SYM">
+      <span>
+        <!--allows-->
+        <target id="w4"/>
+      </span>
+    </term>
+    <term id="t5" type="open" lemma="you" pos="SYM">
+      <span>
+        <!--you-->
+        <target id="w5"/>
+      </span>
+    </term>
+    <term id="t6" type="open" lemma="to" pos="SYM">
+      <span>
+        <!--to-->
+        <target id="w6"/>
+      </span>
+    </term>
+    <term id="t7" type="open" lemma="store" pos="SYM">
+      <span>
+        <!--store-->
+        <target id="w7"/>
+      </span>
+    </term>
+    <term id="t8" type="open" lemma="NLP" pos="SYM">
+      <span>
+        <!--NLP-->
+        <target id="w8"/>
+      </span>
+    </term>
+    <term id="t9" type="open" lemma="output" pos="SYM">
+      <span>
+        <!--output-->
+        <target id="w9"/>
+      </span>
+    </term>
+    <term id="t10" type="open" lemma="from" pos="SYM">
+      <span>
+        <!--from-->
+        <target id="w10"/>
+      </span>
+    </term>
+    <term id="t11" type="open" lemma="custom" pos="SYM">
+      <span>
+        <!--custom-->
+        <target id="w11"/>
+      </span>
+    </term>
+    <term id="t12" type="open" lemma="made" pos="SYM">
+      <span>
+        <!--made-->
+        <target id="w12"/>
+      </span>
+    </term>
+    <term id="t13" type="open" lemma="spaCy" pos="SYM">
+      <span>
+        <!--spaCy-->
+        <target id="w13"/>
+      </span>
+    </term>
+    <term id="t14" type="open" lemma="and" pos="SYM">
+      <span>
+        <!--and-->
+        <target id="w14"/>
+      </span>
+    </term>
+    <term id="t15" type="open" lemma="stanza" pos="SYM">
+      <span>
+        <!--stanza-->
+        <target id="w15"/>
+      </span>
+    </term>
+    <term id="t16" type="open" lemma="pipelines" pos="SYM">
+      <span>
+        <!--pipelines-->
+        <target id="w16"/>
+      </span>
+    </term>
+    <term id="t17" type="open" lemma="with" pos="SYM">
+      <span>
+        <!--with-->
+        <target id="w17"/>
+      </span>
+    </term>
+    <term id="t18" type="open" lemma="(" pos="PUNCT">
+      <span>
+        <!--(-->
+        <target id="w18"/>
+      </span>
+    </term>
+    <term id="t19" type="open" lemma="intermediate" pos="SYM">
+      <span>
+        <!--intermediate-->
+        <target id="w19"/>
+      </span>
+    </term>
+    <term id="t20" type="open" lemma=")" pos="PUNCT">
+      <span>
+        <!--)-->
+        <target id="w20"/>
+      </span>
+    </term>
+    <term id="t21" type="open" lemma="results" pos="SYM">
+      <span>
+        <!--results-->
+        <target id="w21"/>
+      </span>
+    </term>
+    <term id="t22" type="open" lemma="and" pos="SYM">
+      <span>
+        <!--and-->
+        <target id="w22"/>
+      </span>
+    </term>
+    <term id="t23" type="open" lemma="all" pos="SYM">
+      <span>
+        <!--all-->
+        <target id="w23"/>
+      </span>
+    </term>
+    <term id="t24" type="open" lemma="processing" pos="SYM">
+      <span>
+        <!--processing-->
+        <target id="w24"/>
+      </span>
+    </term>
+    <term id="t25" type="open" lemma="steps" pos="SYM">
+      <span>
+        <!--steps-->
+        <target id="w25"/>
+      </span>
+    </term>
+    <term id="t26" type="open" lemma="in" pos="SYM">
+      <span>
+        <!--in-->
+        <target id="w26"/>
+      </span>
+    </term>
+    <term id="t27" type="open" lemma="one" pos="SYM">
+      <span>
+        <!--one-->
+        <target id="w27"/>
+      </span>
+    </term>
+    <term id="t28" type="open" lemma="format" pos="SYM">
+      <span>
+        <!--format-->
+        <target id="w28"/>
+      </span>
+    </term>
+    <term id="t29" type="open" lemma="." pos="PUNCT">
+      <span>
+        <!--.-->
+        <target id="w29"/>
+      </span>
+    </term>
+    <term id="t30" type="open" lemma="Multiwords" pos="SYM">
+      <span>
+        <!--Multiwords-->
+        <target id="w30"/>
+      </span>
+    </term>
+    <term id="t31" type="open" lemma="like" pos="SYM">
+      <span>
+        <!--like-->
+        <target id="w31"/>
+      </span>
+    </term>
+    <term id="t32" type="open" lemma="in" pos="ADP">
+      <span>
+        <!--in-->
+        <target id="w32"/>
+      </span>
+    </term>
+    <term id="t33" type="open" lemma="&quot;" pos="PUNCT">
+      <span>
+        <!--&#8220;-->
+        <target id="w33"/>
+      </span>
+    </term>
+    <term id="t34" type="open" lemma="we" pos="PRON" morphofeat="Case=Nom|Person=1|PronType=Prs">
+      <span>
+        <!--we-->
+        <target id="w34"/>
+      </span>
+    </term>
+    <term id="t35" type="open" lemma="have" pos="SYM">
+      <span>
+        <!--have-->
+        <target id="w35"/>
+      </span>
+    </term>
+    <term id="t36" type="open" lemma="set" pos="SYM">
+      <span>
+        <!--set-->
+        <target id="w36"/>
+      </span>
+    </term>
+    <term id="t37" type="open" lemma="that" pos="SYM">
+      <span>
+        <!--that-->
+        <target id="w37"/>
+      </span>
+    </term>
+    <term id="t38" type="open" lemma="out" pos="SYM">
+      <span>
+        <!--out-->
+        <target id="w38"/>
+      </span>
+    </term>
+    <term id="t39" type="open" lemma="below" pos="SYM">
+      <span>
+        <!--below-->
+        <target id="w39"/>
+      </span>
+    </term>
+    <term id="t40" type="open" lemma="&quot;" pos="PUNCT">
+      <span>
+        <!--&#8221;-->
+        <target id="w40"/>
+      </span>
+    </term>
+    <term id="t41" type="open" lemma="are" pos="SYM">
+      <span>
+        <!--are-->
+        <target id="w41"/>
+      </span>
+    </term>
+    <term id="t42" type="open" lemma="recognized" pos="SYM">
+      <span>
+        <!--recognized-->
+        <target id="w42"/>
+      </span>
+    </term>
+    <term id="t43" type="open" lemma="(" pos="PUNCT">
+      <span>
+        <!--(-->
+        <target id="w43"/>
+      </span>
+    </term>
+    <term id="t44" type="open" lemma="depending" pos="SYM">
+      <span>
+        <!--depending-->
+        <target id="w44"/>
+      </span>
+    </term>
+    <term id="t45" type="open" lemma="on" pos="SYM">
+      <span>
+        <!--on-->
+        <target id="w45"/>
+      </span>
+    </term>
+    <term id="t46" type="open" lemma="your" pos="SYM">
+      <span>
+        <!--your-->
+        <target id="w46"/>
+      </span>
+    </term>
+    <term id="t47" type="open" lemma="NLP" pos="SYM">
+      <span>
+        <!--NLP-->
+        <target id="w47"/>
+      </span>
+    </term>
+    <term id="t48" type="open" lemma="processor" pos="SYM">
+      <span>
+        <!--processor-->
+        <target id="w48"/>
+      </span>
+    </term>
+    <term id="t49" type="open" lemma=")" pos="PUNCT">
+      <span>
+        <!--)-->
+        <target id="w49"/>
+      </span>
+    </term>
+    <term id="t50" type="open" lemma="." pos="PUNCT">
+      <span>
+        <!--.-->
+        <target id="w50"/>
+      </span>
+    </term>
+  </terms>
+  <deps>
+    <!--fixed(The,Nafigator)-->
+    <dep from_term="t1" to_term="t2" rfunc="fixed"/>
+    <!--fixed(The,package)-->
+    <dep from_term="t1" to_term="t3" rfunc="fixed"/>
+    <!--fixed(The,allows)-->
+    <dep from_term="t1" to_term="t4" rfunc="fixed"/>
+    <!--fixed(The,you)-->
+    <dep from_term="t1" to_term="t5" rfunc="fixed"/>
+    <!--fixed(The,to)-->
+    <dep from_term="t1" to_term="t6" rfunc="fixed"/>
+    <!--fixed(The,store)-->
+    <dep from_term="t1" to_term="t7" rfunc="fixed"/>
+    <!--fixed(The,NLP)-->
+    <dep from_term="t1" to_term="t8" rfunc="fixed"/>
+    <!--fixed(The,output)-->
+    <dep from_term="t1" to_term="t9" rfunc="fixed"/>
+    <!--fixed(The,from)-->
+    <dep from_term="t1" to_term="t10" rfunc="fixed"/>
+    <!--fixed(The,custom)-->
+    <dep from_term="t1" to_term="t11" rfunc="fixed"/>
+    <!--fixed(The,made)-->
+    <dep from_term="t1" to_term="t12" rfunc="fixed"/>
+    <!--fixed(The,spaCy)-->
+    <dep from_term="t1" to_term="t13" rfunc="fixed"/>
+    <!--fixed(The,and)-->
+    <dep from_term="t1" to_term="t14" rfunc="fixed"/>
+    <!--fixed(The,stanza)-->
+    <dep from_term="t1" to_term="t15" rfunc="fixed"/>
+    <!--fixed(The,pipelines)-->
+    <dep from_term="t1" to_term="t16" rfunc="fixed"/>
+    <!--fixed(The,with)-->
+    <dep from_term="t1" to_term="t17" rfunc="fixed"/>
+    <!--punct(intermediate,()-->
+    <dep from_term="t19" to_term="t18" rfunc="punct"/>
+    <!--nummod(The,intermediate)-->
+    <dep from_term="t1" to_term="t19" rfunc="nummod"/>
+    <!--punct(intermediate,))-->
+    <dep from_term="t19" to_term="t20" rfunc="punct"/>
+    <!--fixed(The,results)-->
+    <dep from_term="t1" to_term="t21" rfunc="fixed"/>
+    <!--fixed(results,and)-->
+    <dep from_term="t21" to_term="t22" rfunc="fixed"/>
+    <!--fixed(results,all)-->
+    <dep from_term="t21" to_term="t23" rfunc="fixed"/>
+    <!--fixed(results,processing)-->
+    <dep from_term="t21" to_term="t24" rfunc="fixed"/>
+    <!--fixed(results,steps)-->
+    <dep from_term="t21" to_term="t25" rfunc="fixed"/>
+    <!--fixed(results,in)-->
+    <dep from_term="t21" to_term="t26" rfunc="fixed"/>
+    <!--fixed(results,one)-->
+    <dep from_term="t21" to_term="t27" rfunc="fixed"/>
+    <!--fixed(results,format)-->
+    <dep from_term="t21" to_term="t28" rfunc="fixed"/>
+    <!--punct(The,.)-->
+    <dep from_term="t1" to_term="t29" rfunc="punct"/>
+    <!--fixed(Multiwords,like)-->
+    <dep from_term="t30" to_term="t31" rfunc="fixed"/>
+    <!--fixed(Multiwords,in)-->
+    <dep from_term="t30" to_term="t32" rfunc="fixed"/>
+    <!--punct(Multiwords,“)-->
+    <dep from_term="t30" to_term="t33" rfunc="punct"/>
+    <!--nmod(Multiwords,we)-->
+    <dep from_term="t30" to_term="t34" rfunc="nmod"/>
+    <!--fixed(Multiwords,have)-->
+    <dep from_term="t30" to_term="t35" rfunc="fixed"/>
+    <!--fixed(Multiwords,set)-->
+    <dep from_term="t30" to_term="t36" rfunc="fixed"/>
+    <!--fixed(Multiwords,that)-->
+    <dep from_term="t30" to_term="t37" rfunc="fixed"/>
+    <!--fixed(Multiwords,out)-->
+    <dep from_term="t30" to_term="t38" rfunc="fixed"/>
+    <!--fixed(Multiwords,below)-->
+    <dep from_term="t30" to_term="t39" rfunc="fixed"/>
+    <!--punct(Multiwords,”)-->
+    <dep from_term="t30" to_term="t40" rfunc="punct"/>
+    <!--fixed(Multiwords,are)-->
+    <dep from_term="t30" to_term="t41" rfunc="fixed"/>
+    <!--fixed(Multiwords,recognized)-->
+    <dep from_term="t30" to_term="t42" rfunc="fixed"/>
+    <!--punct(depending,()-->
+    <dep from_term="t44" to_term="t43" rfunc="punct"/>
+    <!--parataxis(Multiwords,depending)-->
+    <dep from_term="t30" to_term="t44" rfunc="parataxis"/>
+    <!--fixed(depending,on)-->
+    <dep from_term="t44" to_term="t45" rfunc="fixed"/>
+    <!--fixed(depending,your)-->
+    <dep from_term="t44" to_term="t46" rfunc="fixed"/>
+    <!--fixed(depending,NLP)-->
+    <dep from_term="t44" to_term="t47" rfunc="fixed"/>
+    <!--fixed(depending,processor)-->
+    <dep from_term="t44" to_term="t48" rfunc="fixed"/>
+    <!--punct(depending,))-->
+    <dep from_term="t44" to_term="t49" rfunc="punct"/>
+    <!--punct(Multiwords,.)-->
+    <dep from_term="t30" to_term="t50" rfunc="punct"/>
+  </deps>
+  <raw><![CDATA[The Nafigator package allows you to store NLP output from custom made spaCy and stanza  pipelines with (intermediate) results and all processing steps in one format.  Multiwords like in “we have set that out below” are recognized (depending on your NLP  processor).]]></raw>
+</NAF>
