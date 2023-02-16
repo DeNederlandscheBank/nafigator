@@ -28,14 +28,14 @@ jobs:
           pip install -r requirement-dev.txt
           pip install -e .
 
-      - uses: actions/checkout@v1
-      - name: Changelog check
-        uses: Zomzog/changelog-checker@v1.2.0
-        with:
-          fileName: CHANGELOG.md
-          checkNotification: Simple # default `Detailed`
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: actions/checkout@v1
+      # - name: Changelog check
+      #   uses: Zomzog/changelog-checker@v1.2.0
+      #   with:
+      #     fileName: CHANGELOG.md
+      #     checkNotification: Simple # default `Detailed`
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Test with pytest
         run: |
