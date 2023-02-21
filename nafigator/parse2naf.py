@@ -53,7 +53,7 @@ def generate_naf(
     if input is None:
         logging.error("input is none")
         return None
-    if isinstance(input, str) and not os.path.isfile(input) and stream == None:
+    if isinstance(input, str) and not os.path.isfile(input) and stream is None:
         logging.error("no or non-existing input specified")
         return None
     if engine is None:
@@ -115,7 +115,7 @@ def create_params(
     params["engine_name"] = engine
     params["nlp"] = nlp
 
-    if isinstance(input, str):
+    if isinstance(input, (str, bytes)):
         if "fileDesc" not in params.keys():
             params["fileDesc"] = dict()
         params["fileDesc"]["creationtime"] = datetime.now()
@@ -131,54 +131,19 @@ def create_params(
                 stream = io.BytesIO(stream)
             params['stream'] = stream
 
-        if os.path.splitext(input)[1].lower() == ".txt":
+        ext = os.path.splitext(input)[1].lower()
+        if ext == ".txt":
             params["fileDesc"]["filetype"] = "text/plain"
             params["public"]["format"] = "text/plain"
-        elif os.path.splitext(input)[1].lower() == ".html":
+        elif ext == ".html":
             params["fileDesc"]["filetype"] = "text/html"
             params["public"]["format"] = "text/html"
-        elif os.path.splitext(input)[1].lower() == ".pdf":
+        elif ext == ".pdf":
             params["fileDesc"]["filetype"] = "application/pdf"
             params["public"]["format"] = "application/pdf"
-        elif os.path.splitext(input)[1].lower() == ".docx":
-            params["fileDesc"][
-                "filetype"
-            ] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            params["public"][
-                "format"
-            ] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-
-    if isinstance(input, bytes):
-        if "fileDesc" not in params.keys():
-            params["fileDesc"] = dict()
-        params["fileDesc"]["creationtime"] = datetime.now()
-        params["fileDesc"]["filename"] = input
-
-        if "public" not in params.keys():
-            params["public"] = dict()
-            params["public"]["uri"] = input
-        else:
-            if "uri" not in params["public"].keys():
-                params["public"]["uri"] = input
-        if stream is not None:
-            params['stream'] = stream
-
-        if os.path.splitext(input)[1].lower() == ".txt":
-            params["fileDesc"]["filetype"] = "text/plain"
-            params["public"]["format"] = "text/plain"
-        elif os.path.splitext(input)[1].lower() == ".html":
-            params["fileDesc"]["filetype"] = "text/html"
-            params["public"]["format"] = "text/html"
-        elif os.path.splitext(input)[1].lower() == ".pdf":
-            params["fileDesc"]["filetype"] = "application/pdf"
-            params["public"]["format"] = "application/pdf"
-        elif os.path.splitext(input)[1].lower() == ".docx":
-            params["fileDesc"][
-                "filetype"
-            ] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            params["public"][
-                "format"
-            ] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        elif ext == ".docx":
+            params["fileDesc"]["filetype"] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            params["public"]["format"] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 
     # set default linguistic parameters
     if "linguistic_layers" not in params.keys():
@@ -192,20 +157,14 @@ def create_params(
         ]
     if "preprocess_layers" not in params.keys():
         params["preprocess_layers"] = ["formats"]
-    if params.get("cdata", None) is None:
-        params["cdata"] = True
-    if params.get("map_udpos2olia", None) is None:
-        params["map_udpos2olia"] = False
-    if params.get("layer_to_attributes_to_ignore", None) is None:
-        params["layer_to_attributes_to_ignore"] = {"terms": {}}
-    if params.get("replace_hidden_characters", None) is None:
-        params["replace_hidden_characters"] = True
-    if params.get("comments", None) is None:
-        params["comments"] = True
-    if params.get("apply_ocr", None) is None:
-        params["apply_ocr"] = False
-    if params.get("textline_separator") is None:
-        params["textline_separator"] = " "
+
+    params["cdata"] = params.get("cdata", True)
+    params["map_udpos2olia"] = params.get("map_udpos2olia", False)
+    params["layer_to_attributes_to_ignore"] = params.get("layer_to_attributes_to_ignore", {"terms": {}})
+    params["replace_hidden_characters"] = params.get("replace_hidden_characters", True)
+    params["comments"] = params.get("comments", True)
+    params["apply_ocr"] = params.get("apply_ocr", False)
+    params["textline_separator"] = params.get("textline_separator", " ")
 
     return params
 
@@ -672,9 +631,9 @@ def add_terms_layer(params: dict):
             # to map the Universal Dependencies pos (https://universaldependencies.org/u/pos/)
             # to the NAF pos tagset
             if params["map_udpos2olia"]:
-                if token_pos in udpos2olia.keys():
-                    pos_type = udpos2olia[token_pos]["class"]
-                    token_pos = udpos2olia[token_pos]["olia"]
+                if token_pos in udpos2nafpos_info.keys():
+                    pos_type = udpos2nafpos_info[token_pos]["class"]
+                    token_pos = udpos2nafpos_info[token_pos]["olia"]
                 else:
                     logging.info("unknown token pos: " + str(token_pos))
                     pos_type = "open"
@@ -799,8 +758,6 @@ def add_multiwords_layer(params: dict):
     )
 
     params["tree"].add_processor_element("multiwords", lp)
-
-    engine = params["engine"]
 
     if params["naf_version"] == "v3":
         logging.info("add_multi_words function only applies to naf version 4")
@@ -950,7 +907,7 @@ def add_formats_layer(params: dict):
     """Generate and add all format elements in document to formats layer"""
     lp = ProcessorElement(
         name="formats",
-        version=f"nafigator",
+        version="nafigator",
         model=None,
         timestamp=None,
         beginTimestamp=params["beginTimestamp_preprocess"],
