@@ -3,14 +3,13 @@
 """naf document."""
 
 from lxml import etree
-from typing import Union
+from typing import Union, Optional
 from .const import ProcessorElement
 from .const import DependencyRelation
 from .const import WordformElement
 from .const import EntityElement
 from .const import TermElement
 from .const import MultiwordElement
-from .const import ComponentElement
 from .const import ChunkElement
 from .const import RawElement
 from .utils import time_in_correct_format
@@ -83,15 +82,17 @@ def QName(prefix: str = None, name: str = None):
 class NafDocument(etree._ElementTree):
     """The NafDocument class (subclass of an etree.elementtree)"""
 
-    def __init__(self, params: dict):
+    def __init__(self, params: Optional[dict]):
         """Initialize a NafDocument with data from the params dict"""
         self._setroot(etree.Element("NAF", nsmap=namespaces))
-        self.set_version(params["naf_version"])
-        if params["language"] is not None:
-            self.set_language(params["language"])
         self.add_nafHeader()
-        self.add_filedesc_element(params["fileDesc"])
-        self.add_public_element(params["public"])
+
+        if params:
+            self.set_version(params["naf_version"])
+            if params["language"] is not None:
+                self.set_language(params["language"])
+            self.add_filedesc_element(params["fileDesc"])
+            self.add_public_element(params["public"])
 
     def open(self, input: Union[str, bytes]):
         """Function to open a NafDocument
