@@ -61,8 +61,7 @@ class TestNafDocument():
         if language is not None:
             language = request.getfixturevalue(language)
 
-        doc = NafDocument()
-        doc.generate({
+        doc = NafDocument({
             "naf_version": version_var,
             "language": language,
             "fileDesc": filedesc_var,

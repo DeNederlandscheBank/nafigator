@@ -9,7 +9,7 @@ from pypdf import PdfFileReader
 class TableFormatter():
     def __init__(
         self,
-        doc: NafDocument(),
+        doc: NafDocument,
         pdf_path: str
     ) -> None:
         self.doc = doc

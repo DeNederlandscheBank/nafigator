@@ -86,8 +86,7 @@ def generate_naf(
     if isinstance(input, NafDocument):
         params["tree"] = input
     else:
-        params["tree"] = NafDocument()
-        params["tree"].generate(params)
+        params["tree"] = NafDocument(params)
 
     if params["preprocess_layers"] != []:
         process_preprocess_steps(params)
