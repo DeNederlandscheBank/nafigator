@@ -79,12 +79,34 @@ def QName(prefix: str = None, name: str = None):
     return name
 
 
+def open_naf(input: Union[str, bytes]):
+    """Function to open a NafDocument
+
+    Args:
+        input: the location of the NafDocument to be opened or a bytes object containing the file content
+
+    Returns:
+        NafDocument: the NAF document that is opened
+
+    """
+    if isinstance(input, str):
+        with open(input, "r", encoding="utf-8") as f:
+            root = etree.parse(f).getroot()
+    elif type(input) == bytes:
+        stream_data = io.BytesIO(input)
+        root = etree.parse(stream_data).getroot()
+    else:
+        raise TypeError("invalid input, instead of bytes or string it is" + str(type(input)))
+
+    return NafDocument(root)
+
+
 class NafDocument(etree._ElementTree):
     """The NafDocument class (subclass of an etree.elementtree)"""
 
-    def __init__(self, params: Optional[dict]):
+    def __init__(self, root: etree.Element = etree.Element("NAF", nsmap=namespaces), params: Optional[dict] = {}):
         """Initialize a NafDocument with data from the params dict"""
-        self._setroot(etree.Element("NAF", nsmap=namespaces))
+        self._setroot(root)
         self.add_nafHeader()
 
         if params:
@@ -93,26 +115,6 @@ class NafDocument(etree._ElementTree):
                 self.set_language(params["language"])
             self.add_filedesc_element(params["fileDesc"])
             self.add_public_element(params["public"])
-
-    def open(self, input: Union[str, bytes]):
-        """Function to open a NafDocument
-
-        Args:
-            input: the location of the NafDocument to be opened or a bytes object containing the file content
-
-        Returns:
-            NafDocument: the NAF document that is opened
-
-        """
-        if isinstance(input, str):
-            with open(input, "r", encoding="utf-8") as f:
-                self._setroot(etree.parse(f).getroot())
-        elif type(input) == bytes:
-            stream_data = io.BytesIO(input)
-            self._setroot(etree.parse(stream_data).getroot())
-        else:
-            raise TypeError("invalid input, instead of bytes or string it is" + str(type(input)))
-        return self
 
     def write(self, output: str) -> None:
         """Function to write a NafDocument
@@ -560,8 +562,7 @@ class NafDocument(etree._ElementTree):
 
     def set_language(self, language: str):
         """Set language of the NAF document"""
-        self.getroot().set(
-            "{http://www.w3.org/XML/1998/namespace}lang", language)
+        self.getroot().set("{http://www.w3.org/XML/1998/namespace}lang", language)
 
     def set_version(self, version):
         """Set version of the NAF document"""
@@ -638,7 +639,6 @@ class NafDocument(etree._ElementTree):
         if not isinstance(data, dict):
             data = data._asdict()
 
-        data = dict(data)
         for attr in attributes_to_ignore:
             del data[attr]
 
@@ -677,9 +677,10 @@ class NafDocument(etree._ElementTree):
             filetype CDATA #IMPLIED
             pages CDATA #IMPLIED
         """
-        naf_header = self.find(NAF_HEADER)
-        filedesc_element = self.subelement(
-            element=naf_header, tag=FILEDESC_ELEMENT_TAG, data=data
+        self.subelement(
+            element=self.find(NAF_HEADER),
+            tag=FILEDESC_ELEMENT_TAG,
+            data=data
         )
 
     def add_public_element(self, data: dict):
@@ -754,8 +755,7 @@ class NafDocument(etree._ElementTree):
             tag=LINGUISTIC_LAYER_TAG,
             data={"layer": layer},
         )
-        lp = self.subelement(
-            element=proc, tag=LINGUISTIC_OCCURRENCE_TAG, data=data)
+        self.subelement(element=proc, tag=LINGUISTIC_OCCURRENCE_TAG, data=data)
 
     def add_wf_element(self, data: WordformElement, cdata: bool):
         """
@@ -828,7 +828,7 @@ class NafDocument(etree._ElementTree):
         if comments:
             layer.append(etree.Comment(data.comment))
 
-        dep = self.subelement(
+        self.subelement(
             element=layer,
             tag=DEP_OCCURRENCE_TAG,
             data=data,

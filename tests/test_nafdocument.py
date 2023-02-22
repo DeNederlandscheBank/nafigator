@@ -44,6 +44,34 @@ def doc():
     return NafDocument().open("tests/tests/example.naf.xml")
 
 
+@patch(f"{nafdocument.__name__}.etree")
+@pytest.mark.parametrize('input,expect_open', [
+    ("tests/tests/example.naf.xml", True),
+    (bytes("content", "utf-8"), False)
+])
+def test_open(etree: MagicMock, input, expect_open: bool):
+    """
+    This function tests whether the naf document is opened correctly
+    input: filepath (str) or bytes
+    level: 2
+    scenarios: check open and set root functions are called
+    """
+    root = MagicMock()
+    etree.parse.return_value.getroot.return_value = root
+
+    with patch("builtins.open", mock_open(read_data="data")) as mock_file:
+        nafdocument.NafDocument = MagicMock()
+        nafdocument.open_naf(input)
+
+        # Check if the file was opened and root was set
+        if expect_open:
+            mock_file.assert_called_once_with(input, "r", encoding="utf-8")
+        else:
+            mock_file.assert_not_called()
+
+        nafdocument.NafDocument.assert_called_once_with(root)
+
+
 class TestNafDocument():
 
     @pytest.mark.parametrize('language', ['language_var', None])
@@ -72,37 +100,6 @@ class TestNafDocument():
         assert doc.language == language
         assert doc.header['fileDesc'] == filedesc_var
         assert doc.header['public'] == public_var
-
-    @patch(f"{nafdocument.__name__}.etree")
-    @pytest.mark.parametrize('input,expect_open', [
-        ("tests/tests/example.naf.xml", True),
-        (bytes("content", "utf-8"), False)
-    ])
-    def test_open(self, etree: MagicMock, input, expect_open: bool):
-        """
-        This function tests whether the naf document is opened correctly
-        input: filepath (str) or bytes
-        level: 2
-        scenarios: check open and set root functions are called
-        """
-        parsed_tree = MagicMock()
-        root = MagicMock()
-        etree.parse.return_value = parsed_tree
-        parsed_tree.getroot.return_value = root
-
-        doc = NafDocument()
-        doc._setroot = MagicMock()
-
-        with patch("builtins.open", mock_open(read_data="data")) as mock_file:
-            doc.open(input)
-
-            # Check if the file was opened and root was set
-            if expect_open:
-                mock_file.assert_called_once_with(input, "r", encoding="utf-8")
-            else:
-                mock_file.assert_not_called()
-
-            doc._setroot.assert_called_once_with(root)
 
     def test_open_error(self):
         """
@@ -165,7 +162,7 @@ class TestNafDocument():
         scenarios: check xml string
         # TODO refactor nafigator code to support universal naf format. Also consider moving to integratin test
         """
-        assert doc.validate() == False
+        assert doc.validate() is False
 
     def test_get_attributes(self):
         """

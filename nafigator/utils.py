@@ -15,11 +15,8 @@ import pandas as pd
 import logging
 from nafigator import parse2naf
 from .const import TermElement
-import docx
-from docx.enum.dml import MSO_THEME_COLOR_INDEX
 import datetime
 from typing import Union
-import nafigator
 
 
 def dataframe2naf(
@@ -115,7 +112,7 @@ def dataframe2naf(
                             doc.write(output)
                     df_meta.loc[row, "naf:status"] = "OK"
                     df_meta.loc[row, "naf:source"] = output
-                except:
+                except Exception:
                     df_meta.loc[row, "naf:status"] = "ERROR, generate_naf"
 
     return df_meta
@@ -648,7 +645,7 @@ def glue_sentences_separated_by_colons(doc, language: str, nlp: dict):
 
     COLON = ":"
 
-    doc_words = {word["id"]: word for word in doc.text}
+    # doc_words = {word["id"]: word for word in doc.text}
 
     for idx, sentence in enumerate(doc.sentences):
 
@@ -754,7 +751,8 @@ def get_context_rows(ref_text: dict, naf_layer, context_range: int) -> str:
 
 def get_textlines(sent: dict, doc_words: dict, doc_formats, context_range: int) -> str:
     """
-    Retrieves the textline where a sentence/paragraph has been found with option to also retreive the textlines before and after
+    Retrieves the textline where a sentence/paragraph has been found with option to also retreive the textlines before
+    and after
     Args:
         sentence: sentence or a paragraph from the Naf.document
         doc_words: dictionary contaning each word with the word ids as keys

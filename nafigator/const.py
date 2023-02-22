@@ -65,5 +65,3 @@ udpos2nafpos_info = {
     "X": {"class": "open", "naf_pos": "O"},
     "SPACE": {"class": "open", "naf_pos": "O"},
 }
-
-
