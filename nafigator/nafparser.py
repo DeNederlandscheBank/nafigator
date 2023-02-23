@@ -9,7 +9,7 @@ import io
 from datetime import datetime
 from socket import getfqdn
 from lxml import etree
-from typing import Union
+from typing import Union, Optional
 
 from nifigator import align_stanza_dict_offsets
 from nifigator.utils import tokenizer
@@ -86,15 +86,15 @@ class NafParser():
             self.nafdoc = input
         else:
             if isinstance(input, (str, bytes)):
-                params = self.add_public_params(params)
-                params = self.add_filedesc_params(params)
+                filedesc_params = self.add_filedesc_params(params["filedesc"])
+                public_params = self.add_public_params(params["public"])
                 params = self.add_stream_params(params, stream)
 
             self.nafdoc = NafDocument(
                 naf_version=naf_version,
                 language=language,
-                filedesc_elem=params["fileDesc"],
-                public_elem=params["public"]
+                filedesc_elem=filedesc_params,
+                public_elem=public_params
             )
 
         self.engine = engine
@@ -121,28 +121,22 @@ class NafParser():
 
         return self.nafdoc
 
-    def add_public_params(self, params: dict):
-        """Return params dictionary with all params used in the parse process"""
-        if "public" not in params.keys():
-            params["public"] = dict()
+    def add_filedesc_params(self, filedesc_params: dict = {}) -> dict:
+        """Return params dictionary with filedesc params"""
+        filedesc_params["creationtime"] = datetime.now()
+        filedesc_params["filename"] = self.input
+        filedesc_params["filetype"] = path_to_format(self.input)
 
-        params["public"]["uri"] = self.input
-        params["public"]["format"] = path_to_format(self.input)
+        return filedesc_params
 
-        return params
+    def add_public_params(self, public_params: dict = {}) -> dict:
+        """Return params dictionary with public params"""
+        public_params["uri"] = self.input
+        public_params["format"] = path_to_format(self.input)
 
-    def add_filedesc_params(self, params: dict):
-        """Return params dictionary with all params used in the parse process"""
-        if "fileDesc" not in params.keys():
-            params["fileDesc"] = dict()
+        return public_params
 
-        params["fileDesc"]["creationtime"] = datetime.now()
-        params["fileDesc"]["filename"] = self.input
-        params["fileDesc"]["filetype"] = path_to_format(self.input)
-
-        return params
-
-    def add_stream_params(self, params: dict, stream):
+    def add_stream_params(self, params: dict, stream: Optional[io.BytesIO]):
         if stream is not None:
             if not isinstance(stream, io.BytesIO):
                 stream = io.BytesIO(stream)
@@ -389,7 +383,7 @@ class NafParser():
 
         return None
 
-    def add_text_layer(self, tokenized_text: list):
+    def add_text_layer(self):
         """Generate and add all words in document to text layer"""
         self.add_layer(TEXT_LAYER_TAG)
 
