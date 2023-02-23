@@ -1,4 +1,4 @@
-from nafigator.nafdocument import NafDocument
+from nafigator.nafdocument.nafdocument import NafDocument
 from collections import defaultdict
 import pandas as pd
 from numpy import allclose

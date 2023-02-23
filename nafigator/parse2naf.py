@@ -14,7 +14,7 @@ import os
 import sys
 from typing import Union
 
-from .nafdocument import NafDocument
+from .nafdocument.nafdocument import NafDocument
 from .linguisticprocessor import stanzaProcessor
 from .linguisticprocessor import spacyProcessor
 from .preprocessprocessor import convert_docx

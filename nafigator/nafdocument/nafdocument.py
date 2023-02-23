@@ -9,7 +9,7 @@ import logging
 import camelot
 from copy import deepcopy
 import io
-from .nafdocument.const import (
+from .const import (
     NAF_VERSION_TO_DTD,
     FILEDESC_ELEMENT_TAG,
     PUBLIC_ELEMENT_TAG,
@@ -38,7 +38,7 @@ from .nafdocument.const import (
     LINGUISTIC_OCCURRENCE_TAG,
     PREFIX_NAF_BASE
 )
-from .nafdocument.nafelements import (
+from .nafelements import (
     ProcessorElement,
     DependencyRelation,
     WordformElement,
@@ -48,7 +48,7 @@ from .nafdocument.nafelements import (
     ChunkElement,
     RawElement
 )
-from .utils import (
+from nafigator.utils import (
     time_in_correct_format,
     load_dtd,
     prepare_comment_text

@@ -1,5 +1,5 @@
-from nafigator import nafdocument
-from nafigator.nafdocument import NafDocument
+from nafigator.nafdocument import nafdocument
+from nafigator.nafdocument.nafdocument import NafDocument
 from nafigator.nafdocument.nafelements import (
     WordformElement,
     EntityElement,

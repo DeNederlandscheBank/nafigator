@@ -1,4 +1,4 @@
-from nafigator.nafdocument import NafDocument
+from nafigator.nafdocument.nafdocument import NafDocument
 import ast
 import fitz
 from lxml import etree

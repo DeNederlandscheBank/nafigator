@@ -15,7 +15,7 @@ from nifigator import align_stanza_dict_offsets
 from nifigator.utils import tokenizer
 
 from .linguisticprocessor import stanzaProcessor, spacyProcessor
-from .nafdocument import NafDocument
+from .nafdocument.nafdocument import NafDocument
 from .nafdocument.const import (
     TERMS_LAYER_TAG,
     DEPS_LAYER_TAG,
