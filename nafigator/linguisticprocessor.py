@@ -6,18 +6,20 @@ This module contains the linguistic classes for nafigator
 
 """
 
+import logging
+
 try:
     import spacy
 
     SPACY_IMPORTED = True
-except:
+except ImportError:
     SPACY_IMPORTED = False
 
 try:
     import stanza
 
     STANZA_IMPORTED = True
-except:
+except ImportError:
     STANZA_IMPORTED = False
 
 if SPACY_IMPORTED:
@@ -125,7 +127,7 @@ if SPACY_IMPORTED:
             return token.pos_
 
         def token_lemma(self, token):
-            if token.lemma_ == None:
+            if token.lemma_ is None:
                 return token.text
             else:
                 return token.lemma_
@@ -255,7 +257,7 @@ if STANZA_IMPORTED:
 
         def token_lemma(self, token):
             if len(token.words) > 0:
-                if token.words[0].lemma == None:
+                if token.words[0].lemma is None:
                     return token.words[0].text
                 else:
                     return token.words[0].lemma
