@@ -90,7 +90,12 @@ class NafParser():
                 params = self.add_filedesc_params(params)
                 params = self.add_stream_params(params, stream)
 
-            self.nafdoc = NafDocument(params)
+            self.nafdoc = NafDocument(
+                naf_version=naf_version,
+                language=language,
+                filedesc_elem=params["fileDesc"],
+                public_elem=params["public"]
+            )
 
         self.engine = engine
         self.language = language
@@ -362,9 +367,7 @@ class NafParser():
                         comment=current_entity_orth,
                     )
 
-                    self.nafdoc.add_entity_element(
-                        entity_data, self.naf_version, self.language
-                    )
+                    self.nafdoc.add_entity_element(entity_data, self.language)
 
                     entity_number += 1
                     current_entity = list()

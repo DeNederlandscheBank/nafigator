@@ -3,7 +3,7 @@
 """naf document."""
 
 from lxml import etree
-from typing import Union, Optional
+from typing import Union
 import datetime
 import logging
 import camelot
@@ -86,23 +86,27 @@ def open_naf(input: Union[str, bytes]):
     else:
         raise TypeError("invalid input, instead of bytes or string it is" + str(type(input)))
 
-    return NafDocument(root)
+    return NafDocument(root=root)
 
 
 class NafDocument(etree._ElementTree):
     """The NafDocument class (subclass of an etree.elementtree)"""
 
-    def __init__(self, root: etree.Element = etree.Element("NAF", nsmap=namespaces), params: Optional[dict] = {}):
-        """Initialize a NafDocument with data from the params dict"""
+    def __init__(
+        self,
+        root: etree.Element = etree.Element("NAF", nsmap=namespaces),
+        naf_version: str = None,
+        language: str = None,
+        filedesc_elem: dict = {},
+        public_elem: dict = {}
+    ) -> None:
+        """Initialize a NafDocument"""
         self._setroot(root)
         self.add_nafHeader()
-
-        if params:
-            self.set_version(params["naf_version"])
-            if params["language"] is not None:
-                self.set_language(params["language"])
-            self.add_filedesc_element(params["fileDesc"])
-            self.add_public_element(params["public"])
+        self.set_version(naf_version)
+        self.set_language(language)
+        self.add_filedesc_element(filedesc_elem)
+        self.add_public_element(public_elem)
 
     def write(self, output: str) -> None:
         """Function to write a NafDocument
@@ -562,11 +566,13 @@ class NafDocument(etree._ElementTree):
 
     def set_language(self, language: str):
         """Set language of the NAF document"""
-        self.getroot().set("{http://www.w3.org/XML/1998/namespace}lang", language)
+        if language is not None:
+            self.getroot().set("{http://www.w3.org/XML/1998/namespace}lang", language)
 
-    def set_version(self, version):
+    def set_version(self, version: str):
         """Set version of the NAF document"""
-        self.getroot().set("version", version)
+        if version is not None:
+            self.getroot().set("version", version)
 
     def tree2string(self, byte: bool = False):
         """Return xml string of the NAF document"""
@@ -835,7 +841,7 @@ class NafDocument(etree._ElementTree):
             attributes_to_ignore=["comment"],
         )
 
-    def add_entity_element(self, data: EntityElement, naf_version: str, comments: bool):
+    def add_entity_element(self, data: EntityElement, comments: bool):
         """
         ENTITY ELEMENT
             A named entity element has the following attributes:
@@ -858,18 +864,13 @@ class NafDocument(etree._ElementTree):
             status CDATA #IMPLIED
             source CDATA #IMPLIED
         """
-        element = self.subelement(
-            element=self.layer(ENTITIES_LAYER_TAG), tag=ENTITY_OCCURRENCE_TAG, data=data
-        )
+        element = self.subelement(element=self.layer(ENTITIES_LAYER_TAG), tag=ENTITY_OCCURRENCE_TAG, data=data)
 
         if data.span != []:
-            self.add_span_element(
-                element=element, data=data, comments=comments, naf_version=naf_version
-            )
+            self.add_span_element(element=element, data=data, comments=comments)
 
         if data.ext_refs != []:
-            self.add_external_reference_element(
-                element=element, ext_refs=data.ext_refs)
+            self.add_external_reference_element(element=element, ext_refs=data.ext_refs)
 
     def add_term_element(
         self, data: TermElement, layer_to_attributes_to_ignore: dict, comments: bool
@@ -910,17 +911,14 @@ class NafDocument(etree._ElementTree):
             element=self.layer(TERMS_LAYER_TAG),
             tag=TERM_OCCURRENCE_TAG,
             data=data,
-            attributes_to_ignore=layer_to_attributes_to_ignore.get(
-                "terms", list()),
+            attributes_to_ignore=layer_to_attributes_to_ignore.get("terms", list()),
         )
 
         if data.span != []:
-            self.add_span_element(
-                element=element, data=data, comments=comments)
+            self.add_span_element(element=element, data=data, comments=comments)
 
         if data.ext_refs != []:
-            self.add_external_reference_element(
-                element=element, ext_refs=data.ext_refs)
+            self.add_external_reference_element(element=element, ext_refs=data.ext_refs)
 
     def add_chunk_element(self, data: ChunkElement, comments: bool):
         """
@@ -943,15 +941,12 @@ class NafDocument(etree._ElementTree):
             phrase CDATA #REQUIRED
             case CDATA #IMPLIED
         """
-        element = self.subelement(
-            element=self.layer(CHUNKS_LAYER_TAG), tag=CHUNK_OCCURRENCE_TAG, data=data
-        )
+        element = self.subelement(element=self.layer(CHUNKS_LAYER_TAG), tag=CHUNK_OCCURRENCE_TAG, data=data)
 
         if data.span != []:
-            self.add_span_element(
-                element=element, data=data, comments=comments)
+            self.add_span_element(element=element, data=data, comments=comments)
 
-    def add_span_element(self, element, data, comments=False, naf_version: str = None):
+    def add_span_element(self, element, data, comments=False):
         """
         SPAN ELEMENT
 
@@ -964,7 +959,7 @@ class NafDocument(etree._ElementTree):
         if not isinstance(data, dict):
             data = data._asdict()
 
-        if (naf_version is not None) and (naf_version == "v3"):
+        if (self.version is not None) and (self.version == "v3"):
             references = self.subelement(element=element, tag="references")
             span = self.subelement(element=references, tag=SPAN_OCCURRENCE_TAG)
         else:
@@ -975,9 +970,7 @@ class NafDocument(etree._ElementTree):
             span.append(etree.Comment(comment))
 
         for target in data["span"]:
-            self.subelement(
-                element=span, tag=TARGET_OCCURRENCE_TAG, data={"id": target}
-            )
+            self.subelement(element=span, tag=TARGET_OCCURRENCE_TAG, data={"id": target})
 
     def add_external_reference_element(self, element, ext_refs: list):
         """
