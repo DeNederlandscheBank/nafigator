@@ -15,11 +15,8 @@ import pandas as pd
 import logging
 from nafigator import parse2naf
 from .const import TermElement
-import docx
-from docx.enum.dml import MSO_THEME_COLOR_INDEX
 import datetime
 from typing import Union
-import nafigator
 
 
 def dataframe2naf(

@@ -125,9 +125,17 @@ To convert a .pdf, .docx, .txt or .html-file in Python code you can use: ::
 - naf_version: 'v3' or 'v3.1'
 - dtd_validation: True or False (default = False)
 - params: dictionary with parameters (default = {}) 
-- nlp: custom made pipeline object from spacy or stanza (default = None)
+- nlp: custom made pipeline object from spacy or stanza (default = None) for pretokenized data
 
-The returning object, doc, is a NafDocument from which layers can be accessed.
+The returning object, doc, is a NafDocument from which layers can be accessed. For example:
+
+nlp = stanza.Pipeline(
+        lang='en', 
+        processors='tokenize, lemma', 
+        tokenize_pretokenized=True,
+        download_method=None,
+        verbose=False
+        )
 
 Get the document and processors metadata via::
 

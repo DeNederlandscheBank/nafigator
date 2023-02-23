@@ -172,6 +172,7 @@ if STANZA_IMPORTED:
                 self.nlp = stanza.Pipeline(
                     lang=lang,
                     processors="tokenize,pos,lemma,ner,depparse",
+                    tokenize_pretokenized=True,
                     verbose=False,
                 )
             else:
