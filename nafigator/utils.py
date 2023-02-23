@@ -851,3 +851,15 @@ def get_textlines(sent: dict, doc_words: dict, doc_formats, context_range: int) 
                 result = "\n".join([textlines[line][2] for line in sent_lines_added])
                 found = True
     return result
+
+
+def path_to_format(path: str) -> str:
+    ext = os.path.splitext(path)[1].lower()
+    if ext == ".txt":
+        return "text/plain"
+    elif ext == ".html":
+        return "text/html"
+    elif ext == ".pdf":
+        return "application/pdf"
+    elif ext == ".docx":
+        return "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
