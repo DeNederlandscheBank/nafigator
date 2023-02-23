@@ -13,10 +13,11 @@ import os
 from lxml import etree
 import pandas as pd
 import logging
-from nafigator import parse2naf
-from .const import TermElement
 import datetime
 from typing import Union
+
+from nafigator import parse2naf
+from .nafdocument.nafelements import TermElement
 
 
 def dataframe2naf(

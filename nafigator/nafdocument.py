@@ -4,23 +4,26 @@
 
 from lxml import etree
 from typing import Union, Optional
-from .const import ProcessorElement
-from .const import DependencyRelation
-from .const import WordformElement
-from .const import EntityElement
-from .const import TermElement
-from .const import MultiwordElement
-from .const import ChunkElement
-from .const import RawElement
-from .utils import time_in_correct_format
-from .utils import load_dtd
-from .utils import prepare_comment_text
 import datetime
 import logging
 import camelot
 from copy import deepcopy
 import io
-
+from .nafdocument.nafelements import (
+    ProcessorElement,
+    DependencyRelation,
+    WordformElement,
+    EntityElement,
+    TermElement,
+    MultiwordElement,
+    ChunkElement,
+    RawElement
+)
+from .utils import (
+    time_in_correct_format,
+    load_dtd,
+    prepare_comment_text
+)
 
 NAF_VERSION_TO_DTD = {
     "v3": "data/naf_v3.dtd",
@@ -167,6 +170,18 @@ class NafDocument(etree._ElementTree):
                 ling_proc.append(header_data)
         header[LINGUISTIC_LAYER_TAG] = ling_proc
         return header
+
+    @property
+    def layers(self):
+        """Returns layers of the NAF document"""
+        return [
+            TEXT_LAYER_TAG,
+            TERMS_LAYER_TAG,
+            ENTITIES_LAYER_TAG,
+            DEPS_LAYER_TAG,
+            RAW_LAYER_TAG,
+            MULTIWORDS_LAYER_TAG
+        ]
 
     @property
     def raw(self):

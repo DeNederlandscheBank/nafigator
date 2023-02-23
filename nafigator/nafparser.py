@@ -14,10 +14,10 @@ from typing import Union
 from nifigator import align_stanza_dict_offsets
 from nifigator.utils import tokenizer
 
-from .nafdocument import NafDocument, LAYERS
 from .linguisticprocessor import stanzaProcessor, spacyProcessor
-from .nafdocument.nafelements import ProcessorElement
-from .const import (
+from .nafdocument import NafDocument
+from .nafdocument.nafelements import (
+    ProcessorElement,
     Entity,
     WordformElement,
     TermElement,
@@ -26,9 +26,9 @@ from .const import (
     ChunkElement,
     RawElement,
     MultiwordElement,
-    ComponentElement,
-    udpos2nafpos_info
+    ComponentElement
 )
+from .const import udpos2nafpos_info
 from .utils import (
     normalize_token_orth,
     remove_illegal_chars,
@@ -91,7 +91,7 @@ class NafParser():
         self.nlp = nlp
         self.params = params
 
-        self.linguistic_layers = LAYERS
+        self.linguistic_layers = NafDocument.layers
 
         # TODO: are they coming from params? And should they be initialized?
         self.cdata = params.get("cdata", True)
@@ -205,7 +205,7 @@ class NafParser():
 
     def process_linguistic_layers(self):
         """Perform linguistic layers"""
-        layers = self.linguistic_layers
+        layers = NafDocument.layers
 
         if "entities" in layers:
             self.add_entities_layer()

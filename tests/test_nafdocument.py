@@ -1,5 +1,12 @@
-from nafigator import nafdocument, EntityElement, TermElement, MultiwordElement, WordformElement, ChunkElement
+from nafigator import nafdocument
 from nafigator.nafdocument import NafDocument
+from nafigator.nafdocument.nafelements import (
+    WordformElement,
+    EntityElement,
+    TermElement,
+    MultiwordElement,
+    ChunkElement
+)
 import unittest
 from unittest.mock import patch, MagicMock, mock_open
 import pytest
