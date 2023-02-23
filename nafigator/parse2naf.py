@@ -10,7 +10,7 @@ from datetime import datetime
 from socket import getfqdn
 
 
-from .nafdocument import NafDocument
+from .nafdocument import NafDocument, FORMATS_LAYER_TAG
 from .linguisticprocessor import stanzaProcessor
 from .linguisticprocessor import spacyProcessor
 from .preprocessprocessor import convert_pdf, convert_docx
@@ -35,8 +35,6 @@ from .const import hidden_table
 from .utils import normalize_token_orth
 from .utils import remove_illegal_chars
 from .utils import prepare_comment_text
-
-FORMATS_LAYER_TAG = "formats"
 
 
 def generate_naf(
