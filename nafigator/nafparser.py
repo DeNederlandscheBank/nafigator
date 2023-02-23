@@ -16,6 +16,15 @@ from nifigator.utils import tokenizer
 
 from .linguisticprocessor import stanzaProcessor, spacyProcessor
 from .nafdocument import NafDocument
+from .nafdocument.const import (
+    TERMS_LAYER_TAG,
+    DEPS_LAYER_TAG,
+    TEXT_LAYER_TAG,
+    ENTITIES_LAYER_TAG,
+    CHUNKS_LAYER_TAG,
+    MULTIWORDS_LAYER_TAG,
+    RAW_LAYER_TAG
+)
 from .nafdocument.nafelements import (
     ProcessorElement,
     Entity,
@@ -91,8 +100,6 @@ class NafParser():
         self.nlp = nlp
         self.params = params
 
-        self.linguistic_layers = NafDocument.layers
-
         # TODO: are they coming from params? And should they be initialized?
         self.cdata = params.get("cdata", True)
         self.map_udpos2olia = params.get("map_udpos2olia", False)
@@ -103,7 +110,7 @@ class NafParser():
         self.textline_separator = params.get("textline_separator", " ")
 
     def generate_naf(self):
-        if self.linguistic_layers != []:
+        if NafDocument.layers != []:
             self.process_linguistic_steps(self.params)
             self.evaluate_naf()
 
@@ -207,25 +214,25 @@ class NafParser():
         """Perform linguistic layers"""
         layers = NafDocument.layers
 
-        if "entities" in layers:
+        if ENTITIES_LAYER_TAG in layers:
             self.add_entities_layer()
 
-        if "text" in layers:
+        if TEXT_LAYER_TAG in layers:
             self.add_text_layer()
 
-        if "terms" in layers:
+        if TERMS_LAYER_TAG in layers:
             self.add_terms_layer()
 
-        if "deps" in layers:
+        if DEPS_LAYER_TAG in layers:
             self.add_deps_layer()
 
-        if "multiwords" in layers:
+        if MULTIWORDS_LAYER_TAG in layers:
             self.add_multiwords_layer()
 
-        if "chunks" in layers:
+        if CHUNKS_LAYER_TAG in layers:
             self.add_chunks_layer()
 
-        if "raw" in layers:
+        if RAW_LAYER_TAG in layers:
             self.add_raw_layer()
 
     def entities_generator(self, doc):
@@ -303,7 +310,7 @@ class NafParser():
 
     def add_entities_layer(self):
         """Generate and add all entities in document to entities layer"""
-        self.add_layer("entities")
+        self.add_layer(ENTITIES_LAYER_TAG)
 
         current_entity = list()  # Use a list for multiword entities.
         current_entity_orth = list()  # id.
@@ -381,7 +388,7 @@ class NafParser():
 
     def add_text_layer(self, tokenized_text: list):
         """Generate and add all words in document to text layer"""
-        self.add_layer("text")
+        self.add_layer(TEXT_LAYER_TAG)
 
         wf_count_prev_sent = 0
         idx_w = 0
@@ -406,7 +413,7 @@ class NafParser():
 
     def add_terms_layer(self):
         """Generate and add all terms in document to terms layer"""
-        self.add_layer("terms")
+        self.add_layer(TERMS_LAYER_TAG)
 
         current_term = list()  # Use a list for multiword expressions.
         current_term_orth = list()  # id.
@@ -481,7 +488,7 @@ class NafParser():
 
     def add_deps_layer(self):
         """Generate and add all dependencies in document to deps layer"""
-        self.add_layer("deps")
+        self.add_layer(DEPS_LAYER_TAG)
 
         current_token: int = 1
         total_tokens: int = 0
@@ -511,9 +518,7 @@ class NafParser():
 
     def get_next_mw_id(self):
         """Return multiword id for new multiword"""
-        layer = self.nafdoc.find("multiwords")
-        if layer is None:
-            layer = etree.SubElement(self.nafdoc.getroot(), "multiwords")
+        layer = self.nafdoc.find(MULTIWORDS_LAYER_TAG)
         mw_ids = [int(mw_el.get("id")[2:]) for mw_el in layer.xpath("mw")]
         if mw_ids:
             next_mw_id = max(mw_ids) + 1
@@ -533,7 +538,7 @@ class NafParser():
 
     def add_multiwords_layer(self):
         """Generate and add all multiwords in document to multiwords layer"""
-        self.add_layer("multiwords")
+        self.add_layer(MULTIWORDS_LAYER_TAG)
 
         if self.naf_version == "v3":
             logging.info("add_multi_words function only applies to naf version 4")
@@ -611,7 +616,7 @@ class NafParser():
 
     def add_raw_layer(self):
         """Generate and add raw text in document to raw layer"""
-        self.add_layer("raw")
+        self.add_layer(RAW_LAYER_TAG)
 
         wordforms = self.nafdoc.text
 
@@ -651,7 +656,7 @@ class NafParser():
 
     def add_chunks_layer(self):
         """Generate and add all chunks in document to chunks layer"""
-        self.add_layer("chunks")
+        self.add_layer(CHUNKS_LAYER_TAG)
 
         for chunk_data in self.chunk_tuples_for_doc(self.doc):
             self.nafdoc.add_chunk_element(chunk_data, self.comments)
