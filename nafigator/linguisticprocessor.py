@@ -3,6 +3,7 @@
 """Linguistic processor module.
 This module contains the linguistic classes for nafigator
 """
+import logging
 
 try:
     import spacy

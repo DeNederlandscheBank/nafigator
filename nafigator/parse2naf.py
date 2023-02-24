@@ -45,6 +45,7 @@ def generate_naf(
     naf_version: str = None,
     dtd_validation: bool = False,
     text: str = None,
+    pdfdoc: object = None,
     params: dict = {},
     nlp=None,
 ):
@@ -70,6 +71,8 @@ def generate_naf(
     if engine.lower() == "spacy" and "spacy" not in sys.modules:
         logging.error("SpaCy not installed")
         return None
+    if isinstance(pdfdoc, object):
+        text = pdfdoc.text
 
     params = create_params(
         input=input,
@@ -434,7 +437,7 @@ def add_entities_layer(params: dict):
 
     parsing_entity: bool = False
 
-    for sentence_number, sentence in enumerate(engine.document_sentences(doc), start=1):
+    for _, sentence in enumerate(engine.document_sentences(doc), start=1):
 
         entity_gen = entities_generator(sentence, params)
         try:
