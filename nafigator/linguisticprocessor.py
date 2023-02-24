@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """Linguistic processor module.
-
 This module contains the linguistic classes for nafigator
-
 """
 
 try:
@@ -25,13 +23,11 @@ if SPACY_IMPORTED:
     class spacyProcessor:
         def __init__(self, nlp=None, lang: str = None) -> None:
             """Initialize spacy processor
-
             Args:
                 nlp: optional NLP processor
                 lang: language
             Returns:
                 None
-
             """
             self.lang = lang
             if nlp is None:
@@ -55,12 +51,10 @@ if SPACY_IMPORTED:
 
         def processor(self, name):
             """Return processor of each pipeline element
-
             Args:
                 name: name of processor
             Returns:
                 dict: dictionary with name of processor
-
             """
             processors = {proc_name: proc for proc_name, proc in self.nlp.pipeline}
 
@@ -172,6 +166,7 @@ if STANZA_IMPORTED:
                 self.nlp = stanza.Pipeline(
                     lang=lang,
                     processors="tokenize,pos,lemma,ner,depparse",
+                    tokenize_pretokenized=True,
                     verbose=False,
                 )
             else:

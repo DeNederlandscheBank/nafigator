@@ -2,23 +2,23 @@
 
 """Main module."""
 
-import sys
-import logging
-import os
-import io
 from datetime import datetime
+import io
+import logging
+from lxml import etree
+import lxml.html
+from nifigator import align_stanza_dict_offsets
+from nifigator.utils import tokenizer
 from socket import getfqdn
-
+import os
+import sys
+from typing import Union
 
 from .nafdocument import NafDocument
 from .linguisticprocessor import stanzaProcessor
 from .linguisticprocessor import spacyProcessor
-from .preprocessprocessor import convert_pdf, convert_docx
+from .preprocessprocessor import convert_docx
 from .ocrprocessor import convert_ocr_pdf
-
-from lxml import etree
-import lxml.html
-from typing import Union
 
 from .const import ProcessorElement
 from .const import Entity
@@ -30,8 +30,6 @@ from .const import ChunkElement
 from .const import RawElement
 from .const import MultiwordElement
 from .const import ComponentElement
-from .const import udpos2nafpos_info
-from .const import hidden_table
 from .utils import normalize_token_orth
 from .utils import remove_illegal_chars
 from .utils import prepare_comment_text
@@ -46,6 +44,7 @@ def generate_naf(
     language: str = None,
     naf_version: str = None,
     dtd_validation: bool = False,
+    text: str = None,
     params: dict = {},
     nlp=None,
 ):
@@ -90,11 +89,11 @@ def generate_naf(
         params["tree"].generate(params)
 
     if params["preprocess_layers"] != []:
-        process_preprocess_steps(params)
+        process_preprocess_steps(params, text)
 
     if params["linguistic_layers"] != []:
-        process_linguistic_steps(params)
-        evaluate_naf(params)
+        process_linguistic_steps(params, text)
+        evaluate_naf(params, text)
 
     return params["tree"]
 
@@ -211,7 +210,7 @@ def create_params(
     return params
 
 
-def evaluate_naf(params: dict):
+def evaluate_naf(params: dict, text: str):
     """Perform alignment between raw layer, document text and text layer in the NAF xml tree"""
     # verify alignment between raw layer and document text
     doc_text = params["engine"].document_text(params["doc"])
@@ -219,7 +218,7 @@ def evaluate_naf(params: dict):
     if len(raw) != len(doc_text):
         logging.error(f"raw length ({len(raw)}) != doc length ({len(doc_text)})")
     # verify alignment between raw layer and text
-    text_to_use = derive_text_from_formats_layer(params)
+    text_to_use = text
     if len(raw) != len(text_to_use):
         logging.error(f"raw length ({len(raw)}) != text to use ({len(text_to_use)})")
     # verify alignment between raw layer and text layer
@@ -238,8 +237,12 @@ def evaluate_naf(params: dict):
         params["tree"].validate()
 
 
-def process_preprocess_steps(params: dict):
-    """Perform preprocessor steps to generate text as input for linguistic layers"""
+def process_preprocess_steps(params: dict, text: str):
+    """
+    Perform preprocessor steps to generate text as input for linguistic layers
+    Added to params: beginTimestamp_preprocess, endTimestamp_preprocess
+    Note text param to be removed
+    """
     params["beginTimestamp_preprocess"] = datetime.now()
     input = params["fileDesc"]["filename"]
     if input[-3:].lower() == "txt":
@@ -265,37 +268,17 @@ def process_preprocess_steps(params: dict):
         convert_docx(input, format="text", params=params)
     elif input[-3:].lower() == "pdf":
         if not params["apply_ocr"]:
-            convert_pdf(input, format="xml", params=params)
-            convert_pdf(input, format="text", params=params)
+            params["text"] = text
         else:
             params["text"] = convert_ocr_pdf(input, format="text", params=params)
 
     params["endTimestamp_preprocess"] = datetime.now()
 
-    # derive preprocess layers from nlp output
-    process_preprocess_layers(params)
 
-
-def process_preprocess_layers(params: dict):
-    """Perform preprocess layers"""
-    layers = params["preprocess_layers"]
-
-    if "formats" in layers:
-        add_formats_layer(params)
-
-
-def norm_spaces(s):
-    """Normalize spaces, splits on all kinds of whitespace and rejoins"""
-    return s
-    # return " ".join((x for x in re.split(r"\s+", s) if x))
-
-
-def process_linguistic_steps(params: dict):
+def process_linguistic_steps(params: dict, text: str):
     """Perform linguistic steps to generate linguistics layers"""
     engine_name = params["engine_name"]
     nlp = params["nlp"]
-
-    text = derive_text_from_formats_layer(params)
 
     # determine language for nlp processor
     if params["language"] is not None:
@@ -318,14 +301,23 @@ def process_linguistic_steps(params: dict):
 
     # execute nlp processor pipeline
     params["beginTimestamp"] = datetime.now()
-    params["doc"] = params["engine"].nlp(text)
+    tokenized_text = tokenizer(text)
+
+    # correction for bug in stanza
+    if tokenized_text != []:
+        if tokenized_text[-1][-1] == "":
+            tokenized_text[-1] = tokenized_text[-1][:-1]
+
+    # extract the text from the tokenized data
+    sentences_text = [[word['text'] for word in sentence] for sentence in tokenized_text]
+    params["doc"] = params["engine"].nlp(sentences_text)
     params["endTimestamp"] = datetime.now()
 
     # derive naf layers from nlp output
-    process_linguistic_layers(params)
+    process_linguistic_layers(params, text, tokenized_text)
 
 
-def process_linguistic_layers(params: dict):
+def process_linguistic_layers(params: dict, text: str, tokenized_text: list):
     """Perform linguistic layers"""
     layers = params["linguistic_layers"]
 
@@ -333,7 +325,7 @@ def process_linguistic_layers(params: dict):
         add_entities_layer(params)
 
     if "text" in layers:
-        add_text_layer(params)
+        add_text_layer(params, tokenized_text)
 
     if "terms" in layers:
         add_terms_layer(params)
@@ -348,51 +340,7 @@ def process_linguistic_layers(params: dict):
         add_chunks_layer(params)
 
     if "raw" in layers:
-        add_raw_layer(params)
-
-
-def derive_text_from_formats_layer(params):
-    """Derive the text from the xml formats layer"""
-    # @TODO: loops 2 times over this code while generating a naf file
-    formats = params["tree"].find(FORMATS_LAYER_TAG)
-    textline_separator = params["textline_separator"]
-    if formats is not None:
-        text = []
-        for page in formats:
-            for textbox in page:
-                if textbox.tag == "textbox":
-                    for textline in textbox:
-                        for text_element in textline:
-                            text.append(
-                                (text_element.text, int(text_element.get("offset")))
-                            )
-                elif textbox.tag == "figure":
-                    for text_element in textbox:
-                        text.append(
-                            (text_element.text, int(text_element.get("offset")))
-                        )
-
-        text_spaces_added = [
-            line[0]
-            # calculate the offset difference between end of word and start of next word
-            + textline_separator * (text[idx + 1][1] - text[idx][1] - len(line[0]))
-            for idx, line in enumerate(text)
-            if idx < len(text) - 1
-        ]
-        # add the last line
-        if len(text) > 0:
-            text_spaces_added.append(text[-1][0])
-
-        text = "".join(text_spaces_added)
-        if params["replace_hidden_characters"]:
-            text = norm_spaces(text.translate(hidden_table))
-        else:
-            text = norm_spaces(text)
-    else:
-        # html documents
-        text = params["text"]
-
-    return text
+        add_raw_layer(params, text)
 
 
 def entities_generator(doc, params: dict):
@@ -551,7 +499,7 @@ def add_entities_layer(params: dict):
     return None
 
 
-def add_text_layer(params: dict):
+def add_text_layer(params: dict, tokenized_text: list):
     """Generate and add all words in document to text layer"""
     lp = ProcessorElement(
         name="text",
@@ -565,68 +513,27 @@ def add_text_layer(params: dict):
 
     params["tree"].add_processor_element("text", lp)
 
-    root = params["tree"].getroot()
+    # align the stanza output with the tokenized text
+    doc = align_stanza_dict_offsets(params["doc"].to_dict(), tokenized_text)
 
-    pages_offset = None
-    paragraphs_offset = None
-    formats = root.find(FORMATS_LAYER_TAG)
-    if formats is not None:
-        # calculate offsets
-        pages_offset = [int(page.get("offset")) for page in formats]
-        paragraphs_offset = [0] + [
-            int(text.get("offset")) + len(text.text)
-            for page in formats
-            for textbox in page
-            if textbox.tag == "textbox"
-            for textline in textbox
-            for text in textline
-            if (len(text.text.strip()) > 0) and (text.text.strip()[-1] in [".", "?"])
-        ]
-
-    doc = params["doc"]
-    engine = params["engine"]
-
-    current_token: int = 1
-    total_tokens: int = 0
-    current_page: int = 0
-    current_paragraph: int = 0
-
-    for sentence_number, sentence in enumerate(engine.document_sentences(doc), start=1):
-
-        for token_number, token in enumerate(
-            engine.sentence_tokens(sentence), start=current_token
-        ):
-
-            if (pages_offset is not None) and (current_page < len(pages_offset)):
-                if engine.token_offset(token) >= pages_offset[current_page]:
-                    current_page += 1
-
-            if (paragraphs_offset is not None) and (
-                current_paragraph < len(paragraphs_offset)
-            ):
-                if engine.token_offset(token) >= paragraphs_offset[current_paragraph]:
-                    current_paragraph += 1
-
-            wf_id = "w" + str(token_number + total_tokens)
+    wf_count_prev_sent = 0
+    idx_w = 0
+    for idx_s, s in enumerate(doc, start=1):
+        wf_count_prev_sent += idx_w
+        for idx_w, wf in enumerate(s, start=1):
+            wf_id = "w" + str(wf_count_prev_sent + idx_w)
             wf_data = WordformElement(
                 id=wf_id,
-                sent=str(sentence_number),
-                para=str(current_paragraph),
-                page=str(current_page),
-                offset=str(engine.token_offset(token)),
-                length=str(len(token.text)),
+                sent=str(idx_s),
+                para=None,  # TODO nog te fixen -> nu geen paragraphs layer
+                page=None,  # TODO nog te fixen -> page offset??
+                offset=str(wf["start_char"]),
+                length=str(len(wf["text"])),
                 xpath=None,
-                text=token.text,
+                text=wf["text"],
             )
 
             params["tree"].add_wf_element(wf_data, params["cdata"])
-
-        if engine.token_reset() is False:
-            current_token = token_number + 1
-            total_tokens = 0
-        else:
-            current_token = 1
-            total_tokens += token_number
 
     return None
 
@@ -878,7 +785,7 @@ def add_multiwords_layer(params: dict):
     # params["tree"].add_multi_words(params["naf_version"], params["language"])
 
 
-def add_raw_layer(params: dict):
+def add_raw_layer(params: dict, text: str):
     """Generate and add raw text in document to raw layer"""
     lp = ProcessorElement(
         name="raw",
@@ -891,41 +798,7 @@ def add_raw_layer(params: dict):
     )
 
     params["tree"].add_processor_element("raw", lp)
-
-    wordforms = params["tree"].text
-
-    if len(wordforms) > 0:
-
-        delta = int(wordforms[0]["offset"])
-        tokens = [" " * delta + wordforms[0]["text"]]
-
-        for prev_wf, cur_wf in zip(wordforms[:-1], wordforms[1:]):
-            prev_start = int(prev_wf["offset"])
-            prev_end = prev_start + int(prev_wf["length"])
-            cur_start = int(cur_wf["offset"])
-            delta = cur_start - prev_end
-            # no chars between two token (for example with a dot .)
-            if delta == 0:
-                leading_chars = ""
-            elif delta >= 1:
-                # 1 or more characters between tokens -> n spaces added
-                leading_chars = " " * delta
-            elif delta < 0:
-                logging.warning(
-                    f"please check the offsets of {prev_wf['text']} and "
-                    f"{cur_wf['text']} (delta of {delta})"
-                )
-            tokens.append(leading_chars + cur_wf["text"])
-
-        if params["cdata"]:
-            raw_text = etree.CDATA("".join(tokens))
-        else:
-            raw_text = "".join(tokens)
-    else:
-        raw_text = ""
-
-    raw_data = RawElement(text=raw_text)
-
+    raw_data = RawElement(text=text)
     params["tree"].add_raw_text_element(raw_data)
 
 
@@ -945,34 +818,3 @@ def add_chunks_layer(params: dict):
 
     for chunk_data in chunk_tuples_for_doc(params["doc"], params):
         params["tree"].add_chunk_element(chunk_data, params["comments"])
-
-
-def add_formats_layer(params: dict):
-    """Generate and add all format elements in document to formats layer"""
-    lp = ProcessorElement(
-        name="formats",
-        version=f"nafigator",
-        model=None,
-        timestamp=None,
-        beginTimestamp=params["beginTimestamp_preprocess"],
-        endTimestamp=params["endTimestamp_preprocess"],
-        hostname=getfqdn(),
-    )
-    params["tree"].add_processor_element("formats", lp)
-    if params.get("include pdf xml", False):
-        params["tree"].add_processor_element("formats_copy", lp)
-
-    if "pdftoxml" in params.keys():
-        params["tree"].add_formats_element(
-            source="pdf",
-            formats=params["pdftoxml"],
-            coordinates=params.get("incl_bbox", False),
-            pdf_tables=params.get("pdftotables", None))
-        if params.get("include pdf xml", False):
-            params["tree"].add_formats_copy_element("pdf", params["pdftoxml"])
-
-    elif "docxtoxml" in params.keys():
-        params["tree"].add_formats_element(
-            source="docx",
-            formats=params["docxtoxml"],
-            coordinates=params.get("incl_bbox", False))
