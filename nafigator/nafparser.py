@@ -11,8 +11,7 @@ from socket import getfqdn
 from lxml import etree
 from typing import Union, Optional
 
-from nifigator import align_stanza_dict_offsets
-from nifigator.utils import tokenizer
+from nifigator.utils import align_stanza_dict_offsets, tokenizer
 
 from .linguisticprocessor import stanzaProcessor, spacyProcessor
 from .nafdocument.nafdocument import NafDocument

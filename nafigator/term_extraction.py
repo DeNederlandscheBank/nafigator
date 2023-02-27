@@ -14,7 +14,6 @@ from lxml import etree
 import pandas as pd
 import logging
 from nafigator import parse2naf
-from .const import TermElement
 from .utils import sublist_indices
 import docx
 from docx.enum.dml import MSO_THEME_COLOR_INDEX

@@ -7,8 +7,7 @@ import io
 import logging
 from lxml import etree
 import lxml.html
-from nifigator import align_stanza_dict_offsets
-from nifigator.utils import tokenizer
+from nifigator.utils import align_stanza_dict_offsets, tokenizer
 from socket import getfqdn
 import os
 import sys
@@ -20,16 +19,18 @@ from .linguisticprocessor import spacyProcessor
 from .preprocessprocessor import convert_docx
 from .ocrprocessor import convert_ocr_pdf
 
-from .const import ProcessorElement
-from .const import Entity
-from .const import WordformElement
-from .const import TermElement
-from .const import EntityElement
-from .const import DependencyRelation
-from .const import ChunkElement
-from .const import RawElement
-from .const import MultiwordElement
-from .const import ComponentElement
+from .nafdocument.nafelements import (
+    ProcessorElement,
+    Entity,
+    WordformElement,
+    TermElement,
+    EntityElement,
+    DependencyRelation,
+    ChunkElement,
+    RawElement,
+    MultiwordElement,
+    ComponentElement
+)
 from .const import udpos2nafpos_info
 from .utils import normalize_token_orth
 from .utils import remove_illegal_chars

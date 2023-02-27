@@ -8,7 +8,7 @@ This module contains the termbase processor classes for nafigator
 
 from .nafdocument.nafdocument import NafDocument
 from .utils import sublist_indices
-from .const import EntityElement
+from .nafdocument.nafelements import EntityElement
 from lxml import etree
 from collections import defaultdict
 

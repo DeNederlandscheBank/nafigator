@@ -9,7 +9,6 @@ from pdfminer.converter import TextConverter, XMLConverter, HTMLConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
 from io import BytesIO
-from .const import ProcessorElement
 
 import docx
 import zipfile
