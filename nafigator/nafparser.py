@@ -52,7 +52,6 @@ class NafParser():
         language: str,
         naf_version: str,
         dtd_validation: bool = False,
-        text: str = None,
         nlp=None,
     ) -> None:
         """Parse input file, generate and return NAF xml tree"""
@@ -67,26 +66,33 @@ class NafParser():
         self.language = language
         self.naf_version = naf_version
         self.dtd_validation = dtd_validation
-        self.text = text
         self.nlp = nlp
 
     def generate_naf(
         self,
         input: Union[str, NafDocument],
         stream: io.BytesIO = None,
+        text: str = None,
+        pdfdoc: object = None,
         params: dict = {}
     ) -> NafDocument:
         if isinstance(input, str) and not os.path.isfile(input) and stream is None:
             logging.error("no or non-existing input specified")
+            return None
+        if (self.language is None) and ("language_detector" not in params.keys()):
+            logging.error("no language or language detector specified")
+            return None
+        if (text is None) and ((pdfdoc is None) or not hasattr(pdfdoc, "text")):
+            logging.error("text or pdfdoc text is not specified")
             return None
 
         if isinstance(input, NafDocument):
             self.nafdoc = input
         else:
             if isinstance(input, (str, bytes)):
-                filedesc_params = self.add_filedesc_params(params["filedesc"])
-                public_params = self.add_public_params(params["public"])
-                params = self.add_stream_params(params, self.stream)
+                filedesc_params = self.add_filedesc_params(input, params["filedesc"])
+                public_params = self.add_public_params(input, params["public"])
+                params = self.add_stream_params(params, stream)
 
             self.nafdoc = NafDocument(
                 naf_version=self.naf_version,
@@ -95,6 +101,7 @@ class NafParser():
                 public_elem=public_params
             )
 
+        self.text = pdfdoc.text if (text is None) else text
         self.params = params
         self.set_default_params(params)
 
@@ -113,22 +120,23 @@ class NafParser():
         self.comments = params.get("comments", True)
         self.textline_separator = params.get("textline_separator", " ")
 
-    def add_filedesc_params(self, filedesc_params: dict = {}) -> dict:
+    def add_filedesc_params(self, input: str, filedesc_params: dict = {}) -> dict:
         """Return params dictionary with filedesc params"""
         filedesc_params["creationtime"] = datetime.now()
-        filedesc_params["filename"] = self.input
-        filedesc_params["filetype"] = path_to_format(self.input)
+        filedesc_params["filename"] = input
+        filedesc_params["filetype"] = path_to_format(input)
 
         return filedesc_params
 
-    def add_public_params(self, public_params: dict = {}) -> dict:
+    def add_public_params(self, input: str, public_params: dict = {}) -> dict:
         """Return params dictionary with public params"""
-        public_params["uri"] = self.input
-        public_params["format"] = path_to_format(self.input)
+        public_params["uri"] = input
+        public_params["format"] = path_to_format(input)
 
         return public_params
 
     def add_stream_params(self, params: dict, stream: Optional[io.BytesIO]):
+        """Return params dictionary with stream params"""
         if stream is not None:
             if not isinstance(stream, io.BytesIO):
                 stream = io.BytesIO(stream)
