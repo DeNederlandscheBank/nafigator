@@ -13,12 +13,10 @@ import os
 import sys
 from typing import Union
 
-from .nafdocument.nafdocument import NafDocument
-from .linguisticprocessor import stanzaProcessor
-from .linguisticprocessor import spacyProcessor
+from .linguisticprocessor import stanzaProcessor, spacyProcessor
 from .preprocessprocessor import convert_docx
 from .ocrprocessor import convert_ocr_pdf
-
+from .nafdocument.nafdocument import NafDocument
 from .nafdocument.nafelements import (
     ProcessorElement,
     Entity,
@@ -31,10 +29,10 @@ from .nafdocument.nafelements import (
     MultiwordElement,
     ComponentElement
 )
-from .const import udpos2nafpos_info
 from .utils import normalize_token_orth
 from .utils import remove_illegal_chars
 from .utils import prepare_comment_text
+from .const import udpos2nafpos_info
 
 
 def generate_naf(
@@ -45,6 +43,7 @@ def generate_naf(
     naf_version: str = None,
     dtd_validation: bool = False,
     text: str = None,
+    pdfdoc: object = None,
     params: dict = {},
     nlp=None,
 ):
@@ -70,6 +69,8 @@ def generate_naf(
     if engine.lower() == "spacy" and "spacy" not in sys.modules:
         logging.error("SpaCy not installed")
         return None
+    if isinstance(pdfdoc, object) and pdfdoc is not None:
+        text = pdfdoc.text
 
     params = create_params(
         input=input,
@@ -85,7 +86,8 @@ def generate_naf(
     if isinstance(input, NafDocument):
         params["tree"] = input
     else:
-        params["tree"] = NafDocument(params)
+        params["tree"] = NafDocument()
+        params["tree"].generate(params)
 
     if params["preprocess_layers"] != []:
         process_preprocess_steps(params, text)
@@ -114,7 +116,7 @@ def create_params(
     params["engine_name"] = engine
     params["nlp"] = nlp
 
-    if isinstance(input, (str, bytes)):
+    if isinstance(input, str):
         if "fileDesc" not in params.keys():
             params["fileDesc"] = dict()
         params["fileDesc"]["creationtime"] = datetime.now()
@@ -130,19 +132,54 @@ def create_params(
                 stream = io.BytesIO(stream)
             params['stream'] = stream
 
-        ext = os.path.splitext(input)[1].lower()
-        if ext == ".txt":
+        if os.path.splitext(input)[1].lower() == ".txt":
             params["fileDesc"]["filetype"] = "text/plain"
             params["public"]["format"] = "text/plain"
-        elif ext == ".html":
+        elif os.path.splitext(input)[1].lower() == ".html":
             params["fileDesc"]["filetype"] = "text/html"
             params["public"]["format"] = "text/html"
-        elif ext == ".pdf":
+        elif os.path.splitext(input)[1].lower() == ".pdf":
             params["fileDesc"]["filetype"] = "application/pdf"
             params["public"]["format"] = "application/pdf"
-        elif ext == ".docx":
-            params["fileDesc"]["filetype"] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            params["public"]["format"] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        elif os.path.splitext(input)[1].lower() == ".docx":
+            params["fileDesc"][
+                "filetype"
+            ] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            params["public"][
+                "format"
+            ] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+
+    if isinstance(input, bytes):
+        if "fileDesc" not in params.keys():
+            params["fileDesc"] = dict()
+        params["fileDesc"]["creationtime"] = datetime.now()
+        params["fileDesc"]["filename"] = input
+
+        if "public" not in params.keys():
+            params["public"] = dict()
+            params["public"]["uri"] = input
+        else:
+            if "uri" not in params["public"].keys():
+                params["public"]["uri"] = input
+        if stream is not None:
+            params['stream'] = stream
+
+        if os.path.splitext(input)[1].lower() == ".txt":
+            params["fileDesc"]["filetype"] = "text/plain"
+            params["public"]["format"] = "text/plain"
+        elif os.path.splitext(input)[1].lower() == ".html":
+            params["fileDesc"]["filetype"] = "text/html"
+            params["public"]["format"] = "text/html"
+        elif os.path.splitext(input)[1].lower() == ".pdf":
+            params["fileDesc"]["filetype"] = "application/pdf"
+            params["public"]["format"] = "application/pdf"
+        elif os.path.splitext(input)[1].lower() == ".docx":
+            params["fileDesc"][
+                "filetype"
+            ] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            params["public"][
+                "format"
+            ] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 
     # set default linguistic parameters
     if "linguistic_layers" not in params.keys():
@@ -156,14 +193,20 @@ def create_params(
         ]
     if "preprocess_layers" not in params.keys():
         params["preprocess_layers"] = ["formats"]
-
-    params["cdata"] = params.get("cdata", True)
-    params["map_udpos2olia"] = params.get("map_udpos2olia", False)
-    params["layer_to_attributes_to_ignore"] = params.get("layer_to_attributes_to_ignore", {"terms": {}})
-    params["replace_hidden_characters"] = params.get("replace_hidden_characters", True)
-    params["comments"] = params.get("comments", True)
-    params["apply_ocr"] = params.get("apply_ocr", False)
-    params["textline_separator"] = params.get("textline_separator", " ")
+    if params.get("cdata", None) is None:
+        params["cdata"] = True
+    if params.get("map_udpos2olia", None) is None:
+        params["map_udpos2olia"] = False
+    if params.get("layer_to_attributes_to_ignore", None) is None:
+        params["layer_to_attributes_to_ignore"] = {"terms": {}}
+    if params.get("replace_hidden_characters", None) is None:
+        params["replace_hidden_characters"] = True
+    if params.get("comments", None) is None:
+        params["comments"] = True
+    if params.get("apply_ocr", None) is None:
+        params["apply_ocr"] = False
+    if params.get("textline_separator") is None:
+        params["textline_separator"] = " "
 
     return params
 
@@ -199,7 +242,6 @@ def process_preprocess_steps(params: dict, text: str):
     """
     Perform preprocessor steps to generate text as input for linguistic layers
     Added to params: beginTimestamp_preprocess, endTimestamp_preprocess
-
     Note text param to be removed
     """
     params["beginTimestamp_preprocess"] = datetime.now()
@@ -393,7 +435,7 @@ def add_entities_layer(params: dict):
 
     parsing_entity: bool = False
 
-    for sentence_number, sentence in enumerate(engine.document_sentences(doc), start=1):
+    for _, sentence in enumerate(engine.document_sentences(doc), start=1):
 
         entity_gen = entities_generator(sentence, params)
         try:

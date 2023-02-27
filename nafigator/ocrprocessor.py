@@ -27,7 +27,7 @@ except:
     PYTESSERACT = False
 
 
-def convert_ocr_pdf(path: str = None, format: str = "text", params: dict = None) -> str:
+def convert_ocr_pdf(path: str = None, params: dict = None) -> str:
     """Function to process ocr on pdf to generate text
 
        Source: https://stackoverflow.com/questions/29657237/tesseract-ocr-pdf-as-input
@@ -41,6 +41,12 @@ def convert_ocr_pdf(path: str = None, format: str = "text", params: dict = None)
         str: the result of the conversion
 
     """
-    images = pdf2image.convert_from_path(path)
-    text = [pytesseract.image_to_string(image) for page, image in enumerate(images)]
+
+    stream = params.get("stream", None)
+    if stream is not None:
+        images = pdf2image.convert_from_bytes(stream.getvalue())
+    else:
+        images = pdf2image.convert_from_path(path)
+
+    text = [pytesseract.image_to_string(image) for _, image in enumerate(images)]
     return "\n".join(text)

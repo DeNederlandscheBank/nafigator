@@ -2,15 +2,7 @@
 
 """Preprocessor module."""
 
-from pathlib import Path
-import pdfminer
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.converter import TextConverter, XMLConverter, HTMLConverter
-from pdfminer.layout import LAParams
-from pdfminer.pdfpage import PDFPage
-from io import BytesIO
 
-import docx
 import zipfile
 
 try:
@@ -19,7 +11,6 @@ except ImportError:
     from xml.etree.ElementTree import XML
 
 import camelot as cm
-import pdftopng
 
 
 WORD_NAMESPACE = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
