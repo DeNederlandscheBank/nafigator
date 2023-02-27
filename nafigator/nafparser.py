@@ -49,37 +49,36 @@ from .utils import (
 class NafParser():
     def __init__(
         self,
-        input: Union[str, NafDocument] = None,
-        stream: io.BytesIO = None,
-        engine: str = None,
-        language: str = None,
-        naf_version: str = None,
+        engine: str,
+        language: str,
+        naf_version: str,
         dtd_validation: bool = False,
         text: str = None,
         nlp=None,
-        params: dict = {}
     ) -> None:
         """Parse input file, generate and return NAF xml tree"""
-        if input is None:
-            logging.error("input is none")
-            return None
-        if isinstance(input, str) and not os.path.isfile(input) and stream is None:
-            logging.error("no or non-existing input specified")
-            return None
-        if engine is None:
-            logging.error("no engine specified")
-            return None
-        if (language is None) and ("language_detector" not in params.keys()):
-            logging.error("no language or language detector specified")
-            return None
-        if naf_version is None:
-            logging.error("no naf version specified")
-            return None
         if engine.lower() == "stanza" and "stanza" not in sys.modules:
             logging.error("stanza not installed")
             return None
         if engine.lower() == "spacy" and "spacy" not in sys.modules:
             logging.error("SpaCy not installed")
+            return None
+
+        self.engine = engine
+        self.language = language
+        self.naf_version = naf_version
+        self.dtd_validation = dtd_validation
+        self.text = text
+        self.nlp = nlp
+
+    def generate_naf(
+        self,
+        input: Union[str, NafDocument],
+        stream: io.BytesIO = None,
+        params: dict = {}
+    ) -> NafDocument:
+        if isinstance(input, str) and not os.path.isfile(input) and stream is None:
+            logging.error("no or non-existing input specified")
             return None
 
         if isinstance(input, NafDocument):
@@ -88,38 +87,32 @@ class NafParser():
             if isinstance(input, (str, bytes)):
                 filedesc_params = self.add_filedesc_params(params["filedesc"])
                 public_params = self.add_public_params(params["public"])
-                params = self.add_stream_params(params, stream)
+                params = self.add_stream_params(params, self.stream)
 
             self.nafdoc = NafDocument(
-                naf_version=naf_version,
-                language=language,
+                naf_version=self.naf_version,
+                language=self.language,
                 filedesc_elem=filedesc_params,
                 public_elem=public_params
             )
 
-        self.engine = engine
-        self.language = language
-        self.naf_version = naf_version
-        self.dtd_validation = dtd_validation
-        self.text = text
-        self.nlp = nlp
         self.params = params
+        self.set_default_params(params)
 
+        if NafDocument.layers != []:
+            self.process_linguistic_steps(self.params)
+            self.evaluate_naf()
+
+        return self.nafdoc
+
+    def set_default_params(self, params: dict) -> None:
         # TODO: are they coming from params? And should they be initialized?
         self.cdata = params.get("cdata", True)
         self.map_udpos2olia = params.get("map_udpos2olia", False)
         self.layer_to_attributes_to_ignore = params.get("layer_to_attributes_to_ignore", {"terms": {}})
         self.replace_hidden_characters = params.get("replace_hidden_characters", True)
         self.comments = params.get("comments", True)
-        self.apply_ocr = params.get("apply_ocr", False)
         self.textline_separator = params.get("textline_separator", " ")
-
-    def generate_naf(self):
-        if NafDocument.layers != []:
-            self.process_linguistic_steps(self.params)
-            self.evaluate_naf()
-
-        return self.nafdoc
 
     def add_filedesc_params(self, filedesc_params: dict = {}) -> dict:
         """Return params dictionary with filedesc params"""
