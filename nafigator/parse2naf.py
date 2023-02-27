@@ -71,7 +71,7 @@ def generate_naf(
     if engine.lower() == "spacy" and "spacy" not in sys.modules:
         logging.error("SpaCy not installed")
         return None
-    if isinstance(pdfdoc, object):
+    if isinstance(pdfdoc, object) and pdfdoc is not None:
         text = pdfdoc.text
 
     params = create_params(
