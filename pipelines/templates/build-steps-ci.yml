@@ -1,0 +1,22 @@
+steps:
+- task: UsePythonVersion@0
+  displayName: "Set Python version to 3.9"
+  inputs:
+      versionSpec: $(pythonVersion)
+
+- task: Bash@3
+  displayName: "Install needed Python packages in pipeline"
+  inputs:
+    targetType: "inline"
+    script: |
+        python3 -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+        pip install -e .
+
+- task: Bash@3
+  displayName: "Run unit tests"
+  inputs:
+    targetType: "inline"
+    script: |
+      pytest tests/ --cov-branch --cov-report=xml --cov=nafigator
+

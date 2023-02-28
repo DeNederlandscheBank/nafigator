@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - "*"
+
+resources:
+  repositories:
+  - repository: repo_shift_left
+    type: git
+    name: Hello DNB/shift-left
+    ref: refs/heads/release/1.5
+
+variables:
+  pythonVersion: "3.9"
+
+# Extend shift left repo that contains credential and quality scans
+extends:
+  template: pipelines/template-compliance.yml@repo_shift_left
+  parameters:
+
+    # SonarQube defining of parameters
+    sqServiceConnection: SonarQube
+    sqScannerMode: CLI
+    sqProjectKey: dw-nafigator
+    sqExtraProperties: |
+      sonar.sources=$(System.DefaultWorkingDirectory)/nafigator
+      sonar.python.coverage.reportPaths=$(System.DefaultWorkingDirectory)/coverage.xml
+
+    # BuildSteps are the steps that run withing the context of WhiteSource/SonarQube/credential scanner
+    buildSteps:
+    - template: templates/build-steps-ci.yml@self
+
