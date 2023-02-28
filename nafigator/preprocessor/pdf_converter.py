@@ -19,7 +19,7 @@ from .document_converter import DocumentConverter
 # generate_naf --> ERROR: root: raw length(267) != doc length(271)
 
 
-class PDFconverter(DocumentConverter):
+class PDFConverter(DocumentConverter):
     """Class to convert pdf to cleaned text"""
 
     def __init__(

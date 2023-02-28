@@ -8,7 +8,7 @@ from typing import Union
 from .document_converter import DocumentConverter
 
 
-class OCRconverter(DocumentConverter):
+class OCRConverter(DocumentConverter):
     """Class to convert unreadable pdf to cleaned text"""
 
     def __init__(self) -> None:
