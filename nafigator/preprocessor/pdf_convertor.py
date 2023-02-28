@@ -13,22 +13,14 @@ from pdfminer.layout import LAParams
 from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
 from pdfminer.pdfpage import PDFPage
 from nifigator.utils import replace_escape_characters
+from .document_converter import DocumentConverter
 
 # TODO streams component toevoegen
 # generate_naf --> ERROR: root: raw length(267) != doc length(271)
 
 
-class PDFconverter:
-
-    """Class to convert pdf to cleaned text
-
-    Args:
-        path: location of the file to be converted
-
-    Returns:
-        str: the result of the conversion
-
-    """
+class PDFconverter(DocumentConverter):
+    """Class to convert pdf to cleaned text"""
 
     def __init__(
         self,
@@ -41,7 +33,7 @@ class PDFconverter:
 
     def parse(
         self,
-        file: Union[str, BytesIO] = None,
+        file: Union[str, BytesIO],
         codec: str = "utf-8",
         password: str = "",
         laparams: LAParams = LAParams(),
@@ -61,8 +53,6 @@ class PDFconverter:
 
         if isinstance(file, str):
             fp = open(file, "rb")
-        else:
-            fp = BytesIO(file)
 
         interpreter = PDFPageInterpreter(rsrcmgr, device)
         maxpages = 0
