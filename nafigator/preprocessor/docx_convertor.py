@@ -30,7 +30,6 @@ class DocxConverter(DocumentConverter):
         Args:
             path: location of the file to be converted
             format: text or xml
-            params: the general params dict to store results
 
         Returns:
             str: the result of the conversion

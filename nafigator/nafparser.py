@@ -89,7 +89,7 @@ class NafParser():
         if isinstance(input, NafDocument):
             self.nafdoc = input
         else:
-            if isinstance(input, (str, bytes)):
+            if isinstance(input, str):
                 filedesc_params = params.get("filedesc", {})
                 filedesc_params = self.add_filedesc_params(input, filedesc_params)
                 public_params = params.get("public", {})

@@ -52,14 +52,14 @@ class PDFconverter(DocumentConverter):
         device = XMLConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
 
         if isinstance(file, str):
-            fp = open(file, "rb")
+            file = open(file, "rb")
 
         interpreter = PDFPageInterpreter(rsrcmgr, device)
         maxpages = 0
         caching = True
         pagenos = set()
         for page in PDFPage.get_pages(
-            fp,
+            file,
             pagenos,
             maxpages=maxpages,
             password=password,
@@ -70,7 +70,7 @@ class PDFconverter(DocumentConverter):
 
         # in case the file is opened, it is closed (a stream is not closed)
         if not isinstance(file, BytesIO):
-            fp.close()
+            file.close()
         device.close()
 
         result = retstr.getvalue()
