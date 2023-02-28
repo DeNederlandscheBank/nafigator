@@ -24,11 +24,7 @@ class DocxConverter(DocumentConverter):
     def __init__(self) -> None:
         pass
 
-    def convert_docx(
-        self,
-        file: Union[str, BytesIO],
-        format: str = "text"
-    ) -> str:
+    def parse(self, file: Union[str, BytesIO], format: str = "text") -> str:
         """Function to convert docx to xml or text
 
         Args:
@@ -46,11 +42,12 @@ class DocxConverter(DocumentConverter):
         if isinstance(file, str):
             with open(file, "rb") as f:
                 document = zipfile.ZipFile(f)
+                text = document.read("word/document.xml")
+                # styles = document.read("word/styles.xml")  # not used yet
         else:
             document = zipfile.ZipFile(file)
-
-        text = document.read("word/document.xml")
-        # styles = document.read("word/styles.xml")  # not used yet
+            text = document.read("word/document.xml")
+            # styles = document.read("word/styles.xml")  # not used yet
 
         if format == "text":
             tree = XML(text)
