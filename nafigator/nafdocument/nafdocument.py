@@ -7,6 +7,7 @@ from typing import Union
 import datetime
 import logging
 import io
+from dataclasses import asdict
 from .const import (
     NAF_VERSION_TO_DTD,
     FILEDESC_ELEMENT_TAG,
@@ -504,7 +505,7 @@ class NafDocument(etree._ElementTree):
     ):
         """ """
         if not isinstance(data, dict):
-            data = data._asdict()
+            data = asdict(data)
 
         for attr in attributes_to_ignore:
             del data[attr]
@@ -818,7 +819,7 @@ class NafDocument(etree._ElementTree):
             status CDATA #IMPLIED
         """
         if not isinstance(data, dict):
-            data = data._asdict()
+            data = asdict(data)
 
         if (self.version is not None) and (self.version == "v3"):
             references = self.subelement(element=element, tag="references")

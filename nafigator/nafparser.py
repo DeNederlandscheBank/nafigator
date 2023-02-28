@@ -90,8 +90,10 @@ class NafParser():
             self.nafdoc = input
         else:
             if isinstance(input, (str, bytes)):
-                filedesc_params = self.add_filedesc_params(input, params["filedesc"])
-                public_params = self.add_public_params(input, params["public"])
+                filedesc_params = params.get("filedesc", {})
+                filedesc_params = self.add_filedesc_params(input, filedesc_params)
+                public_params = params.get("public", {})
+                public_params = self.add_public_params(input, public_params)
                 params = self.add_stream_params(params, stream)
 
             self.nafdoc = NafDocument(
@@ -142,6 +144,8 @@ class NafParser():
                 stream = io.BytesIO(stream)
             params["stream"] = stream
 
+        return params
+
     def evaluate_naf(self):
         """Perform alignment between raw layer, document text and text layer in the NAF xml tree"""
         # verify alignment between raw layer and document text
@@ -190,9 +194,7 @@ class NafParser():
 
         # tokenize text
         tokenized_text = tokenizer(self.text)
-
-        # align the stanza output with the tokenized text
-        self.doc = align_stanza_dict_offsets(self.doc.to_dict(), tokenized_text)
+        self.tokenized_text = tokenized_text
 
         # correction for bug in stanza
         if tokenized_text != []:
@@ -211,7 +213,7 @@ class NafParser():
 
     def process_linguistic_layers(self):
         """Perform linguistic layers"""
-        layers = NafDocument.layers
+        layers = self.nafdoc.layers
 
         if ENTITIES_LAYER_TAG in layers:
             self.add_entities_layer()
@@ -387,9 +389,12 @@ class NafParser():
         """Generate and add all words in document to text layer"""
         self.add_layer(TEXT_LAYER_TAG)
 
+        # align the stanza output with the tokenized text
+        doc = align_stanza_dict_offsets(self.doc.to_dict(), self.tokenized_text)
+
         wf_count_prev_sent = 0
         idx_w = 0
-        for idx_s, s in enumerate(self.doc, start=1):
+        for idx_s, s in enumerate(doc, start=1):
             wf_count_prev_sent += idx_w
             for idx_w, wf in enumerate(s, start=1):
                 wf_id = "w" + str(wf_count_prev_sent + idx_w)
