@@ -34,4 +34,3 @@ extends:
     # Deploy package to pypi
     preChangeStages:
     - template: templates/deploy-cd.yml@self
-

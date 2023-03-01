@@ -1,0 +1,1008 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<NAF xmlns:dc="http://purl.org/dc/elements/1.1/" version="v3.1" xml:lang="en">
+  <nafHeader>
+    <fileDesc creationtime="2023-02-15T17:54:07UTC" filename="tests/tests/example_tables.pdf" filetype="application/pdf"/>
+    <public dc:uri="tests/tests/example_tables.pdf" dc:format="application/pdf"/>
+    <linguisticProcessors layer="formats">
+      <lp name="formats" version="nafigator" beginTimestamp="2023-02-15T17:54:07UTC" endTimestamp="2023-02-15T17:54:11UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="entities">
+      <lp name="entities" version="stanza_version-1.4.0" beginTimestamp="2023-02-15T17:54:13UTC" endTimestamp="2023-02-15T17:54:14UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="text">
+      <lp name="text" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-02-15T17:54:13UTC" endTimestamp="2023-02-15T17:54:14UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="terms">
+      <lp name="terms" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/pos/combined.pt" beginTimestamp="2023-02-15T17:54:13UTC" endTimestamp="2023-02-15T17:54:14UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="deps">
+      <lp name="deps" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/depparse/combined.pt" beginTimestamp="2023-02-15T17:54:13UTC" endTimestamp="2023-02-15T17:54:14UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="multiwords">
+      <lp name="multiwords" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-02-15T17:54:13UTC" endTimestamp="2023-02-15T17:54:14UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+    <linguisticProcessors layer="raw">
+      <lp name="raw" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-02-15T17:54:13UTC" endTimestamp="2023-02-15T17:54:14UTC" hostname="hduerinck001.localdomain"/>
+    </linguisticProcessors>
+  </nafHeader>
+  <formats>
+    <page length="1028" offset="0">
+      <textbox>
+        <textline>
+          <text font="BCDEEE+Calibri-Bold" size="6.000" length="38" offset="0">Error! Unknown document property name.</text>
+          <text font="BCDFEE+Calibri" size="6.000" length="1" offset="38"> </text>
+        </textline>
+      </textbox>
+      <textbox>
+        <textline>
+          <text font="BCDHEE+Verdana-Bold" size="8.520" length="11" offset="41">Actielijst </text>
+        </textline>
+        <textline>
+          <text font="BCDGEE+Verdana" size="8.520" length="1" offset="53"> </text>
+        </textline>
+        <textline>
+          <text length="54" offset="55">Datum | Openstaande actiepunten | Actiehouder | Gereed</text>
+        </textline>
+        <textline>
+          <text length="44" offset="110">2020/08/20 | Lorem ipsum test text | HM | Q2</text>
+        </textline>
+        <textline>
+          <text length="49" offset="155">2020/05/27 | Test text lorem ipsum | JR | Ongoing</text>
+        </textline>
+        <textline>
+          <text length="49" offset="205">2021/02/29 | Ipsum Lorem Test Text | WR | Ongoing</text>
+        </textline>
+        <textline>
+          <text length="50" offset="314">atum | Gesloten actiepunten | Actiehouder | Gereed</text>
+        </textline>
+        <textline>
+          <text length="44" offset="365">2022/01/10 | Lorem ipsum test text | HM | Q2</text>
+        </textline>
+        <textline>
+          <text length="49" offset="410">2022/02/11 | Test text lorem ipsum | JR | Ongoing</text>
+        </textline>
+        <textline>
+          <text length="49" offset="460">2022/03/12 | Ipsum Lorem Test Text | WR | Ongoing</text>
+        </textline>
+        <textline>
+          <text length="57" offset="510">2022/04/13 | Kirn Ipsyum Test test test | WJ | 10-08-2022</text>
+        </textline>
+      </textbox>
+      <tables>
+        <table page="1" order="1" shape="(5, 4)" _bbox="(68.14626360338573, 438.0, 472.704715840387, 664.56)" cols="[(68.38246599153567, 155.2487061668682), (155.2487061668682, 318.17586457073764), (318.17586457073764, 419.1955018137848), (419.1955018137848, 472.5847400241838)]">
+          <row>
+            <index>0</index>
+            <cell>Datum</cell>
+            <cell>Openstaande actiepunten</cell>
+            <cell>Actiehouder</cell>
+            <cell>Gereed</cell>
+          </row>
+          <row>
+            <index>1</index>
+            <cell>2020/08/20</cell>
+            <cell>Lorem ipsum test text</cell>
+            <cell>HM</cell>
+            <cell>Q2</cell>
+          </row>
+          <row>
+            <index>2</index>
+            <cell>2020/05/27</cell>
+            <cell>Test text lorem ipsum</cell>
+            <cell>JR</cell>
+            <cell>Ongoing</cell>
+          </row>
+          <row>
+            <index>3</index>
+            <cell>2021/02/29</cell>
+            <cell>Ipsum Lorem Test Text</cell>
+            <cell>WR</cell>
+            <cell>Ongoing</cell>
+          </row>
+          <row>
+            <index>4</index>
+            <cell>2021/04/28</cell>
+            <cell>Kirn Ipsyum Test test test</cell>
+            <cell>WJ</cell>
+            <cell>10-08-2022</cell>
+          </row>
+        </table>
+        <table page="1" order="2" shape="(5, 4)" _bbox="(68.14626360338573, 177.12, 472.704715840387, 403.91999999999996)" cols="[(68.38246599153567, 155.2487061668682), (155.2487061668682, 318.17586457073764), (318.17586457073764, 419.1955018137848), (419.1955018137848, 472.5847400241838)]">
+          <row>
+            <index>0</index>
+            <cell>atum</cell>
+            <cell>Gesloten actiepunten</cell>
+            <cell>Actiehouder</cell>
+            <cell>Gereed</cell>
+          </row>
+          <row>
+            <index>1</index>
+            <cell>2022/01/10</cell>
+            <cell>Lorem ipsum test text</cell>
+            <cell>HM</cell>
+            <cell>Q2</cell>
+          </row>
+          <row>
+            <index>2</index>
+            <cell>2022/02/11</cell>
+            <cell>Test text lorem ipsum</cell>
+            <cell>JR</cell>
+            <cell>Ongoing</cell>
+          </row>
+          <row>
+            <index>3</index>
+            <cell>2022/03/12</cell>
+            <cell>Ipsum Lorem Test Text</cell>
+            <cell>WR</cell>
+            <cell>Ongoing</cell>
+          </row>
+          <row>
+            <index>4</index>
+            <cell>2022/04/13</cell>
+            <cell>Kirn Ipsyum Test test test</cell>
+            <cell>WJ</cell>
+            <cell>10-08-2022</cell>
+          </row>
+        </table>
+      </tables>
+    </page>
+  </formats>
+  <entities>
+    <entity id="e1" type="PERSON">
+      <span>
+        <!--Actielijst Datum-->
+        <target id="t8"/>
+        <target id="t9"/>
+      </span>
+    </entity>
+  </entities>
+  <text>
+    <wf id="w1" sent="1" para="1" page="1" offset="0" length="5"><![CDATA[Error]]></wf>
+    <wf id="w2" sent="1" para="1" page="1" offset="5" length="1"><![CDATA[!]]></wf>
+    <wf id="w3" sent="2" para="1" page="1" offset="7" length="7"><![CDATA[Unknown]]></wf>
+    <wf id="w4" sent="2" para="1" page="1" offset="15" length="8"><![CDATA[document]]></wf>
+    <wf id="w5" sent="2" para="1" page="1" offset="24" length="8"><![CDATA[property]]></wf>
+    <wf id="w6" sent="2" para="1" page="1" offset="33" length="4"><![CDATA[name]]></wf>
+    <wf id="w7" sent="2" para="1" page="1" offset="37" length="1"><![CDATA[.]]></wf>
+    <wf id="w8" sent="3" para="2" page="1" offset="41" length="10"><![CDATA[Actielijst]]></wf>
+    <wf id="w9" sent="3" para="2" page="1" offset="55" length="5"><![CDATA[Datum]]></wf>
+    <wf id="w10" sent="3" para="2" page="1" offset="61" length="1"><![CDATA[|]]></wf>
+    <wf id="w11" sent="3" para="2" page="1" offset="63" length="11"><![CDATA[Openstaande]]></wf>
+    <wf id="w12" sent="3" para="2" page="1" offset="75" length="11"><![CDATA[actiepunten]]></wf>
+    <wf id="w13" sent="3" para="2" page="1" offset="87" length="1"><![CDATA[|]]></wf>
+    <wf id="w14" sent="3" para="2" page="1" offset="89" length="11"><![CDATA[Actiehouder]]></wf>
+    <wf id="w15" sent="3" para="2" page="1" offset="101" length="1"><![CDATA[|]]></wf>
+    <wf id="w16" sent="3" para="2" page="1" offset="103" length="6"><![CDATA[Gereed]]></wf>
+    <wf id="w17" sent="3" para="2" page="1" offset="110" length="10"><![CDATA[2020/08/20]]></wf>
+    <wf id="w18" sent="3" para="2" page="1" offset="121" length="1"><![CDATA[|]]></wf>
+    <wf id="w19" sent="3" para="2" page="1" offset="123" length="5"><![CDATA[Lorem]]></wf>
+    <wf id="w20" sent="3" para="2" page="1" offset="129" length="5"><![CDATA[ipsum]]></wf>
+    <wf id="w21" sent="3" para="2" page="1" offset="135" length="4"><![CDATA[test]]></wf>
+    <wf id="w22" sent="3" para="2" page="1" offset="140" length="4"><![CDATA[text]]></wf>
+    <wf id="w23" sent="3" para="2" page="1" offset="145" length="1"><![CDATA[|]]></wf>
+    <wf id="w24" sent="3" para="2" page="1" offset="147" length="2"><![CDATA[HM]]></wf>
+    <wf id="w25" sent="3" para="2" page="1" offset="150" length="1"><![CDATA[|]]></wf>
+    <wf id="w26" sent="3" para="2" page="1" offset="152" length="2"><![CDATA[Q2]]></wf>
+    <wf id="w27" sent="3" para="2" page="1" offset="155" length="10"><![CDATA[2020/05/27]]></wf>
+    <wf id="w28" sent="3" para="2" page="1" offset="166" length="1"><![CDATA[|]]></wf>
+    <wf id="w29" sent="4" para="2" page="1" offset="168" length="4"><![CDATA[Test]]></wf>
+    <wf id="w30" sent="4" para="2" page="1" offset="173" length="4"><![CDATA[text]]></wf>
+    <wf id="w31" sent="4" para="2" page="1" offset="178" length="5"><![CDATA[lorem]]></wf>
+    <wf id="w32" sent="4" para="2" page="1" offset="184" length="5"><![CDATA[ipsum]]></wf>
+    <wf id="w33" sent="4" para="2" page="1" offset="190" length="1"><![CDATA[|]]></wf>
+    <wf id="w34" sent="4" para="2" page="1" offset="192" length="2"><![CDATA[JR]]></wf>
+    <wf id="w35" sent="4" para="2" page="1" offset="195" length="1"><![CDATA[|]]></wf>
+    <wf id="w36" sent="4" para="2" page="1" offset="197" length="7"><![CDATA[Ongoing]]></wf>
+    <wf id="w37" sent="4" para="2" page="1" offset="205" length="10"><![CDATA[2021/02/29]]></wf>
+    <wf id="w38" sent="4" para="2" page="1" offset="216" length="1"><![CDATA[|]]></wf>
+    <wf id="w39" sent="4" para="2" page="1" offset="218" length="5"><![CDATA[Ipsum]]></wf>
+    <wf id="w40" sent="4" para="2" page="1" offset="224" length="5"><![CDATA[Lorem]]></wf>
+    <wf id="w41" sent="4" para="2" page="1" offset="230" length="4"><![CDATA[Test]]></wf>
+    <wf id="w42" sent="4" para="2" page="1" offset="235" length="4"><![CDATA[Text]]></wf>
+    <wf id="w43" sent="4" para="2" page="1" offset="240" length="1"><![CDATA[|]]></wf>
+    <wf id="w44" sent="4" para="2" page="1" offset="242" length="2"><![CDATA[WR]]></wf>
+    <wf id="w45" sent="4" para="2" page="1" offset="245" length="1"><![CDATA[|]]></wf>
+    <wf id="w46" sent="4" para="2" page="1" offset="247" length="7"><![CDATA[Ongoing]]></wf>
+    <wf id="w47" sent="4" para="2" page="1" offset="314" length="4"><![CDATA[atum]]></wf>
+    <wf id="w48" sent="4" para="2" page="1" offset="319" length="1"><![CDATA[|]]></wf>
+    <wf id="w49" sent="4" para="2" page="1" offset="321" length="8"><![CDATA[Gesloten]]></wf>
+    <wf id="w50" sent="4" para="2" page="1" offset="330" length="11"><![CDATA[actiepunten]]></wf>
+    <wf id="w51" sent="4" para="2" page="1" offset="342" length="1"><![CDATA[|]]></wf>
+    <wf id="w52" sent="4" para="2" page="1" offset="344" length="11"><![CDATA[Actiehouder]]></wf>
+    <wf id="w53" sent="4" para="2" page="1" offset="356" length="1"><![CDATA[|]]></wf>
+    <wf id="w54" sent="4" para="2" page="1" offset="358" length="6"><![CDATA[Gereed]]></wf>
+    <wf id="w55" sent="4" para="2" page="1" offset="365" length="10"><![CDATA[2022/01/10]]></wf>
+    <wf id="w56" sent="4" para="2" page="1" offset="376" length="1"><![CDATA[|]]></wf>
+    <wf id="w57" sent="4" para="2" page="1" offset="378" length="5"><![CDATA[Lorem]]></wf>
+    <wf id="w58" sent="4" para="2" page="1" offset="384" length="5"><![CDATA[ipsum]]></wf>
+    <wf id="w59" sent="4" para="2" page="1" offset="390" length="4"><![CDATA[test]]></wf>
+    <wf id="w60" sent="4" para="2" page="1" offset="395" length="4"><![CDATA[text]]></wf>
+    <wf id="w61" sent="4" para="2" page="1" offset="400" length="1"><![CDATA[|]]></wf>
+    <wf id="w62" sent="4" para="2" page="1" offset="402" length="2"><![CDATA[HM]]></wf>
+    <wf id="w63" sent="4" para="2" page="1" offset="405" length="1"><![CDATA[|]]></wf>
+    <wf id="w64" sent="4" para="2" page="1" offset="407" length="2"><![CDATA[Q2]]></wf>
+    <wf id="w65" sent="4" para="2" page="1" offset="410" length="10"><![CDATA[2022/02/11]]></wf>
+    <wf id="w66" sent="4" para="2" page="1" offset="421" length="1"><![CDATA[|]]></wf>
+    <wf id="w67" sent="5" para="2" page="1" offset="423" length="4"><![CDATA[Test]]></wf>
+    <wf id="w68" sent="5" para="2" page="1" offset="428" length="4"><![CDATA[text]]></wf>
+    <wf id="w69" sent="5" para="2" page="1" offset="433" length="5"><![CDATA[lorem]]></wf>
+    <wf id="w70" sent="5" para="2" page="1" offset="439" length="5"><![CDATA[ipsum]]></wf>
+    <wf id="w71" sent="5" para="2" page="1" offset="445" length="1"><![CDATA[|]]></wf>
+    <wf id="w72" sent="5" para="2" page="1" offset="447" length="2"><![CDATA[JR]]></wf>
+    <wf id="w73" sent="5" para="2" page="1" offset="450" length="1"><![CDATA[|]]></wf>
+    <wf id="w74" sent="5" para="2" page="1" offset="452" length="7"><![CDATA[Ongoing]]></wf>
+    <wf id="w75" sent="5" para="2" page="1" offset="460" length="10"><![CDATA[2022/03/12]]></wf>
+    <wf id="w76" sent="5" para="2" page="1" offset="471" length="1"><![CDATA[|]]></wf>
+    <wf id="w77" sent="5" para="2" page="1" offset="473" length="5"><![CDATA[Ipsum]]></wf>
+    <wf id="w78" sent="5" para="2" page="1" offset="479" length="5"><![CDATA[Lorem]]></wf>
+    <wf id="w79" sent="5" para="2" page="1" offset="485" length="4"><![CDATA[Test]]></wf>
+    <wf id="w80" sent="5" para="2" page="1" offset="490" length="4"><![CDATA[Text]]></wf>
+    <wf id="w81" sent="5" para="2" page="1" offset="495" length="1"><![CDATA[|]]></wf>
+    <wf id="w82" sent="5" para="2" page="1" offset="497" length="2"><![CDATA[WR]]></wf>
+    <wf id="w83" sent="5" para="2" page="1" offset="500" length="1"><![CDATA[|]]></wf>
+    <wf id="w84" sent="5" para="2" page="1" offset="502" length="7"><![CDATA[Ongoing]]></wf>
+    <wf id="w85" sent="5" para="2" page="1" offset="510" length="10"><![CDATA[2022/04/13]]></wf>
+    <wf id="w86" sent="5" para="2" page="1" offset="521" length="1"><![CDATA[|]]></wf>
+    <wf id="w87" sent="5" para="2" page="1" offset="523" length="4"><![CDATA[Kirn]]></wf>
+    <wf id="w88" sent="5" para="2" page="1" offset="528" length="6"><![CDATA[Ipsyum]]></wf>
+    <wf id="w89" sent="6" para="2" page="1" offset="535" length="4"><![CDATA[Test]]></wf>
+    <wf id="w90" sent="6" para="2" page="1" offset="540" length="4"><![CDATA[test]]></wf>
+    <wf id="w91" sent="6" para="2" page="1" offset="545" length="4"><![CDATA[test]]></wf>
+    <wf id="w92" sent="6" para="2" page="1" offset="550" length="1"><![CDATA[|]]></wf>
+    <wf id="w93" sent="6" para="2" page="1" offset="552" length="2"><![CDATA[WJ]]></wf>
+    <wf id="w94" sent="6" para="2" page="1" offset="555" length="1"><![CDATA[|]]></wf>
+    <wf id="w95" sent="6" para="2" page="1" offset="557" length="10"><![CDATA[10-08-2022]]></wf>
+  </text>
+  <terms>
+    <term id="t1" type="open" lemma="error" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Error-->
+        <target id="w1"/>
+      </span>
+    </term>
+    <term id="t2" type="open" lemma="!" pos="PUNCT">
+      <span>
+        <!--!-->
+        <target id="w2"/>
+      </span>
+    </term>
+    <term id="t3" type="open" lemma="unknown" pos="ADJ" morphofeat="Degree=Pos">
+      <span>
+        <!--Unknown-->
+        <target id="w3"/>
+      </span>
+    </term>
+    <term id="t4" type="open" lemma="document" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--document-->
+        <target id="w4"/>
+      </span>
+    </term>
+    <term id="t5" type="open" lemma="property" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--property-->
+        <target id="w5"/>
+      </span>
+    </term>
+    <term id="t6" type="open" lemma="name" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--name-->
+        <target id="w6"/>
+      </span>
+    </term>
+    <term id="t7" type="open" lemma="." pos="PUNCT">
+      <span>
+        <!--.-->
+        <target id="w7"/>
+      </span>
+    </term>
+    <term id="t8" type="open" lemma="Actielijst" pos="ADJ" morphofeat="Degree=Pos">
+      <span>
+        <!--Actielijst-->
+        <target id="w8"/>
+      </span>
+    </term>
+    <term id="t9" type="open" lemma="datum" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Datum-->
+        <target id="w9"/>
+      </span>
+    </term>
+    <term id="t10" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w10"/>
+      </span>
+    </term>
+    <term id="t11" type="open" lemma="openstaande" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Openstaande-->
+        <target id="w11"/>
+      </span>
+    </term>
+    <term id="t12" type="open" lemma="actiepunten" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--actiepunten-->
+        <target id="w12"/>
+      </span>
+    </term>
+    <term id="t13" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w13"/>
+      </span>
+    </term>
+    <term id="t14" type="open" lemma="actiehouder" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Actiehouder-->
+        <target id="w14"/>
+      </span>
+    </term>
+    <term id="t15" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w15"/>
+      </span>
+    </term>
+    <term id="t16" type="open" lemma="gereed" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Gereed-->
+        <target id="w16"/>
+      </span>
+    </term>
+    <term id="t17" type="open" lemma="2020/08/20" pos="NUM" morphofeat="NumType=Card">
+      <span>
+        <!--2020/08/20-->
+        <target id="w17"/>
+      </span>
+    </term>
+    <term id="t18" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w18"/>
+      </span>
+    </term>
+    <term id="t19" type="open" lemma="lorem" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Lorem-->
+        <target id="w19"/>
+      </span>
+    </term>
+    <term id="t20" type="open" lemma="ipsum" pos="X">
+      <span>
+        <!--ipsum-->
+        <target id="w20"/>
+      </span>
+    </term>
+    <term id="t21" type="open" lemma="test" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--test-->
+        <target id="w21"/>
+      </span>
+    </term>
+    <term id="t22" type="open" lemma="text" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--text-->
+        <target id="w22"/>
+      </span>
+    </term>
+    <term id="t23" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w23"/>
+      </span>
+    </term>
+    <term id="t24" type="open" lemma="hm" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--HM-->
+        <target id="w24"/>
+      </span>
+    </term>
+    <term id="t25" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w25"/>
+      </span>
+    </term>
+    <term id="t26" type="open" lemma="q2" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Q2-->
+        <target id="w26"/>
+      </span>
+    </term>
+    <term id="t27" type="open" lemma="2020/05/27" pos="NUM" morphofeat="NumType=Card">
+      <span>
+        <!--2020/05/27-->
+        <target id="w27"/>
+      </span>
+    </term>
+    <term id="t28" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w28"/>
+      </span>
+    </term>
+    <term id="t29" type="open" lemma="test" pos="VERB" morphofeat="VerbForm=Inf">
+      <span>
+        <!--Test-->
+        <target id="w29"/>
+      </span>
+    </term>
+    <term id="t30" type="open" lemma="text" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--text-->
+        <target id="w30"/>
+      </span>
+    </term>
+    <term id="t31" type="open" lemma="lorem" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--lorem-->
+        <target id="w31"/>
+      </span>
+    </term>
+    <term id="t32" type="open" lemma="ipsum" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--ipsum-->
+        <target id="w32"/>
+      </span>
+    </term>
+    <term id="t33" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w33"/>
+      </span>
+    </term>
+    <term id="t34" type="open" lemma="JR" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--JR-->
+        <target id="w34"/>
+      </span>
+    </term>
+    <term id="t35" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w35"/>
+      </span>
+    </term>
+    <term id="t36" type="open" lemma="ongoing" pos="ADJ" morphofeat="Degree=Pos">
+      <span>
+        <!--Ongoing-->
+        <target id="w36"/>
+      </span>
+    </term>
+    <term id="t37" type="open" lemma="2021/02/29" pos="NUM" morphofeat="NumType=Card">
+      <span>
+        <!--2021/02/29-->
+        <target id="w37"/>
+      </span>
+    </term>
+    <term id="t38" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w38"/>
+      </span>
+    </term>
+    <term id="t39" type="open" lemma="ipsum" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Ipsum-->
+        <target id="w39"/>
+      </span>
+    </term>
+    <term id="t40" type="open" lemma="lorem" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Lorem-->
+        <target id="w40"/>
+      </span>
+    </term>
+    <term id="t41" type="open" lemma="test" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Test-->
+        <target id="w41"/>
+      </span>
+    </term>
+    <term id="t42" type="open" lemma="text" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Text-->
+        <target id="w42"/>
+      </span>
+    </term>
+    <term id="t43" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w43"/>
+      </span>
+    </term>
+    <term id="t44" type="open" lemma="wr" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--WR-->
+        <target id="w44"/>
+      </span>
+    </term>
+    <term id="t45" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w45"/>
+      </span>
+    </term>
+    <term id="t46" type="open" lemma="ongoing" pos="VERB" morphofeat="VerbForm=Ger">
+      <span>
+        <!--Ongoing-->
+        <target id="w46"/>
+      </span>
+    </term>
+    <term id="t47" type="open" lemma="atum" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--atum-->
+        <target id="w47"/>
+      </span>
+    </term>
+    <term id="t48" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w48"/>
+      </span>
+    </term>
+    <term id="t49" type="open" lemma="Gesloten" pos="X">
+      <span>
+        <!--Gesloten-->
+        <target id="w49"/>
+      </span>
+    </term>
+    <term id="t50" type="open" lemma="actiepunten" pos="X">
+      <span>
+        <!--actiepunten-->
+        <target id="w50"/>
+      </span>
+    </term>
+    <term id="t51" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w51"/>
+      </span>
+    </term>
+    <term id="t52" type="open" lemma="actiehouder" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Actiehouder-->
+        <target id="w52"/>
+      </span>
+    </term>
+    <term id="t53" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w53"/>
+      </span>
+    </term>
+    <term id="t54" type="open" lemma="gereed" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Gereed-->
+        <target id="w54"/>
+      </span>
+    </term>
+    <term id="t55" type="open" lemma="2022/01/10" pos="NUM" morphofeat="NumType=Card">
+      <span>
+        <!--2022/01/10-->
+        <target id="w55"/>
+      </span>
+    </term>
+    <term id="t56" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w56"/>
+      </span>
+    </term>
+    <term id="t57" type="open" lemma="lorem" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Lorem-->
+        <target id="w57"/>
+      </span>
+    </term>
+    <term id="t58" type="open" lemma="ipsum" pos="X">
+      <span>
+        <!--ipsum-->
+        <target id="w58"/>
+      </span>
+    </term>
+    <term id="t59" type="open" lemma="test" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--test-->
+        <target id="w59"/>
+      </span>
+    </term>
+    <term id="t60" type="open" lemma="text" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--text-->
+        <target id="w60"/>
+      </span>
+    </term>
+    <term id="t61" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w61"/>
+      </span>
+    </term>
+    <term id="t62" type="open" lemma="hm" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--HM-->
+        <target id="w62"/>
+      </span>
+    </term>
+    <term id="t63" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w63"/>
+      </span>
+    </term>
+    <term id="t64" type="open" lemma="q2" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Q2-->
+        <target id="w64"/>
+      </span>
+    </term>
+    <term id="t65" type="open" lemma="2022/02/11" pos="NUM" morphofeat="NumType=Card">
+      <span>
+        <!--2022/02/11-->
+        <target id="w65"/>
+      </span>
+    </term>
+    <term id="t66" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w66"/>
+      </span>
+    </term>
+    <term id="t67" type="open" lemma="test" pos="VERB" morphofeat="VerbForm=Inf">
+      <span>
+        <!--Test-->
+        <target id="w67"/>
+      </span>
+    </term>
+    <term id="t68" type="open" lemma="text" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--text-->
+        <target id="w68"/>
+      </span>
+    </term>
+    <term id="t69" type="open" lemma="lorem" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--lorem-->
+        <target id="w69"/>
+      </span>
+    </term>
+    <term id="t70" type="open" lemma="ipsum" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--ipsum-->
+        <target id="w70"/>
+      </span>
+    </term>
+    <term id="t71" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w71"/>
+      </span>
+    </term>
+    <term id="t72" type="open" lemma="JR" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--JR-->
+        <target id="w72"/>
+      </span>
+    </term>
+    <term id="t73" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w73"/>
+      </span>
+    </term>
+    <term id="t74" type="open" lemma="ongoing" pos="ADJ" morphofeat="Degree=Pos">
+      <span>
+        <!--Ongoing-->
+        <target id="w74"/>
+      </span>
+    </term>
+    <term id="t75" type="open" lemma="2022/03/12" pos="NUM" morphofeat="NumType=Card">
+      <span>
+        <!--2022/03/12-->
+        <target id="w75"/>
+      </span>
+    </term>
+    <term id="t76" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w76"/>
+      </span>
+    </term>
+    <term id="t77" type="open" lemma="ipsum" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Ipsum-->
+        <target id="w77"/>
+      </span>
+    </term>
+    <term id="t78" type="open" lemma="lorem" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Lorem-->
+        <target id="w78"/>
+      </span>
+    </term>
+    <term id="t79" type="open" lemma="test" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Test-->
+        <target id="w79"/>
+      </span>
+    </term>
+    <term id="t80" type="open" lemma="text" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Text-->
+        <target id="w80"/>
+      </span>
+    </term>
+    <term id="t81" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w81"/>
+      </span>
+    </term>
+    <term id="t82" type="open" lemma="wr" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--WR-->
+        <target id="w82"/>
+      </span>
+    </term>
+    <term id="t83" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w83"/>
+      </span>
+    </term>
+    <term id="t84" type="open" lemma="ongoing" pos="VERB" morphofeat="VerbForm=Ger">
+      <span>
+        <!--Ongoing-->
+        <target id="w84"/>
+      </span>
+    </term>
+    <term id="t85" type="open" lemma="2022/04/13" pos="NUM" morphofeat="NumType=Card">
+      <span>
+        <!--2022/04/13-->
+        <target id="w85"/>
+      </span>
+    </term>
+    <term id="t86" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w86"/>
+      </span>
+    </term>
+    <term id="t87" type="open" lemma="Kirn" pos="PROPN" morphofeat="Number=Sing">
+      <span>
+        <!--Kirn-->
+        <target id="w87"/>
+      </span>
+    </term>
+    <term id="t88" type="open" lemma="Ipsyum" pos="PROPN" morphofeat="Number=Sing">
+      <span>
+        <!--Ipsyum-->
+        <target id="w88"/>
+      </span>
+    </term>
+    <term id="t89" type="open" lemma="test" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--Test-->
+        <target id="w89"/>
+      </span>
+    </term>
+    <term id="t90" type="open" lemma="test" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--test-->
+        <target id="w90"/>
+      </span>
+    </term>
+    <term id="t91" type="open" lemma="test" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--test-->
+        <target id="w91"/>
+      </span>
+    </term>
+    <term id="t92" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w92"/>
+      </span>
+    </term>
+    <term id="t93" type="open" lemma="wj" pos="NOUN" morphofeat="Number=Sing">
+      <span>
+        <!--WJ-->
+        <target id="w93"/>
+      </span>
+    </term>
+    <term id="t94" type="open" lemma="|" pos="PUNCT">
+      <span>
+        <!--|-->
+        <target id="w94"/>
+      </span>
+    </term>
+    <term id="t95" type="open" lemma="10-08-2022" pos="NUM" morphofeat="NumType=Card">
+      <span>
+        <!--10-08-2022-->
+        <target id="w95"/>
+      </span>
+    </term>
+  </terms>
+  <deps>
+    <!--punct(Error,!)-->
+    <dep from_term="t1" to_term="t2" rfunc="punct"/>
+    <!--amod(document,Unknown)-->
+    <dep from_term="t4" to_term="t3" rfunc="amod"/>
+    <!--compound(name,document)-->
+    <dep from_term="t6" to_term="t4" rfunc="compound"/>
+    <!--compound(name,property)-->
+    <dep from_term="t6" to_term="t5" rfunc="compound"/>
+    <!--punct(name,.)-->
+    <dep from_term="t6" to_term="t7" rfunc="punct"/>
+    <!--amod(Datum,Actielijst)-->
+    <dep from_term="t9" to_term="t8" rfunc="amod"/>
+    <!--punct(Datum,|)-->
+    <dep from_term="t9" to_term="t10" rfunc="punct"/>
+    <!--compound(actiepunten,Openstaande)-->
+    <dep from_term="t12" to_term="t11" rfunc="compound"/>
+    <!--list(Datum,actiepunten)-->
+    <dep from_term="t9" to_term="t12" rfunc="list"/>
+    <!--punct(Datum,|)-->
+    <dep from_term="t9" to_term="t13" rfunc="punct"/>
+    <!--list(Datum,Actiehouder)-->
+    <dep from_term="t9" to_term="t14" rfunc="list"/>
+    <!--punct(Datum,|)-->
+    <dep from_term="t9" to_term="t15" rfunc="punct"/>
+    <!--list(Datum,Gereed)-->
+    <dep from_term="t9" to_term="t16" rfunc="list"/>
+    <!--nmod:tmod(Datum,2020/08/20)-->
+    <dep from_term="t9" to_term="t17" rfunc="nmod:tmod"/>
+    <!--punct(Datum,|)-->
+    <dep from_term="t9" to_term="t18" rfunc="punct"/>
+    <!--list(Datum,Lorem)-->
+    <dep from_term="t9" to_term="t19" rfunc="list"/>
+    <!--punct(text,ipsum)-->
+    <dep from_term="t22" to_term="t20" rfunc="punct"/>
+    <!--list(Datum,text)-->
+    <dep from_term="t9" to_term="t22" rfunc="list"/>
+    <!--compound(text,test)-->
+    <dep from_term="t22" to_term="t21" rfunc="compound"/>
+    <!--punct(Datum,|)-->
+    <dep from_term="t9" to_term="t23" rfunc="punct"/>
+    <!--list(Datum,HM)-->
+    <dep from_term="t9" to_term="t24" rfunc="list"/>
+    <!--punct(Datum,|)-->
+    <dep from_term="t9" to_term="t25" rfunc="punct"/>
+    <!--list(Datum,Q2)-->
+    <dep from_term="t9" to_term="t26" rfunc="list"/>
+    <!--list(Datum,2020/05/27)-->
+    <dep from_term="t9" to_term="t27" rfunc="list"/>
+    <!--punct(Datum,|)-->
+    <dep from_term="t9" to_term="t28" rfunc="punct"/>
+    <!--compound(ipsum,text)-->
+    <dep from_term="t32" to_term="t30" rfunc="compound"/>
+    <!--obj(Test,ipsum)-->
+    <dep from_term="t29" to_term="t32" rfunc="obj"/>
+    <!--compound(ipsum,lorem)-->
+    <dep from_term="t32" to_term="t31" rfunc="compound"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t34" to_term="t33" rfunc="punct"/>
+    <!--list(ipsum,JR)-->
+    <dep from_term="t32" to_term="t34" rfunc="list"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t34" to_term="t35" rfunc="punct"/>
+    <!--amod(JR,Ongoing)-->
+    <dep from_term="t34" to_term="t36" rfunc="amod"/>
+    <!--list(JR,2021/02/29)-->
+    <dep from_term="t34" to_term="t37" rfunc="list"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t34" to_term="t38" rfunc="punct"/>
+    <!--compound(Text,Ipsum)-->
+    <dep from_term="t42" to_term="t39" rfunc="compound"/>
+    <!--list(JR,Text)-->
+    <dep from_term="t34" to_term="t42" rfunc="list"/>
+    <!--compound(Text,Lorem)-->
+    <dep from_term="t42" to_term="t40" rfunc="compound"/>
+    <!--compound(Text,Test)-->
+    <dep from_term="t42" to_term="t41" rfunc="compound"/>
+    <!--punct(Text,|)-->
+    <dep from_term="t42" to_term="t43" rfunc="punct"/>
+    <!--list(JR,WR)-->
+    <dep from_term="t34" to_term="t44" rfunc="list"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t34" to_term="t45" rfunc="punct"/>
+    <!--amod(Text,Ongoing)-->
+    <dep from_term="t42" to_term="t46" rfunc="amod"/>
+    <!--obj(Ongoing,atum)-->
+    <dep from_term="t46" to_term="t47" rfunc="obj"/>
+    <!--punct(Gesloten,|)-->
+    <dep from_term="t49" to_term="t48" rfunc="punct"/>
+    <!--compound(actiepunten,Gesloten)-->
+    <dep from_term="t50" to_term="t49" rfunc="compound"/>
+    <!--appos(atum,actiepunten)-->
+    <dep from_term="t47" to_term="t50" rfunc="appos"/>
+    <!--punct(actiepunten,|)-->
+    <dep from_term="t50" to_term="t51" rfunc="punct"/>
+    <!--list(JR,Actiehouder)-->
+    <dep from_term="t34" to_term="t52" rfunc="list"/>
+    <!--punct(Actiehouder,|)-->
+    <dep from_term="t52" to_term="t53" rfunc="punct"/>
+    <!--list(JR,Gereed)-->
+    <dep from_term="t34" to_term="t54" rfunc="list"/>
+    <!--nmod:tmod(Gereed,2022/01/10)-->
+    <dep from_term="t54" to_term="t55" rfunc="nmod:tmod"/>
+    <!--punct(Lorem,|)-->
+    <dep from_term="t57" to_term="t56" rfunc="punct"/>
+    <!--list(JR,Lorem)-->
+    <dep from_term="t34" to_term="t57" rfunc="list"/>
+    <!--punct(text,ipsum)-->
+    <dep from_term="t60" to_term="t58" rfunc="punct"/>
+    <!--appos(Lorem,text)-->
+    <dep from_term="t57" to_term="t60" rfunc="appos"/>
+    <!--compound(text,test)-->
+    <dep from_term="t60" to_term="t59" rfunc="compound"/>
+    <!--punct(text,|)-->
+    <dep from_term="t60" to_term="t61" rfunc="punct"/>
+    <!--appos(text,HM)-->
+    <dep from_term="t60" to_term="t62" rfunc="appos"/>
+    <!--punct(HM,|)-->
+    <dep from_term="t62" to_term="t63" rfunc="punct"/>
+    <!--list(JR,Q2)-->
+    <dep from_term="t34" to_term="t64" rfunc="list"/>
+    <!--nummod(Q2,2022/02/11)-->
+    <dep from_term="t64" to_term="t65" rfunc="nummod"/>
+    <!--punct(Test,|)-->
+    <dep from_term="t29" to_term="t66" rfunc="punct"/>
+    <!--compound(ipsum,text)-->
+    <dep from_term="t70" to_term="t68" rfunc="compound"/>
+    <!--obj(Test,ipsum)-->
+    <dep from_term="t67" to_term="t70" rfunc="obj"/>
+    <!--compound(ipsum,lorem)-->
+    <dep from_term="t70" to_term="t69" rfunc="compound"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t72" to_term="t71" rfunc="punct"/>
+    <!--list(ipsum,JR)-->
+    <dep from_term="t70" to_term="t72" rfunc="list"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t72" to_term="t73" rfunc="punct"/>
+    <!--amod(JR,Ongoing)-->
+    <dep from_term="t72" to_term="t74" rfunc="amod"/>
+    <!--list(JR,2022/03/12)-->
+    <dep from_term="t72" to_term="t75" rfunc="list"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t72" to_term="t76" rfunc="punct"/>
+    <!--compound(Text,Ipsum)-->
+    <dep from_term="t80" to_term="t77" rfunc="compound"/>
+    <!--list(JR,Text)-->
+    <dep from_term="t72" to_term="t80" rfunc="list"/>
+    <!--compound(Text,Lorem)-->
+    <dep from_term="t80" to_term="t78" rfunc="compound"/>
+    <!--compound(Text,Test)-->
+    <dep from_term="t80" to_term="t79" rfunc="compound"/>
+    <!--punct(Text,|)-->
+    <dep from_term="t80" to_term="t81" rfunc="punct"/>
+    <!--list(JR,WR)-->
+    <dep from_term="t72" to_term="t82" rfunc="list"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t72" to_term="t83" rfunc="punct"/>
+    <!--advcl(Test,Ongoing)-->
+    <dep from_term="t67" to_term="t84" rfunc="advcl"/>
+    <!--obj(Ongoing,2022/04/13)-->
+    <dep from_term="t84" to_term="t85" rfunc="obj"/>
+    <!--punct(JR,|)-->
+    <dep from_term="t72" to_term="t86" rfunc="punct"/>
+    <!--compound(Ipsyum,Kirn)-->
+    <dep from_term="t88" to_term="t87" rfunc="compound"/>
+    <!--parataxis(Test,Ipsyum)-->
+    <dep from_term="t67" to_term="t88" rfunc="parataxis"/>
+    <!--compound(test,Test)-->
+    <dep from_term="t90" to_term="t89" rfunc="compound"/>
+    <!--compound(test,test)-->
+    <dep from_term="t91" to_term="t90" rfunc="compound"/>
+    <!--punct(test,|)-->
+    <dep from_term="t91" to_term="t92" rfunc="punct"/>
+    <!--appos(test,WJ)-->
+    <dep from_term="t91" to_term="t93" rfunc="appos"/>
+    <!--punct(WJ,|)-->
+    <dep from_term="t93" to_term="t94" rfunc="punct"/>
+    <!--appos(WJ,10-08-2022)-->
+    <dep from_term="t93" to_term="t95" rfunc="appos"/>
+  </deps>
+  <raw><![CDATA[Error! Unknown document property name.   Actielijst    Datum | Openstaande actiepunten | Actiehouder | Gereed 2020/08/20 | Lorem ipsum test text | HM | Q2 2020/05/27 | Test text lorem ipsum | JR | Ongoing 2021/02/29 | Ipsum Lorem Test Text | WR | Ongoing                                                            atum | Gesloten actiepunten | Actiehouder | Gereed 2022/01/10 | Lorem ipsum test text | HM | Q2 2022/02/11 | Test text lorem ipsum | JR | Ongoing 2022/03/12 | Ipsum Lorem Test Text | WR | Ongoing 2022/04/13 | Kirn Ipsyum Test test test | WJ | 10-08-2022]]></raw>
+</NAF>
