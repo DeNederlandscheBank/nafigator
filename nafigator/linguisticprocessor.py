@@ -5,8 +5,6 @@ This module contains the linguistic classes for nafigator
 """
 import logging
 
-import logging
-
 try:
     import spacy
 
