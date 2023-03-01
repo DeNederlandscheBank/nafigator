@@ -528,7 +528,7 @@ class NafParser():
 
     def get_next_mw_id(self):
         """Return multiword id for new multiword"""
-        layer = self.nafdoc.find(MULTIWORDS_LAYER_TAG)
+        layer = self.nafdoc.layer(MULTIWORDS_LAYER_TAG)
         mw_ids = [int(mw_el.get("id")[2:]) for mw_el in layer.xpath("mw")]
         if mw_ids:
             next_mw_id = max(mw_ids) + 1
