@@ -29,7 +29,7 @@ class PDFConverter(DocumentConverter):
     ):
         self.join_hyphenated_words = join_hyphenated_words
         self.control_characters_to_ignore = regex.compile(ignore_control_characters)
-        self.PDF_offset = namedtuple("PDF_offset", ["beginIndex", "endIndex"])
+        self.page_offset = namedtuple("page_offset", ["beginIndex", "endIndex"])
 
     def parse(
         self,
@@ -161,7 +161,7 @@ class PDFConverter(DocumentConverter):
     def page_offsets(self):
         """
         Property to extract page offsets from PDFDocument
-        Return: list of PDF_offset elements (named tuples)
+        Return: list of page_offset elements (named tuples)
         """
 
         # setup regexes
@@ -223,7 +223,7 @@ class PDFConverter(DocumentConverter):
                     )
                 # append corrected page offsets
                 page_offsets.append(
-                    self.PDF_offset(
+                    self.page_offset(
                         page_start - page_start_correction,
                         page_end - page_end_correction,
                     )
@@ -232,7 +232,7 @@ class PDFConverter(DocumentConverter):
                 page_start_correction = page_end_correction
             else:
                 # append page offsets
-                page_offsets.append(self.PDF_offset(page_start, page_end))
+                page_offsets.append(self.page_offset(page_start, page_end))
 
         return page_offsets
 

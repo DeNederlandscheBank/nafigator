@@ -7,10 +7,10 @@ This module contains utility functions for nafigator package
 
 """
 
-import os
 import io
 import logging
 from lxml import etree
+import os
 import re
 
 
@@ -158,70 +158,6 @@ def remove_control_characters(html: str) -> str:
     )
     html = ILLEGAL_XML_CHARS_RE.sub("", html)
     return html
-
-
-# TODO: move with tembasedprocessor and term_extraction, if those modules are removed from package
-def sublist_indices(sub, full):
-    """
-    OUTDATED - CHECK TO REMOVE
-    Returns a list of indices of the full list that contain the sub list
-    :param sub: list
-    :param full: list
-    :return: list
-
-    >>> sublist_indices(['Felix'], ['De', 'kat', 'genaamd', 'Felix', 'eet', 'geen', 'Felix'])
-    [[3], [6]]
-    >>> sublist_indices(
-            ['Felix', 'Maximiliaan'],
-            ['De', 'kat', 'genaamd', 'Felix', 'Maximiliaan', 'eet', 'geen', 'Felix']
-        )
-    [[3, 4]]
-    """
-    if sub == []:
-        return []
-    if full == []:
-        return []
-    found = []
-    for idx, item in enumerate(full):
-        if item == sub[0]:
-            if len(sub) == 1:
-                found.append([idx])
-            else:
-                match = True
-                for i, s in enumerate(sub[1:]):
-                    if len(full) > idx + i + 1:
-                        if s != full[idx + i + 1]:
-                            match = False
-                    else:
-                        match = False
-                if match:
-                    found.append(list(range(idx, idx + len(sub))))
-    return found
-
-
-def remove_sublists(lst):
-    """
-    Returns a list where all sublists are removed
-    :param lst: list
-    :return: list
-
-    >>> remove_sublists([[1, 2, 3], [1, 2]])
-    [[1, 2, 3]]
-    >>> remove_sublists([[1, 2, 3], [1]])
-    [[1, 2, 3]]
-    >>> remove_sublists([[1, 2, 3], [1, 2], [1]])
-    [[1, 2, 3]]
-    >>> remove_sublists([[1, 2, 3], [2, 3, 4], [2, 3], [3, 4]])
-    [[1, 2, 3], [2, 3, 4]]
-    """
-    curr_res = []
-    result = []
-    for elem in sorted(map(set, lst), key=len, reverse=True):
-        if not any(elem <= req for req in curr_res):
-            curr_res.append(elem)
-            r = list(elem)
-            result.append(r)
-    return result
 
 
 def path_to_format(path: str) -> str:

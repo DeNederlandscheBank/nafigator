@@ -9,6 +9,7 @@ import io
 from datetime import datetime
 from socket import getfqdn
 from lxml import etree
+import numpy as np
 from typing import Union, Optional
 
 from nifigator.utils import align_stanza_dict_offsets, tokenizer
@@ -104,6 +105,7 @@ class NafParser():
             )
 
         self.text = pdfdoc.text if (text is None) else text
+        self.page_offsets = pdfdoc.page_offsets if (text is None) else None
         self.params = params
         self.set_default_params(params)
 
@@ -398,12 +400,18 @@ class NafParser():
             wf_count_prev_sent += idx_w
             for idx_w, wf in enumerate(s, start=1):
                 wf_id = "w" + str(wf_count_prev_sent + idx_w)
+                wf_offset = wf["start_char"]
+                if self.page_offsets is not None:
+                    bins = [0] + [p[1] for p in self.page_offsets]
+                    page_nr = np.digitize(wf_offset, bins)
+                else:
+                    page_nr = None
                 wf_data = WordformElement(
                     id=wf_id,
                     sent=str(idx_s),
                     para=None,  # TODO nog te fixen -> nu geen paragraphs layer
-                    page=None,  # TODO nog te fixen -> page offset??
-                    offset=str(wf["start_char"]),
+                    page=str(page_nr),
+                    offset=str(wf_offset),
                     length=str(len(wf["text"])),
                     xpath=None,
                     text=wf["text"],
