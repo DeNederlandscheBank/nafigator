@@ -1,0 +1,23 @@
+stages:
+- stage: NafigatorDeploy
+  displayName: "Deploy the nafigator package to PyPi"
+  pool: "DNB Hosted Ubuntu 2204"
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+  jobs:
+  - job: PackageDeployJob
+    displayName: "Deploy the package to PyPi"
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(pythonVersion)'
+      displayName: 'Use Python $(pythonVersion)'
+    
+    - script: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+      displayName: 'Install requirements and build + test dependencies'
+    
+    - script: |
+        python setup.py bdist_wheel --universal
+        twine upload -r pypihosted --verbose --config-file $(PYPIRC_PATH) dist/*.whl
+      displayName: 'Build and deploy package to pypi'

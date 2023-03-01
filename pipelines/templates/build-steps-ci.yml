@@ -19,4 +19,3 @@ steps:
     targetType: "inline"
     script: |
       pytest tests/ --cov-branch --cov-report=xml --cov=nafigator
-

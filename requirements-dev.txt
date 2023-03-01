@@ -1,2 +1,5 @@
-pytest
-pytest-cov
+coverage==7.0.3
+pytest==7.2.0
+pytest-azurepipelines==1.0.4
+pytest-cov==4.0.0
+wheel==0.38.4
