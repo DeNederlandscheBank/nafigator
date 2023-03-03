@@ -104,7 +104,11 @@ class NafParser():
             )
 
         self.text = pdfdoc.text if (text is None) else text
-        self.page_offsets = pdfdoc.page_offsets if (text is None) else None
+
+        if pdfdoc is not None:
+            self.page_offsets = pdfdoc.page_offsets
+            self.paragraph_offsets = pdfdoc.paragraph_offsets
+
         self.params = params
         self.set_default_params(params)
 
