@@ -11,7 +11,6 @@ from socket import getfqdn
 from lxml import etree
 import numpy as np
 from typing import Union, Optional
-
 from nifigator.utils import align_stanza_dict_offsets, tokenizer
 
 from .linguisticprocessor import stanzaProcessor, spacyProcessor
@@ -151,10 +150,10 @@ class NafParser():
     def evaluate_naf(self):
         """Perform alignment between raw layer, document text and text layer in the NAF xml tree"""
         # verify alignment between raw layer and document text
-        doc_text = self.engine.document_text(self.doc)
+        doc_length = self.tokenized_text[-1][-1]["end_char"]
         raw = self.nafdoc.raw
-        if len(raw) != len(doc_text):
-            logging.error(f"raw length ({len(raw)}) != doc length ({len(doc_text)})")
+        if len(raw) != doc_length:
+            logging.error(f"raw length ({len(raw)}) != doc length ({doc_length})")
 
         # verify alignment between raw layer and text layer
         for wf in self.nafdoc.text:

@@ -16,7 +16,7 @@ from nifigator.utils import replace_escape_characters
 from .document_converter import DocumentConverter
 
 # TODO streams component toevoegen
-# generate_naf --> ERROR: root: raw length(267) != doc length(271)
+# TODO output lostrekken van de converter en standardiseren zodat docx hier ook gebruik van kan maken
 
 
 class PDFConverter(DocumentConverter):
