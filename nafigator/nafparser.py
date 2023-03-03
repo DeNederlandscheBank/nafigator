@@ -405,14 +405,19 @@ class NafParser():
                 wf_id = "w" + str(wf_count_prev_sent + idx_w)
                 wf_offset = wf["start_char"]
                 if self.page_offsets is not None:
-                    bins = [0] + [p[1] for p in self.page_offsets]
+                    bins = [0] + [p.endIndex for p in self.page_offsets]
                     page_nr = np.digitize(wf_offset, bins)
                 else:
                     page_nr = None
+                if self.paragraph_offsets is not None:
+                    bins = [0] + [para.endIndex for para in self.paragraph_offsets]
+                    paragraph_nr = np.digitize(wf_offset, bins)
+                else:
+                    paragraph_nr = None
                 wf_data = WordformElement(
                     id=wf_id,
                     sent=str(idx_s),
-                    para=None,  # TODO nog te fixen -> nu geen paragraphs layer
+                    para= str(paragraph_nr),  
                     page=str(page_nr),
                     offset=str(wf_offset),
                     length=str(len(wf["text"])),

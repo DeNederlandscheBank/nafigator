@@ -4,6 +4,7 @@
 
 import regex
 import logging
+from dataclasses import dataclass
 from collections import namedtuple
 from io import BytesIO
 from typing import Union
@@ -19,6 +20,12 @@ from .document_converter import DocumentConverter
 # TODO output lostrekken van de converter en standardiseren zodat docx hier ook gebruik van kan maken
 
 
+@dataclass
+class Offset:
+    beginIndex: int
+    endIndex: int
+
+
 class PDFConverter(DocumentConverter):
     """Class to convert pdf to cleaned text"""
 
@@ -29,7 +36,6 @@ class PDFConverter(DocumentConverter):
     ):
         self.join_hyphenated_words = join_hyphenated_words
         self.control_characters_to_ignore = regex.compile(ignore_control_characters)
-        self.page_offset = namedtuple("page_offset", ["beginIndex", "endIndex"])
 
     def parse(
         self,
@@ -221,20 +227,111 @@ class PDFConverter(DocumentConverter):
                         + " corrected with "
                         + str(page_end_correction)
                     )
-                # append corrected page offsets
+                
                 page_offsets.append(
-                    self.page_offset(
-                        page_start - page_start_correction,
-                        page_end - page_end_correction,
+                    Offset(
+                    beginIndex=page_start - page_start_correction,
+                    endIndex=page_end - page_end_correction
                     )
                 )
                 # set page_start_correction for next page
                 page_start_correction = page_end_correction
             else:
                 # append page offsets
-                page_offsets.append(self.page_offset(page_start, page_end))
+                page_offsets.append(
+                    Offset(
+                        beginIndex=page_start, 
+                        endIndex=page_end
+                        )
+                )
 
         return page_offsets
 
     # TODO: code to be added for table extraction or in parse2naf directly
     # params["pdftotables"] = None
+
+    @property
+    def paragraph_offsets(self):
+        """
+        Property to extract paragraph offsets from PDFDocument
+        Return: list of paragraph_offset elements (named tuples)
+        """
+
+        # setup regexes
+        _hyphens = "\u00AD\u058A\u05BE\u0F0C\u1400\u1806\u2010\u2011\u2012\u2e17\u30A0-"
+        _hyphen_newline = regex.compile(
+            r"(?<=\p{L})[" + _hyphens + "][ \t\u00a0\r]*\n{1,2}[ \t\u00a0]*(?=\\p{L})"
+        )
+
+        paragraph_offsets = []
+        text = ""
+        paragraph_start_correction = 0
+        paragraph_end_correction = 0
+        for page in self.tree:
+            paragraph_start = len(text)
+            for textbox in page:
+                if textbox.tag == "textbox":
+                    for textline in textbox:
+                        for text_element in textline:
+                            if text_element.text is not None:
+                                text += self.control_characters_to_ignore.sub(
+                                    "", text_element.text
+                                )
+                    text += "\n"
+                elif textbox.tag == "figure":  # Moet dit ook toegevoegd worden voor paragraphs?
+                    for text_element in textbox:
+                        if (
+                            text_element.text is not None
+                            and text_element.text != "\n        "
+                        ):
+                            text += self.control_characters_to_ignore.sub(
+                                "", text_element.text
+                            )
+                elif textbox.tag == "textline":  # Moet dit ook toegevoegd worden voor paragraphs?
+                    for text_element in textbox:
+                        if text_element.text is not None:
+                            text += self.control_characters_to_ignore.sub(
+                                "", text_element.text
+                            )
+
+
+                paragraph_end = len(text)
+
+                if self.join_hyphenated_words:
+                    # retrieve all hyphens in text and calculate correction
+                    text_hyphens = regex.finditer(_hyphen_newline, text)
+                    paragraph_end_correction = sum(
+                        [hyphen.end() - hyphen.start() for hyphen in text_hyphens]
+                    )
+                    if logging.DEBUG and paragraph_end_correction > 0:
+                        logging.debug(
+                            "nifigator.pdfparser.paragraph_offsets: paragraph_start "
+                            + str(paragraph_start)
+                            + " corrected with "
+                            + str(paragraph_start_correction)
+                        )
+                        logging.debug(
+                            "nifigator.pdfparser.paragraph_offsets: paragraph_end   "
+                            + str(paragraph_end)
+                            + " corrected with "
+                            + str(paragraph_end_correction)
+                        )
+                    # append corrected paragraph offsets
+                    paragraph_offsets.append(
+                        Offset(
+                            beginIndex=paragraph_start - paragraph_start_correction,
+                            endIndex=paragraph_end - paragraph_end_correction,
+                        )
+                    )
+                    # set paragraph_start_correction for next paragraph
+                    paragraph_start_correction = paragraph_end_correction
+                else:
+                    # append paragraph offsets
+                    paragraph_offsets.append(
+                        Offset(
+                            beginIndex=paragraph_start, 
+                            endIndex=paragraph_end
+                        )
+                    )
+
+        return paragraph_offsets
