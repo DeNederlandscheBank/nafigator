@@ -5,7 +5,6 @@
 import regex
 import logging
 from dataclasses import dataclass
-from collections import namedtuple
 from io import BytesIO
 from typing import Union
 from lxml import etree
@@ -227,11 +226,11 @@ class PDFConverter(DocumentConverter):
                         + " corrected with "
                         + str(page_end_correction)
                     )
-                
+
                 page_offsets.append(
                     Offset(
-                    beginIndex=page_start - page_start_correction,
-                    endIndex=page_end - page_end_correction
+                        beginIndex=page_start - page_start_correction,
+                        endIndex=page_end - page_end_correction
                     )
                 )
                 # set page_start_correction for next page
@@ -240,9 +239,9 @@ class PDFConverter(DocumentConverter):
                 # append page offsets
                 page_offsets.append(
                     Offset(
-                        beginIndex=page_start, 
+                        beginIndex=page_start,
                         endIndex=page_end
-                        )
+                    )
                 )
 
         return page_offsets
@@ -294,7 +293,6 @@ class PDFConverter(DocumentConverter):
                                 "", text_element.text
                             )
 
-
                 paragraph_end = len(text)
 
                 if self.join_hyphenated_words:
@@ -329,7 +327,7 @@ class PDFConverter(DocumentConverter):
                     # append paragraph offsets
                     paragraph_offsets.append(
                         Offset(
-                            beginIndex=paragraph_start, 
+                            beginIndex=paragraph_start,
                             endIndex=paragraph_end
                         )
                     )
