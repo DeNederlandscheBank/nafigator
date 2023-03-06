@@ -417,7 +417,7 @@ class NafParser():
                 wf_data = WordformElement(
                     id=wf_id,
                     sent=str(idx_s),
-                    para= str(paragraph_nr),  
+                    para=str(paragraph_nr),
                     page=str(page_nr),
                     offset=str(wf_offset),
                     length=str(len(wf["text"])),
