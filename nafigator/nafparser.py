@@ -203,7 +203,7 @@ class NafParser():
 
         # correction for bug in stanza
         if tokenized_text != []:
-            if tokenized_text[-1][-1] == "":
+            if tokenized_text[-1][-1]["text"] == "":
                 tokenized_text[-1] = tokenized_text[-1][:-1]
 
         # extract the text from the tokenized data
