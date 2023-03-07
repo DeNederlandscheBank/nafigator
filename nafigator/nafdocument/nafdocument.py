@@ -90,13 +90,16 @@ class NafDocument(etree._ElementTree):
 
     def __init__(
         self,
-        root: etree.Element = etree.Element("NAF", nsmap=namespaces),
+        root: etree.Element = None,
         naf_version: str = None,
         language: str = None,
         filedesc_elem: dict = {},
         public_elem: dict = {}
     ) -> None:
         """Initialize a NafDocument"""
+        if root is None:
+            root = etree.Element("NAF", nsmap=namespaces)
+
         self._setroot(root)
         self.add_nafHeader()
         self.set_version(naf_version)
