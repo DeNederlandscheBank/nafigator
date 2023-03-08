@@ -81,7 +81,8 @@ class PDFConverter(DocumentConverter):
         result = retstr.getvalue()
         retstr.close()
 
-        self.tree = etree.fromstring(result)
+        parser = etree.XMLParser(ns_clean=True, recover=True, encoding="utf-8")
+        self.tree = etree.fromstring(result, parser=parser)
 
         return self
 
