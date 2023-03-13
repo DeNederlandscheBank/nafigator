@@ -10,5 +10,3 @@ from .nafdocument import *
 from .parse2naf import *
 
 from .linguisticprocessor import *
-from .preprocessprocessor import *
-from .ocrprocessor import *
