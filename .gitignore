@@ -115,8 +115,6 @@ ENV/
 !/data/example.naf.xml
 !/data/example.docx.naf.xml
 
-/tests/tests/*.naf.xml
-
 # local
 tmp
 /fontconfig/
