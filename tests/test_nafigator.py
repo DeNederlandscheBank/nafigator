@@ -19,7 +19,7 @@ class TestNafigator_pdf(unittest.TestCase):
     def setUp(self):
         # @TODO reuse in pdf tests
         self.pdf_naf = parse2naf.generate_naf(
-            input="tests" + os.sep + "tests" + os.sep + "example.pdf",
+            input="tests" + os.sep + "data" + os.sep + "example.pdf",
             engine="stanza",
             language="en",
             naf_version="v3.1",
@@ -31,7 +31,7 @@ class TestNafigator_pdf(unittest.TestCase):
     def test_1_pdf_generate_naf(self):
         """ """
         tree = parse2naf.generate_naf(
-            input="tests" + os.sep + "tests" + os.sep + "example.pdf",
+            input="tests" + os.sep + "data" + os.sep + "example.pdf",
             engine="stanza",
             language="en",
             naf_version="v3.1",
@@ -40,7 +40,7 @@ class TestNafigator_pdf(unittest.TestCase):
             nlp=None,
         )
         assert (
-            tree.write("tests" + os.sep + "tests" + os.sep + "example.naf.xml") is None
+            tree.write("tests" + os.sep + "data" + os.sep + "example.naf.xml") is None
         )
 
     def test_1_split_pre_linguistic(self):
@@ -55,10 +55,10 @@ class TestNafigator_pdf(unittest.TestCase):
             params={"linguistic_layers": []},
             nlp=None,
         )
-        tree.write(join("tests", "tests", "example_preprocess.naf.xml")) is None
+        tree.write(join("tests", "data", "example_preprocess.naf.xml")) is None
 
         # start with saved document and process linguistic steps
-        naf = NafDocument().open(join("tests", "tests", "example_preprocess.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example_preprocess.naf.xml"))
         tree = parse2naf.generate_naf(
             input=naf,
             engine="stanza",
@@ -67,18 +67,18 @@ class TestNafigator_pdf(unittest.TestCase):
             params={"preprocess_layers": []},
         )
 
-        doc = NafDocument().open(join("tests", "tests", "example.naf.xml"))
+        doc = NafDocument().open(join("tests", "data", "example.naf.xml"))
 
         assert tree.raw == doc.raw
 
     def test_2_pdf_header_filedesc(self):
         """ """
         naf = NafDocument().open(
-            "tests" + os.sep + "tests" + os.sep + "example.naf.xml"
+            "tests" + os.sep + "data" + os.sep + "example.naf.xml"
         )
         actual = naf.header["fileDesc"]
         expected = {
-            "filename": "tests" + os.sep + "tests" + os.sep + "example.pdf",
+            "filename": "tests" + os.sep + "data" + os.sep + "example.pdf",
             "filetype": "application/pdf",
         }
         assert actual["filename"] == expected["filename"]
@@ -87,13 +87,13 @@ class TestNafigator_pdf(unittest.TestCase):
     def test_3_pdf_header_public(self):
         """ """
         naf = NafDocument().open(
-            "tests" + os.sep + "tests" + os.sep + "example.naf.xml"
+            "tests" + os.sep + "data" + os.sep + "example.naf.xml"
         )
         actual = naf.header["public"]
         expected = {
             "{http://purl.org/dc/elements/1.1/}uri": "tests"
             + os.sep
-            + "tests"
+            + "data"
             + os.sep
             + "example.pdf",
             "{http://purl.org/dc/elements/1.1/}format": "application/pdf",
@@ -154,7 +154,7 @@ class TestNafigator_pdf(unittest.TestCase):
     # assert actual == expected, "expected: "+str(expected)+", actual: "+str(actual)
 
     def test_5_pdf_formats(self):
-        naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.naf.xml"))
         actual = naf.formats
         expected = [
             {
@@ -225,7 +225,7 @@ class TestNafigator_pdf(unittest.TestCase):
         )
 
     def test_6_pdf_entities(self):
-        naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.naf.xml"))
         actual = naf.entities
         expected = [
             {
@@ -242,7 +242,7 @@ class TestNafigator_pdf(unittest.TestCase):
         )
 
     def test_7_pdf_text(self):
-        naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.naf.xml"))
         actual = naf.text
         expected = [
             {
@@ -700,7 +700,7 @@ class TestNafigator_pdf(unittest.TestCase):
         assert diff == dict(), diff
 
     def test_8_pdf_terms(self):
-        naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.naf.xml"))
         actual = naf.terms
 
         expected = [
@@ -992,7 +992,7 @@ class TestNafigator_pdf(unittest.TestCase):
         )
 
     def test_9_pdf_dependencies(self):
-        naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.naf.xml"))
         actual = naf.deps
 
         expected = [
@@ -1049,7 +1049,7 @@ class TestNafigator_pdf(unittest.TestCase):
         )
 
     def test_10_pdf_multiwords(self):
-        naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.naf.xml"))
         actual = naf.multiwords
         expected = [
             {
@@ -1068,7 +1068,7 @@ class TestNafigator_pdf(unittest.TestCase):
         )
 
     def test_11_raw(self):
-        naf = NafDocument().open(join("tests", "tests", "example.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.naf.xml"))
         actual = naf.raw
         expected = "The Nafigator package allows you to store NLP output from custom made spaCy and stanza  pipelines with (intermediate) results and all processing steps in one format.  Multiwords like in “we have set that out below” are recognized (depending on your NLP  processor)."
         assert actual == expected, (
@@ -1207,7 +1207,7 @@ class TestNafigator_pdf(unittest.TestCase):
     def test_13_formats_copy(self):
         # @TODO: naf wordt nu meerdere keren de testen opgeroepen. Deze kan vooraf gedefinieerd worden.
         pdf_naf_copy_formats = parse2naf.generate_naf(
-            input="tests" + os.sep + "tests" + os.sep + "example.pdf",
+            input="tests" + os.sep + "data" + os.sep + "example.pdf",
             engine="stanza",
             language="en",
             naf_version="v3.1",
@@ -1249,7 +1249,7 @@ class TestNafigator_docx(unittest.TestCase):
     def test_1_docx_generate_naf(self):
         """ """
         tree = parse2naf.generate_naf(
-            input=join("tests", "tests", "example.docx"),
+            input=join("tests", "data", "example.docx"),
             engine="stanza",
             language="en",
             naf_version="v3.1",
@@ -1257,16 +1257,16 @@ class TestNafigator_docx(unittest.TestCase):
             params={},
             nlp=None,
         )
-        assert tree.write(join("tests", "tests", "example.docx.naf.xml")) == None
+        assert tree.write(join("tests", "data", "example.docx.naf.xml")) == None
 
     def test_2_docx_header_filedesc(self):
         """ """
         naf = NafDocument().open(
-            "tests" + os.sep + "tests" + os.sep + "example.docx.naf.xml"
+            "tests" + os.sep + "data" + os.sep + "example.docx.naf.xml"
         )
         actual = naf.header["fileDesc"]
         expected = {
-            "filename": "tests" + os.sep + "tests" + os.sep + "example.docx",
+            "filename": "tests" + os.sep + "data" + os.sep + "example.docx",
             "filetype": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         }
         assert actual["filename"] == expected["filename"]
@@ -1275,13 +1275,13 @@ class TestNafigator_docx(unittest.TestCase):
     def test_3_docx_header_public(self):
         """ """
         naf = NafDocument().open(
-            "tests" + os.sep + "tests" + os.sep + "example.docx.naf.xml"
+            "tests" + os.sep + "data" + os.sep + "example.docx.naf.xml"
         )
         actual = naf.header["public"]
         expected = {
             "{http://purl.org/dc/elements/1.1/}uri": "tests"
             + os.sep
-            + "tests"
+            + "data"
             + os.sep
             + "example.docx",
             "{http://purl.org/dc/elements/1.1/}format": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -1295,7 +1295,7 @@ class TestNafigator_docx(unittest.TestCase):
     #     assert actual == expected
 
     def test_6_docx_entities(self):
-        naf = NafDocument().open(join("tests", "tests", "example.docx.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.docx.naf.xml"))
         actual = naf.entities
         expected = [
             {
@@ -1312,7 +1312,7 @@ class TestNafigator_docx(unittest.TestCase):
         )
 
     def test_7_docx_text(self):
-        naf = NafDocument().open(join("tests", "tests", "example.docx.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.docx.naf.xml"))
         actual = naf.text
         expected = [
             {
@@ -2222,7 +2222,7 @@ class TestNafigator_docx(unittest.TestCase):
     #     )
 
     def test_10_docx_multiwords(self):
-        naf = NafDocument().open(join("tests", "tests", "example.docx.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.docx.naf.xml"))
         actual = naf.multiwords
         expected = [
             {
@@ -2241,7 +2241,7 @@ class TestNafigator_docx(unittest.TestCase):
         )
 
     def test_11_docx_raw(self):
-        naf = NafDocument().open(join("tests", "tests", "example.docx.naf.xml"))
+        naf = NafDocument().open(join("tests", "data", "example.docx.naf.xml"))
         actual = naf.raw
         expected = "The Nafigator package allows you to store NLP output from custom made Spacy and stanza pipelines with (intermediate) results and all processing steps in one format.  Multiwords like in “we have set that out below” are recognized (depending on your NLP processor)."
         assert actual == expected, (
