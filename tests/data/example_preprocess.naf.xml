@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <NAF xmlns:dc="http://purl.org/dc/elements/1.1/" version="v3.1" xml:lang="en">
   <nafHeader>
-    <fileDesc creationtime="2023-03-16T10:11:43UTC" filename="tests\tests\example.pdf" filetype="application/pdf"/>
-    <public dc:uri="tests\tests\example.pdf" dc:format="application/pdf"/>
+    <fileDesc creationtime="2023-03-16T14:35:37UTC" filename="tests\data\example.pdf" filetype="application/pdf"/>
+    <public dc:uri="tests\data\example.pdf" dc:format="application/pdf"/>
     <linguisticProcessors layer="formats">
-      <lp name="formats" version="nafigator" beginTimestamp="2023-03-16T10:11:43UTC" endTimestamp="2023-03-16T10:11:43UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
+      <lp name="formats" version="nafigator" beginTimestamp="2023-03-16T14:35:37UTC" endTimestamp="2023-03-16T14:35:37UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
     </linguisticProcessors>
   </nafHeader>
   <formats>

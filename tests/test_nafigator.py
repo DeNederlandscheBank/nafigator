@@ -47,7 +47,7 @@ class TestNafigator_pdf(unittest.TestCase):
         """ """
         # only save the preprocess steps
         tree = parse2naf.generate_naf(
-            input=join("tests", "tests", "example.pdf"),
+            input=join("tests", "data", "example.pdf"),
             engine="stanza",
             language="en",
             naf_version="v3.1",
