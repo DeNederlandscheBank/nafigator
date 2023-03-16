@@ -41,7 +41,7 @@ def public_var():
 
 @pytest.fixture
 def doc():
-    return NafDocument().open("tests/tests/example.naf.xml")
+    return NafDocument().open("tests/data/example.naf.xml")
 
 
 class TestNafDocument():
@@ -76,7 +76,7 @@ class TestNafDocument():
 
     @patch(f"{nafdocument.__name__}.etree")
     @pytest.mark.parametrize('input,expect_open', [
-        ("tests/tests/example.naf.xml", True),
+        ("tests/data/example.naf.xml", True),
         (bytes("content", "utf-8"), False)
     ])
     def test_open(self, etree: MagicMock, input, expect_open: bool):

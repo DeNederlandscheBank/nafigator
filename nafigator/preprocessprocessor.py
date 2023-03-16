@@ -46,7 +46,7 @@ def convert_pdf(
 
     rsrcmgr = PDFResourceManager()
     retstr = BytesIO()
-    laparams = LAParams()
+    laparams = LAParams(line_margin=1.25)
     if format == "text":
         device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
     elif format == "html":
