@@ -6,8 +6,8 @@
 trigger:
 - dev
 
-pool:
-  vmImage: DNB Hosted Ubuntu 2204 
+pool: DNB Hosted Ubuntu 2204
+
 strategy:
   matrix:
     Python27:
