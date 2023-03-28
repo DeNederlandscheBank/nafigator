@@ -8,6 +8,10 @@ on:
 jobs:
   build:
 
+    env:
+      pypi_login: ${{ secrets.PYPI_LOGIN }}
+      pypi_password: ${{ secrets.PYPI_PASSWORD }}
+
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -45,4 +49,4 @@ jobs:
       - name: deploy
         run: |
           python setup.py bdist_wheel --universal
-          twine upload -r pypihosted --verbose --config-file $(PYPIRC_PATH) dist/*.whl
+          twine upload -r pypihosted --verbose --config-file $(PYPIRC_PATH) dist/*.whl -u ${{ env.pypi_login }} -p ${{ env.pypi_password }}
