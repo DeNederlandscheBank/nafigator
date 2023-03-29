@@ -6,11 +6,6 @@ on:
 
 jobs:
   build:
-
-    env:
-      pypi_login: ${{ secrets.PYPI_LOGIN }}
-      pypi_password: ${{ secrets.PYPI_PASSWORD }}
-
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -37,6 +32,10 @@ jobs:
           pytest tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 
   deployment:
+    env:
+      pypi_login: ${{ secrets.PYPI_LOGIN }}
+      pypi_password: ${{ secrets.PYPI_PASSWORD }}
+
     # if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ${{ matrix.os }}
@@ -54,5 +53,6 @@ jobs:
       
       - name: deploy
         run: |
+          pip install -r requirement-dev.txt
           python setup.py bdist_wheel --universal
           twine upload -r pypihosted --verbose --config-file $(PYPIRC_PATH) dist/*.whl -u ${{ env.pypi_login }} -p ${{ env.pypi_password }}
