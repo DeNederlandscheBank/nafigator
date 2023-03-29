@@ -35,7 +35,6 @@ jobs:
     env:
       pypi_login: ${{ secrets.PYPI_LOGIN }}
       pypi_password: ${{ secrets.PYPI_PASSWORD }}
-
     # if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ${{ matrix.os }}
