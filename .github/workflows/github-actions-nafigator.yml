@@ -52,4 +52,4 @@ jobs:
         run: |
           pip install -r requirement-dev.txt
           python setup.py bdist_wheel --universal
-          twine upload -r pypihosted --verbose dist/*.whl -u ${{ env.pypi_login }} -p ${{ env.pypi_password }}
+          twine upload -r pypihosted --verbose --config-file ~/.pypirc dist/*.whl -u ${{ env.pypi_login }} -p ${{ env.pypi_password }}
