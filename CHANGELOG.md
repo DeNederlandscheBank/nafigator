@@ -100,3 +100,6 @@ History
 * Add option for streams input
 * Remove unused imports
 
+0.1.62 (2022-03-29)
+-------------------
+* line margin adjustment
