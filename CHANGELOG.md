@@ -95,11 +95,15 @@ History
 * Bugfix Lemma error
 * Part 1 bugfix referencing error
 
-0.1.61 (2022-01-09)
+0.1.61 (2023-01-09)
 -------------------
 * Add option for streams input
 * Remove unused imports
 
-0.1.62 (2022-03-29)
+0.1.62 (2023-03-29)
 -------------------
 * line margin adjustment
+
+0.1.63 (2023-04-04)
+-------------------
+* Add util for getting before and after text
