@@ -31,7 +31,6 @@ from .const import RawElement
 from .const import MultiwordElement
 from .const import ComponentElement
 from .const import udpos2nafpos_info
-from .const import udpos2olia
 from .const import hidden_table
 from .utils import normalize_token_orth
 from .utils import remove_illegal_chars
@@ -218,11 +217,11 @@ def evaluate_naf(params: dict):
     doc_text = params["engine"].document_text(params["doc"])
     raw = params["tree"].raw
     if len(raw) != len(doc_text):
-        logging.error(f"raw length ({len(raw)}) != doc length ({len(doc_text)})")
+        logging.warning(f"raw length ({len(raw)}) != doc length ({len(doc_text)})")
     # verify alignment between raw layer and text
     text_to_use = derive_text_from_formats_layer(params)
     if len(raw) != len(text_to_use):
-        logging.error(f"raw length ({len(raw)}) != text to use ({len(text_to_use)})")
+        logging.warning(f"raw length ({len(raw)}) != text to use ({len(text_to_use)})")
     # verify alignment between raw layer and text layer
     for wf in params["tree"].text:
         start = int(wf.get("offset"))
@@ -384,7 +383,7 @@ def derive_text_from_formats_layer(params):
         if len(text) > 0:
             text_spaces_added.append(text[-1][0])
 
-        text = "".join(text_spaces_added).rstrip()
+        text = "".join(text_spaces_added)
         if params["replace_hidden_characters"]:
             text = norm_spaces(text.translate(hidden_table))
         else:

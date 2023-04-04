@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <NAF xmlns:dc="http://purl.org/dc/elements/1.1/" version="v3.1" xml:lang="en">
   <nafHeader>
-    <fileDesc creationtime="2023-01-05T16:33:43UTC" filename="tests/tests/example.pdf" filetype="application/pdf"/>
-    <public dc:uri="tests/tests/example.pdf" dc:format="application/pdf"/>
+    <fileDesc creationtime="2023-04-04T09:02:59UTC" filename="tests/data/example.pdf" filetype="application/pdf"/>
+    <public dc:uri="tests/data/example.pdf" dc:format="application/pdf"/>
     <linguisticProcessors layer="formats">
-      <lp name="formats" version="nafigator" beginTimestamp="2023-01-05T16:33:43UTC" endTimestamp="2023-01-05T16:33:43UTC" hostname="hduerinck001.localdomain"/>
+      <lp name="formats" version="nafigator" beginTimestamp="2023-04-04T09:02:59UTC" endTimestamp="2023-04-04T09:02:59UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="entities">
-      <lp name="entities" version="stanza_version-1.4.0" beginTimestamp="2023-01-05T16:33:45UTC" endTimestamp="2023-01-05T16:33:45UTC" hostname="hduerinck001.localdomain"/>
+      <lp name="entities" version="stanza_version-1.4.2" beginTimestamp="2023-04-04T09:03:01UTC" endTimestamp="2023-04-04T09:03:02UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="text">
-      <lp name="text" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-01-05T16:33:45UTC" endTimestamp="2023-01-05T16:33:45UTC" hostname="hduerinck001.localdomain"/>
+      <lp name="text" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-04-04T09:03:01UTC" endTimestamp="2023-04-04T09:03:02UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="terms">
-      <lp name="terms" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/pos/combined.pt" beginTimestamp="2023-01-05T16:33:45UTC" endTimestamp="2023-01-05T16:33:45UTC" hostname="hduerinck001.localdomain"/>
+      <lp name="terms" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/pos/combined.pt" beginTimestamp="2023-04-04T09:03:01UTC" endTimestamp="2023-04-04T09:03:02UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="deps">
-      <lp name="deps" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/depparse/combined.pt" beginTimestamp="2023-01-05T16:33:45UTC" endTimestamp="2023-01-05T16:33:45UTC" hostname="hduerinck001.localdomain"/>
+      <lp name="deps" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/depparse/combined.pt" beginTimestamp="2023-04-04T09:03:01UTC" endTimestamp="2023-04-04T09:03:02UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="multiwords">
-      <lp name="multiwords" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-01-05T16:33:45UTC" endTimestamp="2023-01-05T16:33:45UTC" hostname="hduerinck001.localdomain"/>
+      <lp name="multiwords" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-04-04T09:03:01UTC" endTimestamp="2023-04-04T09:03:02UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="raw">
-      <lp name="raw" version="stanza_version-1.4.0" model="/home/hmduerinck/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-01-05T16:33:45UTC" endTimestamp="2023-01-05T16:33:45UTC" hostname="hduerinck001.localdomain"/>
+      <lp name="raw" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-04-04T09:03:01UTC" endTimestamp="2023-04-04T09:03:02UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
   </nafHeader>
   <formats>
@@ -154,7 +154,7 @@
         <target id="w7"/>
       </span>
     </term>
-    <term id="t8" type="open" lemma="NLP" pos="PROPN" morphofeat="Number=Sing">
+    <term id="t8" type="open" lemma="nlp" pos="NOUN" morphofeat="Number=Sing">
       <span>
         <!--NLP-->
         <target id="w8"/>
@@ -172,7 +172,7 @@
         <target id="w10"/>
       </span>
     </term>
-    <term id="t11" type="open" lemma="custom" pos="NOUN" morphofeat="Number=Sing">
+    <term id="t11" type="open" lemma="custom" pos="ADJ" morphofeat="Degree=Pos">
       <span>
         <!--custom-->
         <target id="w11"/>
@@ -184,7 +184,7 @@
         <target id="w12"/>
       </span>
     </term>
-    <term id="t13" type="open" lemma="spacy" pos="ADJ" morphofeat="Degree=Pos">
+    <term id="t13" type="open" lemma="spacy" pos="NOUN" morphofeat="Number=Sing">
       <span>
         <!--spaCy-->
         <target id="w13"/>
@@ -268,7 +268,7 @@
         <target id="w26"/>
       </span>
     </term>
-    <term id="t27" type="open" lemma="one" pos="NUM" morphofeat="NumType=Card">
+    <term id="t27" type="open" lemma="one" pos="NUM" morphofeat="NumForm=Word|NumType=Card">
       <span>
         <!--one-->
         <target id="w27"/>
@@ -292,7 +292,7 @@
         <target id="w30"/>
       </span>
     </term>
-    <term id="t31" type="open" lemma="like" pos="VERB" morphofeat="Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin">
+    <term id="t31" type="open" lemma="like" pos="ADP">
       <span>
         <!--like-->
         <target id="w31"/>
@@ -430,24 +430,24 @@
     <dep from_term="t9" to_term="t8" rfunc="compound"/>
     <!--obj(store,output)-->
     <dep from_term="t7" to_term="t9" rfunc="obj"/>
-    <!--case(custom,from)-->
-    <dep from_term="t11" to_term="t10" rfunc="case"/>
-    <!--obl(store,custom)-->
-    <dep from_term="t7" to_term="t11" rfunc="obl"/>
-    <!--acl(custom,made)-->
-    <dep from_term="t11" to_term="t12" rfunc="acl"/>
-    <!--amod(pipelines,spaCy)-->
-    <dep from_term="t16" to_term="t13" rfunc="amod"/>
-    <!--obj(made,pipelines)-->
-    <dep from_term="t12" to_term="t16" rfunc="obj"/>
-    <!--cc(stanza,and)-->
-    <dep from_term="t15" to_term="t14" rfunc="cc"/>
-    <!--conj(spaCy,stanza)-->
-    <dep from_term="t13" to_term="t15" rfunc="conj"/>
+    <!--case(spaCy,from)-->
+    <dep from_term="t13" to_term="t10" rfunc="case"/>
+    <!--obl(store,spaCy)-->
+    <dep from_term="t7" to_term="t13" rfunc="obl"/>
+    <!--amod(spaCy,custom)-->
+    <dep from_term="t13" to_term="t11" rfunc="amod"/>
+    <!--amod(spaCy,made)-->
+    <dep from_term="t13" to_term="t12" rfunc="amod"/>
+    <!--cc(pipelines,and)-->
+    <dep from_term="t16" to_term="t14" rfunc="cc"/>
+    <!--conj(spaCy,pipelines)-->
+    <dep from_term="t13" to_term="t16" rfunc="conj"/>
+    <!--compound(pipelines,stanza)-->
+    <dep from_term="t16" to_term="t15" rfunc="compound"/>
     <!--case(results,with)-->
     <dep from_term="t21" to_term="t17" rfunc="case"/>
-    <!--nmod(pipelines,results)-->
-    <dep from_term="t16" to_term="t21" rfunc="nmod"/>
+    <!--obl(store,results)-->
+    <dep from_term="t7" to_term="t21" rfunc="obl"/>
     <!--punct(intermediate,()-->
     <dep from_term="t19" to_term="t18" rfunc="punct"/>
     <!--amod(results,intermediate)-->
@@ -470,14 +470,14 @@
     <dep from_term="t28" to_term="t27" rfunc="nummod"/>
     <!--punct(allows,.)-->
     <dep from_term="t4" to_term="t29" rfunc="punct"/>
-    <!--nsubj(like,Multiwords)-->
-    <dep from_term="t31" to_term="t30" rfunc="nsubj"/>
+    <!--nsubj:pass(recognized,Multiwords)-->
+    <dep from_term="t42" to_term="t30" rfunc="nsubj:pass"/>
+    <!--obl(recognized,like)-->
+    <dep from_term="t42" to_term="t31" rfunc="obl"/>
     <!--mark(set,in)-->
     <dep from_term="t36" to_term="t32" rfunc="mark"/>
-    <!--advcl(recognized,set)-->
-    <dep from_term="t42" to_term="t36" rfunc="advcl"/>
-    <!--ccomp(like,recognized)-->
-    <dep from_term="t31" to_term="t42" rfunc="ccomp"/>
+    <!--appos(Multiwords,set)-->
+    <dep from_term="t30" to_term="t36" rfunc="appos"/>
     <!--punct(set,“)-->
     <dep from_term="t36" to_term="t33" rfunc="punct"/>
     <!--nsubj(set,we)-->
