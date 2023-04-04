@@ -107,3 +107,4 @@ History
 0.1.63 (2023-04-04)
 -------------------
 * Add util for getting before and after text
+* In parse2naf, evaluate_naf, change mismatch in length between raw and text_to_use from error -> warning log
