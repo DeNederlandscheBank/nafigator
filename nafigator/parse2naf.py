@@ -217,11 +217,11 @@ def evaluate_naf(params: dict):
     doc_text = params["engine"].document_text(params["doc"])
     raw = params["tree"].raw
     if len(raw) != len(doc_text):
-        logging.error(f"raw length ({len(raw)}) != doc length ({len(doc_text)})")
+        logging.warning(f"raw length ({len(raw)}) != doc length ({len(doc_text)})")
     # verify alignment between raw layer and text
     text_to_use = derive_text_from_formats_layer(params)
     if len(raw) != len(text_to_use):
-        logging.error(f"raw length ({len(raw)}) != text to use ({len(text_to_use)})")
+        logging.warning(f"raw length ({len(raw)}) != text to use ({len(text_to_use)})")
     # verify alignment between raw layer and text layer
     for wf in params["tree"].text:
         start = int(wf.get("offset"))
