@@ -15,11 +15,8 @@ import pandas as pd
 import logging
 from nafigator import parse2naf
 from .const import TermElement
-import docx
-from docx.enum.dml import MSO_THEME_COLOR_INDEX
 import datetime
-from typing import Union
-import nafigator
+from typing import List, Tuple, Union
 
 
 def dataframe2naf(
@@ -718,20 +715,21 @@ def glue_sentences_separated_by_colons(doc, language: str, nlp: dict):
     return doc
 
 
-def get_context_rows(ref_text: dict, naf_layer, context_range: int) -> str:
-    """
-    Retrieves the line where word has been found with option to also retreive sentences/paragraphs before and after
+def _get_context_idxs(ref_text: dict, naf_layer, context_range: int) -> List[int]:
+    """Get context indexes for the formatted text.
+
     Args:
         ref_text: a sentence or paragraph from the sentences or paragraphs layer as a dictionary to retrieve extra
         context for
         naf: a NafDocument.sentences or NafDocument.paragaphs (can be rewritten with search_level as extra input)
         context_range: amount of context lines around ref_text
     Returns:
-        result: the sentence/paragraph with surrounding context lines
+        List[int]: Integer values for the indices to select in the naf_layer
     """
     for idx, text in enumerate(naf_layer):
         if ref_text == text:
             text_idx = idx
+    
 
     if text_idx - context_range >= 0:
         idx_min = text_idx - context_range
@@ -744,6 +742,46 @@ def get_context_rows(ref_text: dict, naf_layer, context_range: int) -> str:
         idx_max = len(naf_layer) - 1
 
     context_idxs = [idx for idx in range(idx_min, idx_max+1, 1)]
+    return context_idxs
+
+
+def get_before_and_after_text(ref_text: dict, naf_layer, context_range: int) -> Tuple[str, str]:
+    """Gets before central line text and after central line text of the central sentence.
+
+    Args:
+        ref_text: a sentence or paragraph from the sentences or paragraphs layer as a dictionary to retrieve extra
+        context for
+        naf: a NafDocument.sentences or NafDocument.paragaphs (can be rewritten with search_level as extra input)
+        context_range: amount of context lines around ref_text
+
+    Returns:
+        Tuple[str, str]: The text before and after the central text line (based on context range)
+    """
+    context_idxs = _get_context_idxs(ref_text, naf_layer, context_range)
+    
+    # Get indices for before and after text
+    middle_index = int((len(context_idxs) - 1) / 2)
+    before_idxs = context_idxs[:middle_index]
+    after_idxs = context_idxs[middle_index + 1:]
+
+    # Get the context strings
+    before_context = " ".join([naf_layer[idx]["text"] for idx in before_idxs])
+    after_context = " ".join([naf_layer[idx]["text"] for idx in after_idxs])
+    return before_context, after_context
+
+
+def get_context_rows(ref_text: dict, naf_layer, context_range: int) -> str:
+    """
+    Retrieves the line where word has been found with option to also retreive sentences/paragraphs before and after
+    Args:
+        ref_text: a sentence or paragraph from the sentences or paragraphs layer as a dictionary to retrieve extra
+        context for
+        naf: a NafDocument.sentences or NafDocument.paragaphs (can be rewritten with search_level as extra input)
+        context_range: amount of context lines around ref_text
+    Returns:
+        result: the sentence/paragraph with surrounding context lines
+    """
+    context_idxs = _get_context_idxs(ref_text, naf_layer, context_range)
 
     result_w_context = ''
     for idx in context_idxs:
