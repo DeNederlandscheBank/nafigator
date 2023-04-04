@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <NAF xmlns:dc="http://purl.org/dc/elements/1.1/" version="v3.1" xml:lang="en">
   <nafHeader>
-    <fileDesc creationtime="2023-03-16T14:36:01UTC" filename="tests\data\example.docx" filetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
-    <public dc:uri="tests\data\example.docx" dc:format="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+    <fileDesc creationtime="2023-04-04T09:03:28UTC" filename="tests/data/example.docx" filetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+    <public dc:uri="tests/data/example.docx" dc:format="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
     <linguisticProcessors layer="formats">
-      <lp name="formats" version="nafigator" beginTimestamp="2023-03-16T14:36:01UTC" endTimestamp="2023-03-16T14:36:01UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
+      <lp name="formats" version="nafigator" beginTimestamp="2023-04-04T09:03:28UTC" endTimestamp="2023-04-04T09:03:28UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="entities">
-      <lp name="entities" version="stanza_version-1.4.2" beginTimestamp="2023-03-16T14:36:03UTC" endTimestamp="2023-03-16T14:36:04UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
+      <lp name="entities" version="stanza_version-1.4.2" beginTimestamp="2023-04-04T09:03:30UTC" endTimestamp="2023-04-04T09:03:31UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="text">
-      <lp name="text" version="stanza_version-1.4.2" model="C:\Users\lsevereijns\stanza_resources\en\tokenize\combined.pt" beginTimestamp="2023-03-16T14:36:03UTC" endTimestamp="2023-03-16T14:36:04UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
+      <lp name="text" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-04-04T09:03:30UTC" endTimestamp="2023-04-04T09:03:31UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="terms">
-      <lp name="terms" version="stanza_version-1.4.2" model="C:\Users\lsevereijns\stanza_resources\en\pos\combined.pt" beginTimestamp="2023-03-16T14:36:03UTC" endTimestamp="2023-03-16T14:36:04UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
+      <lp name="terms" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/pos/combined.pt" beginTimestamp="2023-04-04T09:03:30UTC" endTimestamp="2023-04-04T09:03:31UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="deps">
-      <lp name="deps" version="stanza_version-1.4.2" model="C:\Users\lsevereijns\stanza_resources\en\depparse\combined.pt" beginTimestamp="2023-03-16T14:36:03UTC" endTimestamp="2023-03-16T14:36:04UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
+      <lp name="deps" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/depparse/combined.pt" beginTimestamp="2023-04-04T09:03:30UTC" endTimestamp="2023-04-04T09:03:31UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="multiwords">
-      <lp name="multiwords" version="stanza_version-1.4.2" model="C:\Users\lsevereijns\stanza_resources\en\tokenize\combined.pt" beginTimestamp="2023-03-16T14:36:03UTC" endTimestamp="2023-03-16T14:36:04UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
+      <lp name="multiwords" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-04-04T09:03:30UTC" endTimestamp="2023-04-04T09:03:31UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
     <linguisticProcessors layer="raw">
-      <lp name="raw" version="stanza_version-1.4.2" model="C:\Users\lsevereijns\stanza_resources\en\tokenize\combined.pt" beginTimestamp="2023-03-16T14:36:03UTC" endTimestamp="2023-03-16T14:36:04UTC" hostname="lsevereijns002.reddog.microsoft.com"/>
+      <lp name="raw" version="stanza_version-1.4.2" model="/home/timadmin/stanza_resources/en/tokenize/combined.pt" beginTimestamp="2023-04-04T09:03:30UTC" endTimestamp="2023-04-04T09:03:31UTC" hostname="avdnlp-1."/>
     </linguisticProcessors>
   </nafHeader>
   <formats>
