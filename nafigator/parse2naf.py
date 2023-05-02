@@ -5,6 +5,7 @@
 from io import BytesIO
 import os
 import logging
+from pdfminer.layout import LAParams
 
 from nafigator.nafparser import NafParser
 from nafigator.preprocessor.pdf_converter import PDFConverter
@@ -45,7 +46,7 @@ def generate_naf(
         if ocr:
             text = OCRConverter().parse(file=file)
         else:
-            pdfdoc = PDFConverter().parse(file=file)
+            pdfdoc = PDFConverter().parse(file=file, laparams=LAParams(line_margin=1.25))
             text = pdfdoc.text
     elif ext == ".docx":
         text = DocxConverter().parse(file=file)
