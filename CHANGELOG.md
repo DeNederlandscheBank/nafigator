@@ -108,3 +108,7 @@ History
 -------------------
 * Add util for getting before and after text
 * In parse2naf, evaluate_naf, change mismatch in length between raw and text_to_use from error -> warning log
+
+0.1.64 (2023-08-25)
+-------------------
+* Pin opencv package to a certain version to prevent a Numpy/Python error

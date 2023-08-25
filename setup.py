@@ -11,15 +11,15 @@ with open('HISTORY.rst', encoding="utf8") as history_file:
     history = history_file.read()
 
 requirements = ['click>=7.0', 'pdfminer.six>=20200726', 'lxml', 'python-docx', 'folia',
-                'pandas', 'camelot-py>=0.10.1', 'opencv-python>=4.5.5.62', 'pdftopng == 0.2.3',
+                'pandas', 'camelot-py>=0.10.1', 'opencv-python==4.7.0.68', 'pdftopng == 0.2.3',
                 'iribaker==0.2', 'Unidecode==1.3.6', 'PyMuPDF==1.21.0']
 
 setup_requirements = ['click>=7.0', 'pdfminer.six>=20200726', 'lxml', 'python-docx',
-                      'folia', 'pandas', 'camelot-py>=0.10.1', 'opencv-python>=4.5.5.62', 'pdftopng>=0.2.3',
+                      'folia', 'pandas', 'camelot-py>=0.10.1', 'opencv-python==4.7.0.68', 'pdftopng>=0.2.3',
                       'iribaker==0.2', 'Unidecode==1.3.6', 'PyMuPDF==1.21.0']
 
 test_requirements = ['click>=7.0', 'pdfminer.six>=20200726', 'lxml', 'python-docx', 'folia', 'pandas',
-                     'stanza', 'spacy', 'deepdiff', 'camelot-py>=0.10.1', 'opencv-python>=4.5.5.62', 'pdftopng>=0.2.3',
+                     'stanza', 'spacy', 'deepdiff', 'camelot-py>=0.10.1', 'opencv-python==4.7.0.68', 'pdftopng>=0.2.3',
                      'iribaker==0.2', 'Unidecode==1.3.6', 'PyMuPDF==1.21.0']
 
 setup(
@@ -55,6 +55,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/denederlandschebank/nafigator',
-    version='0.1.63',
+    version='0.1.64',
     zip_safe=False,
 )
