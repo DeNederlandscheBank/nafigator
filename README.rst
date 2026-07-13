@@ -1,3 +1,7 @@
+**This project is archived and no longer maintained. Dependencies and security vulnerabilities will not be addressed. Usage is not recommended for new projects.**
+
+-------
+
 =========
 nafigator
 =========
